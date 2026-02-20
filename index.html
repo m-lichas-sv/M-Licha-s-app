@@ -9,32 +9,32 @@
 body{
     margin:0;
     font-family: 'Segoe UI', sans-serif;
-    background:#f5f5f5;
+    background:#f2f2f2;
 }
 
 header{
-    background:#DB8627;
+    background:linear-gradient(135deg,#DB8627,#FDC737);
     color:white;
     text-align:center;
-    padding:25px;
-    font-size:22px;
-    font-weight:bold;
+    padding:30px 15px;
 }
 
-.sub{
-    text-align:center;
-    font-size:16px;
-    margin-top:-10px;
-    margin-bottom:15px;
+header h1{
+    margin:0;
+    font-size:26px;
+}
+
+header p{
+    margin:5px 0 0;
     font-weight:500;
 }
 
 .container{
     padding:15px;
+    padding-bottom:220px;
 }
 
 .section-title{
-    font-size:18px;
     margin:20px 0 10px;
     font-weight:bold;
     color:#DB8627;
@@ -42,13 +42,13 @@ header{
 
 .card{
     background:white;
-    border-radius:12px;
+    border-radius:15px;
     padding:15px;
-    margin-bottom:10px;
+    margin-bottom:12px;
+    box-shadow:0 6px 15px rgba(0,0,0,0.08);
     display:flex;
     justify-content:space-between;
     align-items:center;
-    box-shadow:0 4px 10px rgba(0,0,0,0.08);
 }
 
 .product-info{
@@ -57,18 +57,30 @@ header{
 
 .price{
     font-weight:bold;
-    margin-top:5px;
+    margin-top:4px;
 }
 
-.add-btn{
+.controls{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.controls button{
     background:#FDC737;
     border:none;
-    border-radius:50%;
-    width:35px;
-    height:35px;
-    font-size:20px;
+    width:30px;
+    height:30px;
+    border-radius:8px;
+    font-size:18px;
     font-weight:bold;
     cursor:pointer;
+}
+
+.quantity{
+    font-weight:bold;
+    min-width:20px;
+    text-align:center;
 }
 
 .cart{
@@ -76,21 +88,30 @@ header{
     bottom:0;
     width:100%;
     background:white;
-    box-shadow:0 -3px 10px rgba(0,0,0,0.15);
+    box-shadow:0 -5px 15px rgba(0,0,0,0.15);
     padding:15px;
 }
 
-.cart-total{
+input{
+    width:100%;
+    padding:10px;
+    margin:6px 0;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+
+.total{
     font-weight:bold;
-    margin-bottom:10px;
+    margin-top:8px;
 }
 
 button.send{
     width:100%;
+    margin-top:10px;
     background:#25D366;
     color:white;
     border:none;
-    padding:12px;
+    padding:14px;
     border-radius:10px;
     font-size:16px;
     font-weight:bold;
@@ -101,72 +122,82 @@ button.send{
 <body>
 
 <header>
-M Licha’s
+<h1>M Licha’s ⭐⭐⭐⭐⭐</h1>
+<p>El toque de la abuela</p>
 </header>
-<div class="sub">El toque de la abuela</div>
 
 <div class="container">
 
 <div class="section-title">🍽 Almuerzos</div>
 
 <div class="card">
-<div class="product-info">
-🥩 Carne asada
-<div class="price">$5</div>
+<div class="product-info">🥩 Carne asada<div class="price">$5</div></div>
+<div class="controls">
+<button onclick="changeQty('Carne asada 🥩',5,-1)">−</button>
+<div class="quantity" id="Carne asada 🥩">0</div>
+<button onclick="changeQty('Carne asada 🥩',5,1)">+</button>
 </div>
-<button class="add-btn" onclick="addToCart('Carne asada 🥩',5)">+</button>
 </div>
 
 <div class="card">
-<div class="product-info">
-🍲 Sopa de gallina
-<div class="price">$5</div>
+<div class="product-info">🍲 Sopa de gallina<div class="price">$5</div></div>
+<div class="controls">
+<button onclick="changeQty('Sopa de gallina 🍲',5,-1)">−</button>
+<div class="quantity" id="Sopa de gallina 🍲">0</div>
+<button onclick="changeQty('Sopa de gallina 🍲',5,1)">+</button>
 </div>
-<button class="add-btn" onclick="addToCart('Sopa de gallina 🍲',5)">+</button>
 </div>
 
 <div class="section-title">🍤 Mariscos</div>
 
 <div class="card">
-<div class="product-info">
-🦐 Camarones al ajillo
-<div class="price">$5</div>
+<div class="product-info">🦐 Camarones al ajillo<div class="price">$5</div></div>
+<div class="controls">
+<button onclick="changeQty('Camarones al ajillo 🦐',5,-1)">−</button>
+<div class="quantity" id="Camarones al ajillo 🦐">0</div>
+<button onclick="changeQty('Camarones al ajillo 🦐',5,1)">+</button>
 </div>
-<button class="add-btn" onclick="addToCart('Camarones al ajillo 🦐',5)">+</button>
 </div>
 
 <div class="card">
-<div class="product-info">
-🐟 Pescado frito
-<div class="price">$4</div>
+<div class="product-info">🐟 Pescado frito<div class="price">$4</div></div>
+<div class="controls">
+<button onclick="changeQty('Pescado frito 🐟',4,-1)">−</button>
+<div class="quantity" id="Pescado frito 🐟">0</div>
+<button onclick="changeQty('Pescado frito 🐟',4,1)">+</button>
 </div>
-<button class="add-btn" onclick="addToCart('Pescado frito 🐟',4)">+</button>
 </div>
 
 <div class="section-title">🥤 Bebidas</div>
 
 <div class="card">
-<div class="product-info">
-🥤 Fresco natural
-<div class="price">$1.50</div>
+<div class="product-info">🥤 Fresco natural<div class="price">$1.50</div></div>
+<div class="controls">
+<button onclick="changeQty('Fresco natural 🥤',1.5,-1)">−</button>
+<div class="quantity" id="Fresco natural 🥤">0</div>
+<button onclick="changeQty('Fresco natural 🥤',1.5,1)">+</button>
 </div>
-<button class="add-btn" onclick="addToCart('Fresco natural 🥤',1.5)">+</button>
 </div>
 
 <div class="section-title">🍺 Cervezas</div>
 
 <div class="card">
-<div class="product-info">
-🍺 Pilsener
-<div class="price">$1.30</div>
+<div class="product-info">🍺 Pilsener<div class="price">$1.30</div></div>
+<div class="controls">
+<button onclick="changeQty('Pilsener 🍺',1.3,-1)">−</button>
+<div class="quantity" id="Pilsener 🍺">0</div>
+<button onclick="changeQty('Pilsener 🍺',1.3,1)">+</button>
 </div>
-<button class="add-btn" onclick="addToCart('Pilsener 🍺',1.3)">+</button>
 </div>
 
 </div>
 
 <div class="cart">
-<div class="cart-total" id="total">Total: $0.00</div>
+<input type="text" id="cliente" placeholder="Nombre del cliente">
+<input type="text" id="telefono" placeholder="Número de teléfono">
+
+<div class="total" id="total">Total: $0.00</div>
+
 <button class="send" onclick="sendOrder()">Enviar pedido por WhatsApp</button>
 </div>
 
@@ -174,27 +205,40 @@ M Licha’s
 let cart = {};
 let total = 0;
 
-function addToCart(name, price){
-    if(cart[name]){
-        cart[name].qty++;
-    } else{
-        cart[name]={price:price, qty:1};
-    }
-    total += price;
-    updateTotal();
+function changeQty(name, price, change){
+    if(!cart[name]) cart[name]={price:price, qty:0};
+    cart[name].qty += change;
+
+    if(cart[name].qty < 0) cart[name].qty = 0;
+
+    document.getElementById(name).innerText = cart[name].qty;
+
+    calculateTotal();
 }
 
-function updateTotal(){
+function calculateTotal(){
+    total = 0;
+    for(let item in cart){
+        total += cart[item].qty * cart[item].price;
+    }
     document.getElementById("total").innerText = "Total: $" + total.toFixed(2);
 }
 
 function sendOrder(){
-    let message = "Pedido M Licha’s%0A%0A";
+    let cliente = document.getElementById("cliente").value;
+    let telefono = document.getElementById("telefono").value;
+
+    let message = "Pedido M Licha’s ⭐⭐⭐⭐⭐%0A%0A";
     for(let item in cart){
-        let subtotal = cart[item].qty * cart[item].price;
-        message += cart[item].qty + " x " + item + " = $" + subtotal.toFixed(2) + "%0A";
+        if(cart[item].qty>0){
+            let subtotal = cart[item].qty * cart[item].price;
+            message += cart[item].qty + " x " + item + " = $" + subtotal.toFixed(2) + "%0A";
+        }
     }
     message += "%0ATotal: $" + total.toFixed(2);
+    message += "%0ACliente: " + cliente;
+    message += "%0ATeléfono: " + telefono;
+
     window.open("https://wa.me/50379554663?text="+message);
 }
 </script>
