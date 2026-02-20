@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +27,8 @@ header h1{
 
 header p{
     margin-top:8px;
-    font-size:16px;
+    font-size:18px;
+    font-weight:bold;
 }
 
 .section{
@@ -36,6 +37,8 @@ header p{
 
 h2{
     color:#DB8627;
+    border-bottom:3px solid #FDC737;
+    padding-bottom:5px;
 }
 
 .card{
@@ -44,6 +47,13 @@ h2{
     margin:10px 0;
     border-radius:12px;
     box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    display:flex;
+    justify-content:space-between;
+    font-weight:bold;
+}
+
+.price{
+    color:#DB8627;
 }
 
 .button{
@@ -52,7 +62,7 @@ h2{
     background:#FDC737;
     color:black;
     padding:15px;
-    margin:15px 0;
+    margin:20px 0;
     border-radius:10px;
     text-decoration:none;
     font-weight:bold;
@@ -67,9 +77,10 @@ h2{
     padding:15px;
     border-radius:50px;
     text-decoration:none;
-    font-size:18px;
+    font-size:16px;
     box-shadow:0 4px 10px rgba(0,0,0,0.3);
 }
+
 footer{
     background:#DB8627;
     color:white;
@@ -84,21 +95,38 @@ footer{
 
 <header>
     <h1>M Licha’s</h1>
-    <p>Sabor tradicional salvadoreño</p>
+    <p>El sabor de la abuela</p>
 </header>
 
 <div class="section">
-    <h2>🍽 Nuestro Menú</h2>
+    <h2>🍽 Almuerzos</h2>
+    <div class="card">Sopa de gallina <span class="price">$6.00</span></div>
+    <div class="card">Carne asada <span class="price">$7.00</span></div>
+    <div class="card">Hamburguesa <span class="price">$5.00</span></div>
+    <div class="card">Papas fritas <span class="price">$2.50</span></div>
+</div>
 
-    <div class="card">🍲 Sopa de gallina</div>
-    <div class="card">🥩 Carne asada</div>
-    <div class="card">🍤 Camarones al ajillo</div>
-    <div class="card">🐟 Pescado frito</div>
-    <div class="card">🦪 Cocteles de concha y camarón</div>
-    <div class="card">🍔 Hamburguesas</div>
-    <div class="card">🍟 Papas fritas</div>
-    <div class="card">🥤 Frescos, jugos y gaseosas</div>
-    <div class="card">🍺 Cervezas: Pilsener, Golden, Suprema, Regia</div>
+<div class="section">
+    <h2>🦐 Mariscos</h2>
+    <div class="card">Camarones al ajillo <span class="price">$8.00</span></div>
+    <div class="card">Pescado frito <span class="price">$9.00</span></div>
+    <div class="card">Coctel de concha <span class="price">$7.00</span></div>
+    <div class="card">Coctel de camarón <span class="price">$7.50</span></div>
+</div>
+
+<div class="section">
+    <h2>🥤 Bebidas</h2>
+    <div class="card">Frescos naturales <span class="price">$1.50</span></div>
+    <div class="card">Jugos <span class="price">$1.50</span></div>
+    <div class="card">Gaseosas <span class="price">$1.25</span></div>
+</div>
+
+<div class="section">
+    <h2>🍺 Cervezas</h2>
+    <div class="card">Pilsener <span class="price">$1.75</span></div>
+    <div class="card">Golden <span class="price">$1.75</span></div>
+    <div class="card">Suprema <span class="price">$2.00</span></div>
+    <div class="card">Regia <span class="price">$1.75</span></div>
 
     <a class="button" href="https://wa.me/50379554663">
         📲 Ordenar por WhatsApp
@@ -107,7 +135,7 @@ footer{
 
 <div class="section">
     <h2>💳 Métodos de Pago</h2>
-    <div class="card">Aceptamos efectivo</div>
+    <div class="card">Efectivo</div>
     <div class="card">Tarjeta de crédito y débito</div>
     <div class="card">Transferencias bancarias</div>
 </div>
@@ -122,4 +150,3 @@ footer{
 
 </body>
 </html>
-<!-- prueba -->
