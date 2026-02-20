@@ -4,25 +4,104 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>M Licha’s</title>
-<link rel="stylesheet" href="style.css">
+
+<style>
+body{
+font-family: Arial, sans-serif;
+margin:0;
+background:#f4f4f4;
+}
+
+header{
+background:#b22222;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+header h1{
+margin:0;
+}
+
+.btn-maps{
+display:inline-block;
+margin-top:10px;
+background:white;
+color:#b22222;
+padding:8px 15px;
+border-radius:6px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.container{
+padding:15px;
+}
+
+.categoria{
+margin-top:25px;
+}
+
+.producto{
+background:white;
+padding:10px;
+margin:8px 0;
+border-radius:8px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.controles button{
+padding:5px 10px;
+margin:0 5px;
+}
+
+.carrito{
+background:white;
+padding:15px;
+margin-top:20px;
+border-radius:10px;
+}
+
+input, select{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+button{
+background:#b22222;
+color:white;
+border:none;
+padding:12px;
+border-radius:8px;
+font-weight:bold;
+width:100%;
+margin-top:10px;
+}
+</style>
 </head>
+
 <body>
 
 <header>
 <h1>M Licha’s 🍽️</h1>
 <p>Sábado y Domingo 11:00 AM - 6:30 PM</p>
 <a href="https://maps.app.goo.gl/xSwi7oE2hsQ9JnTGA?g_st=ic" target="_blank" class="btn-maps">
-📍 Ver Ubicación en Maps
+📍 Ver ubicación en Maps
 </a>
 </header>
 
-<section id="productos"></section>
+<div class="container" id="productos"></div>
 
-<section class="carrito">
+<div class="container carrito">
 <h2>🛒 Tu Pedido</h2>
 
-<input type="text" id="nombre" placeholder="Nombre del cliente" required>
-<input type="tel" id="telefono" placeholder="Número de teléfono" required>
+<input type="text" id="nombre" placeholder="Nombre del cliente">
+<input type="tel" id="telefono" placeholder="Número de teléfono">
 
 <select id="metodoPago">
 <option value="efectivo">Efectivo</option>
@@ -33,8 +112,123 @@
 <h3 id="total">Total: $0.00</h3>
 
 <button onclick="enviarPedido()">Enviar Pedido por WhatsApp</button>
-</section>
+</div>
 
-<script src="script.js"></script>
+<script>
+const numeroWhatsApp="50379554663";
+
+const productosData={
+"Almuerzos":[
+{name:"Sopa de gallina",precio:5},
+{name:"Carne asada",precio:5},
+{name:"Camarones al ajillo",precio:5},
+{name:"Pescado frito",precio:4}
+],
+"Cócteles":[
+{name:"Cóctel de camarón",precio:7},
+{name:"Cóctel de concha",precio:7},
+{name:"Cóctel en salsa rosada",precio:7}
+],
+"Hamburguesas":[
+{name:"Hamburguesa de pollo",precio:2},
+{name:"Hamburguesa de carne",precio:2.5},
+{name:"Hamburguesa doble carne",precio:3}
+],
+"Combos Hamburguesas":[
+{name:"Combo hamburguesa de pollo",precio:4},
+{name:"Combo hamburguesa de carne",precio:4.5},
+{name:"Combo hamburguesa doble",precio:5}
+],
+"Bebidas":[
+{name:"Fresco natural 16oz",precio:1.5},
+{name:"Fresco natural 20oz",precio:1.75},
+{name:"Gaseosa lata variedad",precio:1},
+{name:"Gaseosa vidrio variedad",precio:1}
+]
+};
+
+let carrito={};
+let indexGlobal=0;
+
+const contenedor=document.getElementById("productos");
+
+for(let categoria in productosData){
+contenedor.innerHTML+=`<div class="categoria"><h2>${categoria}</h2></div>`;
+productosData[categoria].forEach(prod=>{
+carrito[indexGlobal]=0;
+contenedor.innerHTML+=`
+<div class="producto">
+<span>${prod.name} - $${prod.precio}</span>
+<div class="controles">
+<button onclick="cambiarCantidad(${indexGlobal},-1)">-</button>
+<span id="cantidad-${indexGlobal}">0</span>
+<button onclick="cambiarCantidad(${indexGlobal},1)">+</button>
+</div>
+</div>
+`;
+indexGlobal++;
+});
+}
+
+function cambiarCantidad(index,cambio){
+carrito[index]+=cambio;
+if(carrito[index]<0) carrito[index]=0;
+document.getElementById("cantidad-"+index).innerText=carrito[index];
+calcularTotal();
+}
+
+function calcularTotal(){
+let total=0;
+let contador=0;
+indexGlobal=0;
+
+for(let categoria in productosData){
+productosData[categoria].forEach(prod=>{
+total+=prod.precio*carrito[indexGlobal];
+indexGlobal++;
+});
+}
+
+let metodo=document.getElementById("metodoPago").value;
+if(metodo==="tarjeta"){
+total*=1.055;
+}
+
+document.getElementById("total").innerText="Total: $"+total.toFixed(2);
+return total.toFixed(2);
+}
+
+document.getElementById("metodoPago").addEventListener("change",calcularTotal);
+
+function enviarPedido(){
+let nombre=document.getElementById("nombre").value;
+let telefono=document.getElementById("telefono").value;
+
+if(!nombre || !telefono){
+alert("Por favor completa nombre y teléfono");
+return;
+}
+
+let mensaje=`Pedido - M Licha’s\nNombre: ${nombre}\nTeléfono: ${telefono}\n\n`;
+
+let totalFinal=calcularTotal();
+
+indexGlobal=0;
+for(let categoria in productosData){
+productosData[categoria].forEach(prod=>{
+if(carrito[indexGlobal]>0){
+mensaje+=`${prod.name} x${carrito[indexGlobal]}\n`;
+}
+indexGlobal++;
+});
+}
+
+mensaje+=`\nTotal: $${totalFinal}`;
+
+let url=`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+window.open(url,"_blank");
+}
+</script>
+
 </body>
 </html>
