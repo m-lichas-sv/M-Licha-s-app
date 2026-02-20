@@ -3,176 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>M-Lichas</title>
+<title>M Licha’s</title>
 <link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-<header class="header">
-    <h1>M-Lichas</h1>
-    <p>Entrega rápida • Sabor auténtico 🇸🇻</p>
+<header>
+<h1>M Licha’s 🍽️</h1>
+<p>Sábado y Domingo 11:00 AM - 6:30 PM</p>
+<a href="https://maps.app.goo.gl/xSwi7oE2hsQ9JnTGA?g_st=ic" target="_blank" class="btn-maps">
+📍 Ver Ubicación en Maps
+</a>
 </header>
 
-<section class="categorias">
-    <button class="active">Populares</button>
-    <button>Sopas</button>
-    <button>Mariscos</button>
+<section id="productos"></section>
+
+<section class="carrito">
+<h2>🛒 Tu Pedido</h2>
+
+<input type="text" id="nombre" placeholder="Nombre del cliente" required>
+<input type="tel" id="telefono" placeholder="Número de teléfono" required>
+
+<select id="metodoPago">
+<option value="efectivo">Efectivo</option>
+<option value="transferencia">Transferencia</option>
+<option value="tarjeta">Tarjeta (+5.5%)</option>
+</select>
+
+<h3 id="total">Total: $0.00</h3>
+
+<button onclick="enviarPedido()">Enviar Pedido por WhatsApp</button>
 </section>
-
-<section class="productos">
-
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1604908176997-431c7f19d49e" alt="Sopa">
-        <div class="info">
-            <h3>Sopa de Gallina</h3>
-            <p>$5.00</p>
-            <button onclick="agregarCarrito('Sopa de Gallina',5)">Agregar</button>
-        </div>
-    </div>
-
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Camarones">
-        <div class="info">
-            <h3>Camarones al Ajillo</h3>
-            <p>$8.00</p>
-            <button onclick="agregarCarrito('Camarones al Ajillo',8)">Agregar</button>
-        </div>
-    </div>
-
-</section>
-
-<div class="carrito-float" onclick="mostrarCarrito()">
-    🛒 <span id="contador">0</span>
-</div>
-
-<div class="modal" id="modalCarrito">
-    <div class="modal-content">
-        <h2>Tu pedido</h2>
-        <ul id="lista-carrito"></ul>
-        <h3>Total: $<span id="total">0</span></h3>
-        <button onclick="cerrarCarrito()">Cerrar</button>
-    </div>
-</div>
 
 <script src="script.js"></script>
 </body>
 </html>
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: #f5f5f5;
-}
-
-.header {
-    background: #000;
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
-
-.categorias {
-    display: flex;
-    overflow-x: auto;
-    padding: 10px;
-    gap: 10px;
-}
-
-.categorias button {
-    padding: 8px 15px;
-    border-radius: 20px;
-    border: none;
-    background: #e0e0e0;
-    cursor: pointer;
-}
-
-.categorias .active {
-    background: #000;
-    color: white;
-}
-
-.productos {
-    padding: 15px;
-}
-
-.card {
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    margin-bottom: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-}
-
-.info {
-    padding: 15px;
-}
-
-.info button {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    background: #06c167;
-    color: white;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.carrito-float {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #000;
-    color: white;
-    padding: 15px;
-    border-radius: 50px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.6);
-}
-
-.modal-content {
-    background: white;
-    padding: 20px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    border-radius: 20px 20px 0 0;
-}
-let total = 0;
-let contador = 0;
-
-function agregarCarrito(nombre, precio) {
-    const lista = document.getElementById("lista-carrito");
-    const item = document.createElement("li");
-
-    item.textContent = nombre + " - $" + precio;
-    lista.appendChild(item);
-
-    total += precio;
-    contador++;
-
-    document.getElementById("total").textContent = total;
-    document.getElementById("contador").textContent = contador;
-}
-
-function mostrarCarrito() {
-    document.getElementById("modalCarrito").style.display = "block";
-}
-
-function cerrarCarrito() {
-    document.getElementById("modalCarrito").style.display = "none";
-}
