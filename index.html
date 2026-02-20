@@ -1,55 +1,81 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>M Licha’s</title>
 
 <style>
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background: #ffffff;
-  text-align: center;
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background-color:#FFF8EE;
+    color:#333;
 }
 
-header {
-  padding: 20px;
+header{
+    background:#DB8627;
+    color:white;
+    text-align:center;
+    padding:30px 20px;
 }
 
-h1 {
-  font-size: 32px;
-  color: #0d2b45;
+header h1{
+    margin:0;
+    font-size:32px;
 }
 
-.tagline {
-  color: #e09b2d;
-  font-size: 18px;
-  margin-bottom: 20px;
+header p{
+    margin-top:8px;
+    font-size:16px;
 }
 
-.button {
-  display: block;
-  width: 80%;
-  max-width: 300px;
-  margin: 10px auto;
-  padding: 15px;
-  background: #f4b400;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 10px;
+.section{
+    padding:25px;
 }
 
-.whatsapp {
-  background: #25D366;
+h2{
+    color:#DB8627;
 }
 
-.menu-item {
-  background: #f9f9f9;
-  margin: 10px;
-  padding: 15px;
-  border-radius: 10px;
+.card{
+    background:white;
+    padding:15px;
+    margin:10px 0;
+    border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.button{
+    display:block;
+    text-align:center;
+    background:#FDC737;
+    color:black;
+    padding:15px;
+    margin:15px 0;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.whatsapp{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    color:white;
+    padding:15px;
+    border-radius:50px;
+    text-decoration:none;
+    font-size:18px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.3);
+}
+footer{
+    background:#DB8627;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:30px;
 }
 </style>
 </head>
@@ -57,33 +83,43 @@ h1 {
 <body>
 
 <header>
-  <h1>M Licha’s</h1>
-  <div class="tagline">El toque de la abuela</div>
+    <h1>M Licha’s</h1>
+    <p>Sabor tradicional salvadoreño</p>
 </header>
 
-<a class="button whatsapp" 
-href="https://wa.me/50379554663?text=Hola,%20quiero%20hacer%20un%20pedido%20en%20M%20Licha’s%20🍽️">
-📲 Pedir por WhatsApp
+<div class="section">
+    <h2>🍽 Nuestro Menú</h2>
+
+    <div class="card">🍲 Sopa de gallina</div>
+    <div class="card">🥩 Carne asada</div>
+    <div class="card">🍤 Camarones al ajillo</div>
+    <div class="card">🐟 Pescado frito</div>
+    <div class="card">🦪 Cocteles de concha y camarón</div>
+    <div class="card">🍔 Hamburguesas</div>
+    <div class="card">🍟 Papas fritas</div>
+    <div class="card">🥤 Frescos, jugos y gaseosas</div>
+    <div class="card">🍺 Cervezas: Pilsener, Golden, Suprema, Regia</div>
+
+    <a class="button" href="https://wa.me/50379554663">
+        📲 Ordenar por WhatsApp
+    </a>
+</div>
+
+<div class="section">
+    <h2>💳 Métodos de Pago</h2>
+    <div class="card">Aceptamos efectivo</div>
+    <div class="card">Tarjeta de crédito y débito</div>
+    <div class="card">Transferencias bancarias</div>
+</div>
+
+<a class="whatsapp" href="https://wa.me/50379554663">
+    WhatsApp
 </a>
 
-<h2>Menú</h2>
-
-<div class="menu-item">🥣 Sopa de gallina</div>
-<div class="menu-item">🥩 Carne asada</div>
-<div class="menu-item">🍤 Camarones al ajillo</div>
-<div class="menu-item">🐟 Pescado frito</div>
-<div class="menu-item">🦪 Coctel de concha</div>
-<div class="menu-item">🍤 Coctel de camarón</div>
-<div class="menu-item">🍔 Hamburguesas</div>
-<div class="menu-item">🍟 Papas fritas</div>
-<div class="menu-item">🥤 Frescos naturales</div>
-<div class="menu-item">🍺 Pilsener | Golden | Suprema | Regia</div>
-
-<p><strong>Métodos de pago:</strong><br>
-💵 Efectivo<br>
-💳 Tarjeta<br>
-🏦 Transferencia bancaria
-</p>
+<footer>
+    📞 7955 4663
+</footer>
 
 </body>
 </html>
+<!-- prueba -->
