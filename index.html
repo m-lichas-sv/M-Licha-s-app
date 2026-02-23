@@ -5,82 +5,106 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>M Licha’s</title>
 
+<!-- Librería para generar imagen -->
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
 <style>
+:root{
+--color-principal:#DB8627;
+--color-secundario:#FEC879;
+--color-fondo:#FFF8EE;
+}
+
 body{
-font-family: Arial, sans-serif;
 margin:0;
-background:#f4f4f4;
+font-family:Arial, sans-serif;
+background:var(--color-fondo);
 }
 
 header{
-background:#b22222;
-color:white;
+background:var(--color-principal);
 text-align:center;
 padding:20px;
+color:white;
 }
 
-header h1{
-margin:0;
+header img{
+width:180px;
+margin-bottom:10px;
 }
 
 .btn-maps{
-display:inline-block;
-margin-top:10px;
 background:white;
-color:#b22222;
-padding:8px 15px;
-border-radius:6px;
+color:var(--color-principal);
+padding:10px 15px;
+border-radius:8px;
 text-decoration:none;
 font-weight:bold;
+display:inline-block;
+margin-top:10px;
 }
 
 .container{
 padding:15px;
 }
 
-.categoria{
-margin-top:25px;
+h2{
+color:var(--color-principal);
 }
 
 .producto{
 background:white;
-padding:10px;
-margin:8px 0;
-border-radius:8px;
+padding:12px;
+margin:10px 0;
+border-radius:12px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+box-shadow:0 4px 8px rgba(0,0,0,0.05);
 }
 
 .controles button{
+background:var(--color-principal);
+color:white;
+border:none;
 padding:5px 10px;
+border-radius:6px;
 margin:0 5px;
 }
 
 .carrito{
 background:white;
 padding:15px;
+border-radius:12px;
 margin-top:20px;
-border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.08);
 }
 
 input, select{
 width:100%;
 padding:10px;
 margin:8px 0;
-border-radius:6px;
-border:1px solid #ccc;
+border-radius:8px;
+border:1px solid #ddd;
 }
 
 button{
-background:#b22222;
+background:var(--color-principal);
 color:white;
 border:none;
 padding:12px;
-border-radius:8px;
-font-weight:bold;
+border-radius:10px;
 width:100%;
+font-weight:bold;
 margin-top:10px;
+}
+
+#factura{
+background:white;
+padding:20px;
+margin-top:20px;
+border-radius:12px;
+display:none;
 }
 </style>
 </head>
@@ -88,7 +112,7 @@ margin-top:10px;
 <body>
 
 <header>
-<h1>M Licha’s 🍽️</h1>
+<img src="logo.png" alt="Logo M Licha’s">
 <p>Sábado y Domingo 11:00 AM - 6:30 PM</p>
 <a href="https://maps.app.goo.gl/xSwi7oE2hsQ9JnTGA?g_st=ic" target="_blank" class="btn-maps">
 📍 Ver ubicación en Maps
@@ -111,124 +135,33 @@ margin-top:10px;
 
 <h3 id="total">Total: $0.00</h3>
 
-<button onclick="enviarPedido()">Enviar Pedido por WhatsApp</button>
+<button onclick="generarFactura()">Generar Comprobante</button>
+</div>
+
+<div class="container">
+<div id="factura"></div>
+<button onclick="descargarImagen()" id="btnDescargar" style="display:none;">Descargar Comprobante</button>
+<button onclick="enviarWhatsApp()" id="btnEnviar" style="display:none;">Enviar por WhatsApp</button>
 </div>
 
 <script>
 const numeroWhatsApp="50379554663";
+let numeroOrden=Date.now();
 
-const productosData={
-"Almuerzos":[
+const productos=[
 {name:"Sopa de gallina",precio:5},
 {name:"Carne asada",precio:5},
 {name:"Camarones al ajillo",precio:5},
-{name:"Pescado frito",precio:4}
-],
-"Cócteles":[
+{name:"Pescado frito",precio:4},
 {name:"Cóctel de camarón",precio:7},
 {name:"Cóctel de concha",precio:7},
-{name:"Cóctel en salsa rosada",precio:7}
-],
-"Hamburguesas":[
+{name:"Cóctel en salsa rosada",precio:7},
 {name:"Hamburguesa de pollo",precio:2},
 {name:"Hamburguesa de carne",precio:2.5},
-{name:"Hamburguesa doble carne",precio:3}
-],
-"Combos Hamburguesas":[
+{name:"Hamburguesa doble carne",precio:3},
 {name:"Combo hamburguesa de pollo",precio:4},
 {name:"Combo hamburguesa de carne",precio:4.5},
-{name:"Combo hamburguesa doble",precio:5}
-],
-"Bebidas":[
+{name:"Combo hamburguesa doble",precio:5},
 {name:"Fresco natural 16oz",precio:1.5},
 {name:"Fresco natural 20oz",precio:1.75},
-{name:"Gaseosa lata variedad",precio:1},
-{name:"Gaseosa vidrio variedad",precio:1}
-]
-};
-
-let carrito={};
-let indexGlobal=0;
-
-const contenedor=document.getElementById("productos");
-
-for(let categoria in productosData){
-contenedor.innerHTML+=`<div class="categoria"><h2>${categoria}</h2></div>`;
-productosData[categoria].forEach(prod=>{
-carrito[indexGlobal]=0;
-contenedor.innerHTML+=`
-<div class="producto">
-<span>${prod.name} - $${prod.precio}</span>
-<div class="controles">
-<button onclick="cambiarCantidad(${indexGlobal},-1)">-</button>
-<span id="cantidad-${indexGlobal}">0</span>
-<button onclick="cambiarCantidad(${indexGlobal},1)">+</button>
-</div>
-</div>
-`;
-indexGlobal++;
-});
-}
-
-function cambiarCantidad(index,cambio){
-carrito[index]+=cambio;
-if(carrito[index]<0) carrito[index]=0;
-document.getElementById("cantidad-"+index).innerText=carrito[index];
-calcularTotal();
-}
-
-function calcularTotal(){
-let total=0;
-let contador=0;
-indexGlobal=0;
-
-for(let categoria in productosData){
-productosData[categoria].forEach(prod=>{
-total+=prod.precio*carrito[indexGlobal];
-indexGlobal++;
-});
-}
-
-let metodo=document.getElementById("metodoPago").value;
-if(metodo==="tarjeta"){
-total*=1.055;
-}
-
-document.getElementById("total").innerText="Total: $"+total.toFixed(2);
-return total.toFixed(2);
-}
-
-document.getElementById("metodoPago").addEventListener("change",calcularTotal);
-
-function enviarPedido(){
-let nombre=document.getElementById("nombre").value;
-let telefono=document.getElementById("telefono").value;
-
-if(!nombre || !telefono){
-alert("Por favor completa nombre y teléfono");
-return;
-}
-
-let mensaje=`Pedido - M Licha’s\nNombre: ${nombre}\nTeléfono: ${telefono}\n\n`;
-
-let totalFinal=calcularTotal();
-
-indexGlobal=0;
-for(let categoria in productosData){
-productosData[categoria].forEach(prod=>{
-if(carrito[indexGlobal]>0){
-mensaje+=`${prod.name} x${carrito[indexGlobal]}\n`;
-}
-indexGlobal++;
-});
-}
-
-mensaje+=`\nTotal: $${totalFinal}`;
-
-let url=`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-window.open(url,"_blank");
-}
-</script>
-
-</body>
-</html>
+{name:"G
