@@ -5,106 +5,89 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>M Licha’s</title>
 
-<!-- Librería para generar imagen -->
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-
 <style>
-:root{
---color-principal:#DB8627;
---color-secundario:#FEC879;
---color-fondo:#FFF8EE;
-}
-
 body{
-margin:0;
-font-family:Arial, sans-serif;
-background:var(--color-fondo);
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:#f5f2ed;
 }
 
 header{
-background:var(--color-principal);
-text-align:center;
-padding:20px;
-color:white;
+  background:#d98928;
+  color:white;
+  text-align:center;
+  padding:20px;
 }
 
-header img{
-width:180px;
-margin-bottom:10px;
-}
-
-.btn-maps{
-background:white;
-color:var(--color-principal);
-padding:10px 15px;
-border-radius:8px;
-text-decoration:none;
-font-weight:bold;
-display:inline-block;
-margin-top:10px;
+.logo{
+  width:120px;
+  margin-bottom:10px;
 }
 
 .container{
-padding:15px;
+  padding:15px;
 }
 
-h2{
-color:var(--color-principal);
+.product{
+  background:white;
+  padding:15px;
+  margin-bottom:15px;
+  border-radius:12px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
 
-.producto{
-background:white;
-padding:12px;
-margin:10px 0;
-border-radius:12px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-box-shadow:0 4px 8px rgba(0,0,0,0.05);
+.product h3{
+  margin:0;
 }
 
-.controles button{
-background:var(--color-principal);
-color:white;
-border:none;
-padding:5px 10px;
-border-radius:6px;
-margin:0 5px;
+.price{
+  font-weight:bold;
+  margin:5px 0;
 }
 
-.carrito{
-background:white;
-padding:15px;
-border-radius:12px;
-margin-top:20px;
-box-shadow:0 4px 10px rgba(0,0,0,0.08);
-}
-
-input, select{
-width:100%;
-padding:10px;
-margin:8px 0;
-border-radius:8px;
-border:1px solid #ddd;
+.controls{
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
 button{
-background:var(--color-principal);
-color:white;
-border:none;
-padding:12px;
-border-radius:10px;
-width:100%;
-font-weight:bold;
-margin-top:10px;
+  background:#d98928;
+  color:white;
+  border:none;
+  padding:5px 12px;
+  border-radius:8px;
+  font-size:18px;
 }
 
-#factura{
-background:white;
-padding:20px;
-margin-top:20px;
-border-radius:12px;
-display:none;
+.cart{
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  margin-top:20px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+input, select{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+
+.total{
+  font-size:20px;
+  font-weight:bold;
+  margin-top:10px;
+}
+
+.main-btn{
+  width:100%;
+  padding:15px;
+  font-size:16px;
+  margin-top:15px;
+  background:#d98928;
 }
 </style>
 </head>
@@ -112,56 +95,128 @@ display:none;
 <body>
 
 <header>
-<img src="logo.png" alt="Logo M Licha’s">
+<img src="logo.png" class="logo">
+<h2>M Licha’s</h2>
 <p>Sábado y Domingo 11:00 AM - 6:30 PM</p>
-<a href="https://maps.app.goo.gl/xSwi7oE2hsQ9JnTGA?g_st=ic" target="_blank" class="btn-maps">
-📍 Ver ubicación en Maps
-</a>
 </header>
 
-<div class="container" id="productos"></div>
+<div class="container">
 
-<div class="container carrito">
-<h2>🛒 Tu Pedido</h2>
+<!-- PRODUCTOS -->
 
-<input type="text" id="nombre" placeholder="Nombre del cliente">
-<input type="tel" id="telefono" placeholder="Número de teléfono">
-
-<select id="metodoPago">
-<option value="efectivo">Efectivo</option>
-<option value="transferencia">Transferencia</option>
-<option value="tarjeta">Tarjeta (+5.5%)</option>
-</select>
-
-<h3 id="total">Total: $0.00</h3>
-
-<button onclick="generarFactura()">Generar Comprobante</button>
+<div class="product">
+<h3>Sopa de Gallina</h3>
+<p class="price">$7.00</p>
+<div class="controls">
+<button onclick="changeQty('gallina', -1)">-</button>
+<span id="gallina">0</span>
+<button onclick="changeQty('gallina', 1)">+</button>
+</div>
 </div>
 
-<div class="container">
-<div id="factura"></div>
-<button onclick="descargarImagen()" id="btnDescargar" style="display:none;">Descargar Comprobante</button>
-<button onclick="enviarWhatsApp()" id="btnEnviar" style="display:none;">Enviar por WhatsApp</button>
+<div class="product">
+<h3>Camarones al Ajillo</h3>
+<p class="price">$8.00</p>
+<div class="controls">
+<button onclick="changeQty('camarones', -1)">-</button>
+<span id="camarones">0</span>
+<button onclick="changeQty('camarones', 1)">+</button>
+</div>
+</div>
+
+<div class="product">
+<h3>Macarrones</h3>
+<p class="price">$4.00</p>
+<div class="controls">
+<button onclick="changeQty('macarrones', -1)">-</button>
+<span id="macarrones">0</span>
+<button onclick="changeQty('macarrones', 1)">+</button>
+</div>
+</div>
+
+<!-- CARRITO -->
+
+<div class="cart">
+<h2>🛒 Tu Pedido</h2>
+
+<input type="text" id="cliente" placeholder="Nombre del cliente">
+<input type="tel" id="telefono" placeholder="Número de teléfono">
+
+<select id="pago" onchange="updateTotal()">
+<option value="efectivo">Efectivo</option>
+<option value="transferencia">Transferencia</option>
+<option value="tarjeta">Tarjeta (5.5%)</option>
+</select>
+
+<p class="total">Total: $<span id="total">0.00</span></p>
+
+<button class="main-btn" onclick="generarPedido()">Generar Comprobante</button>
+</div>
+
 </div>
 
 <script>
-const numeroWhatsApp="50379554663";
-let numeroOrden=Date.now();
 
-const productos=[
-{name:"Sopa de gallina",precio:5},
-{name:"Carne asada",precio:5},
-{name:"Camarones al ajillo",precio:5},
-{name:"Pescado frito",precio:4},
-{name:"Cóctel de camarón",precio:7},
-{name:"Cóctel de concha",precio:7},
-{name:"Cóctel en salsa rosada",precio:7},
-{name:"Hamburguesa de pollo",precio:2},
-{name:"Hamburguesa de carne",precio:2.5},
-{name:"Hamburguesa doble carne",precio:3},
-{name:"Combo hamburguesa de pollo",precio:4},
-{name:"Combo hamburguesa de carne",precio:4.5},
-{name:"Combo hamburguesa doble",precio:5},
-{name:"Fresco natural 16oz",precio:1.5},
-{name:"Fresco natural 20oz",precio:1.75},
-{name:"G
+let precios = {
+  gallina: 7,
+  camarones: 8,
+  macarrones: 4
+};
+
+let cantidades = {
+  gallina: 0,
+  camarones: 0,
+  macarrones: 0
+};
+
+function changeQty(producto, cambio){
+  cantidades[producto] += cambio;
+  if(cantidades[producto] < 0){
+    cantidades[producto] = 0;
+  }
+  document.getElementById(producto).innerText = cantidades[producto];
+  updateTotal();
+}
+
+function updateTotal(){
+  let total = 0;
+  for(let item in cantidades){
+    total += cantidades[item] * precios[item];
+  }
+
+  let metodo = document.getElementById("pago").value;
+
+  if(metodo === "tarjeta"){
+    total = total * 1.055;
+  }
+
+  document.getElementById("total").innerText = total.toFixed(2);
+}
+
+function generarPedido(){
+
+  let nombre = document.getElementById("cliente").value;
+  let telefono = document.getElementById("telefono").value;
+  let metodo = document.getElementById("pago").value;
+  let total = document.getElementById("total").innerText;
+
+  let mensaje = `Pedido M Licha’s\n\nCliente: ${nombre}\nTel: ${telefono}\n\n`;
+
+  for(let item in cantidades){
+    if(cantidades[item] > 0){
+      mensaje += `${item} x${cantidades[item]}\n`;
+    }
+  }
+
+  mensaje += `\nMétodo de pago: ${metodo}\nTotal: $${total}`;
+
+  let numero = "503XXXXXXXX"; // CAMBIA ESTO POR TU NUMERO
+  let url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+
+  window.open(url, "_blank");
+}
+
+</script>
+
+</body>
+</html>
