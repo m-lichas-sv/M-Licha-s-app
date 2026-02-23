@@ -16,33 +16,56 @@ header{
   background:#d98928;
   color:white;
   text-align:center;
-  padding:20px;
+  padding:30px 15px;
 }
 
-.logo{
-  width:120px;
-  margin-bottom:10px;
+header h1{
+  margin:0;
+  font-size:28px;
+}
+
+header p{
+  margin:5px 0 0;
+  font-style:italic;
+}
+
+.maps-btn{
+  display:inline-block;
+  margin-top:15px;
+  background:white;
+  color:#d98928;
+  padding:10px 15px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:bold;
 }
 
 .container{
   padding:15px;
 }
 
-.product{
+.group{
   background:white;
-  padding:15px;
   margin-bottom:15px;
   border-radius:12px;
   box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  overflow:hidden;
 }
 
-.product h3{
+.group h2{
   margin:0;
+  padding:15px;
+  background:#eee;
+  cursor:pointer;
 }
 
-.price{
-  font-weight:bold;
-  margin:5px 0;
+.products{
+  display:none;
+  padding:15px;
+}
+
+.product{
+  margin-bottom:15px;
 }
 
 .controls{
@@ -79,7 +102,6 @@ input, select{
 .total{
   font-size:20px;
   font-weight:bold;
-  margin-top:10px;
 }
 
 .main-btn{
@@ -95,127 +117,124 @@ input, select{
 <body>
 
 <header>
-<img src="logo.png" class="logo">
-<h2>M Licha’s</h2>
-<p>Sábado y Domingo 11:00 AM - 6:30 PM</p>
+<h1>M Licha’s</h1>
+<p>El toque de la abuela</p>
+<a class="maps-btn" href="https://maps.app.goo.gl/JwZWv97vaaq2cpEx9?g_st=ic" target="_blank">
+📍 Ver ubicación en Maps
+</a>
 </header>
 
 <div class="container">
 
-<!-- PRODUCTOS -->
+<!-- GRUPOS -->
 
-<div class="product">
-<h3>Sopa de Gallina</h3>
-<p class="price">$7.00</p>
+<div class="group">
+<h2 onclick="toggleGroup(this)">Almuerzos</h2>
+<div class="products">
+
+<div class="product">Sopa de gallina $5
 <div class="controls">
-<button onclick="changeQty('gallina', -1)">-</button>
-<span id="gallina">0</span>
-<button onclick="changeQty('gallina', 1)">+</button>
-</div>
-</div>
+<button onclick="changeQty('Sopa de gallina',5,-1)">-</button>
+<span id="Sopa de gallina">0</span>
+<button onclick="changeQty('Sopa de gallina',5,1)">+</button>
+</div></div>
 
-<div class="product">
-<h3>Camarones al Ajillo</h3>
-<p class="price">$8.00</p>
+<div class="product">Carne asada $5
 <div class="controls">
-<button onclick="changeQty('camarones', -1)">-</button>
-<span id="camarones">0</span>
-<button onclick="changeQty('camarones', 1)">+</button>
-</div>
-</div>
+<button onclick="changeQty('Carne asada',5,-1)">-</button>
+<span id="Carne asada">0</span>
+<button onclick="changeQty('Carne asada',5,1)">+</button>
+</div></div>
 
-<div class="product">
-<h3>Macarrones</h3>
-<p class="price">$4.00</p>
+<div class="product">Camarones al ajillo $5
 <div class="controls">
-<button onclick="changeQty('macarrones', -1)">-</button>
-<span id="macarrones">0</span>
-<button onclick="changeQty('macarrones', 1)">+</button>
+<button onclick="changeQty('Camarones al ajillo',5,-1)">-</button>
+<span id="Camarones al ajillo">0</span>
+<button onclick="changeQty('Camarones al ajillo',5,1)">+</button>
+</div></div>
+
+<div class="product">Pescado frito $4
+<div class="controls">
+<button onclick="changeQty('Pescado frito',4,-1)">-</button>
+<span id="Pescado frito">0</span>
+<button onclick="changeQty('Pescado frito',4,1)">+</button>
+</div></div>
+
 </div>
 </div>
 
-<!-- CARRITO -->
+<!-- Puedes duplicar estructura para Bebidas, Hamburguesas, Combos -->
 
 <div class="cart">
 <h2>🛒 Tu Pedido</h2>
 
 <input type="text" id="cliente" placeholder="Nombre del cliente">
 <input type="tel" id="telefono" placeholder="Número de teléfono">
+<input type="time" id="hora">
 
-<select id="pago" onchange="updateTotal()">
-<option value="efectivo">Efectivo</option>
-<option value="transferencia">Transferencia</option>
-<option value="tarjeta">Tarjeta (5.5%)</option>
+<select id="pago">
+<option value="Efectivo en local">Pagar en efectivo en local</option>
+<option value="Transferencia">Pagar con transferencia</option>
 </select>
 
 <p class="total">Total: $<span id="total">0.00</span></p>
 
-<button class="main-btn" onclick="generarPedido()">Generar Comprobante</button>
+<button class="main-btn" onclick="enviarPedido()">Enviar Pedido por WhatsApp</button>
 </div>
 
 </div>
 
 <script>
+let cantidades = {};
+let total = 0;
 
-let precios = {
-  gallina: 7,
-  camarones: 8,
-  macarrones: 4
-};
+function toggleGroup(element){
+  let content = element.nextElementSibling;
+  content.style.display = content.style.display === "block" ? "none" : "block";
+}
 
-let cantidades = {
-  gallina: 0,
-  camarones: 0,
-  macarrones: 0
-};
-
-function changeQty(producto, cambio){
-  cantidades[producto] += cambio;
-  if(cantidades[producto] < 0){
-    cantidades[producto] = 0;
+function changeQty(nombre, precio, cambio){
+  if(!cantidades[nombre]){
+    cantidades[nombre] = {qty:0, price:precio};
   }
-  document.getElementById(producto).innerText = cantidades[producto];
+
+  cantidades[nombre].qty += cambio;
+  if(cantidades[nombre].qty < 0){
+    cantidades[nombre].qty = 0;
+  }
+
+  document.getElementById(nombre).innerText = cantidades[nombre].qty;
   updateTotal();
 }
 
 function updateTotal(){
-  let total = 0;
+  total = 0;
   for(let item in cantidades){
-    total += cantidades[item] * precios[item];
+    total += cantidades[item].qty * cantidades[item].price;
   }
-
-  let metodo = document.getElementById("pago").value;
-
-  if(metodo === "tarjeta"){
-    total = total * 1.055;
-  }
-
   document.getElementById("total").innerText = total.toFixed(2);
 }
 
-function generarPedido(){
-
+function enviarPedido(){
   let nombre = document.getElementById("cliente").value;
   let telefono = document.getElementById("telefono").value;
-  let metodo = document.getElementById("pago").value;
-  let total = document.getElementById("total").innerText;
+  let hora = document.getElementById("hora").value;
+  let pago = document.getElementById("pago").value;
 
-  let mensaje = `Pedido M Licha’s\n\nCliente: ${nombre}\nTel: ${telefono}\n\n`;
+  let mensaje = `Pedido M Licha’s\n\nCliente: ${nombre}\nTel: ${telefono}\nHora llegada: ${hora}\n\n`;
 
   for(let item in cantidades){
-    if(cantidades[item] > 0){
-      mensaje += `${item} x${cantidades[item]}\n`;
+    if(cantidades[item].qty > 0){
+      mensaje += `${item} x${cantidades[item].qty}\n`;
     }
   }
 
-  mensaje += `\nMétodo de pago: ${metodo}\nTotal: $${total}`;
+  mensaje += `\nMétodo de pago: ${pago}\nTotal: $${total.toFixed(2)}`;
 
-  let numero = "503XXXXXXXX"; // CAMBIA ESTO POR TU NUMERO
+  let numero = "503XXXXXXXX"; // CAMBIA POR TU NUMERO
   let url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
-
   window.open(url, "_blank");
 }
-
 </script>
 
 </body>
