@@ -249,16 +249,6 @@ input, select{
 <!-- Puedes duplicar estructura para Bebidas, Hamburguesas, Combos -->
 
 <div class="cart">
-  <div class="cart">
-<h2>🎁 Cliente Frecuente</h2>
-
-<input type="text" id="registroNombre" placeholder="Nombre para registrar">
-<input type="tel" id="registroTelefono" placeholder="Teléfono para registrar">
-
-<button class="main-btn" onclick="registrarCliente()">Registrarme</button>
-
-<p><strong>Puntos acumulados:</strong> <span id="puntos">0</span></p>
-</div>
 <h2>🛒 Tu Pedido</h2>
 
 <input type="text" id="cliente" placeholder="Nombre del cliente">
@@ -280,46 +270,6 @@ input, select{
 <script>
 let cantidades = {};
 let total = 0;
-let clienteActual = null;
-
-function registrarCliente(){
-  let nombre = document.getElementById("registroNombre").value;
-  let telefono = document.getElementById("registroTelefono").value;
-
-  if(!nombre || !telefono){
-    alert("Completa nombre y teléfono");
-    return;
-  }
-
-  let cliente = {
-    nombre: nombre,
-    telefono: telefono,
-    puntos: 0
-  };
-
-  localStorage.setItem("cliente_"+telefono, JSON.stringify(cliente));
-  clienteActual = cliente;
-  document.getElementById("puntos").innerText = cliente.puntos;
-
-  alert("Cliente registrado correctamente 🎉");
-}
-
-function cargarCliente(telefono){
-  let data = localStorage.getItem("cliente_"+telefono);
-  if(data){
-    clienteActual = JSON.parse(data);
-    document.getElementById("puntos").innerText = clienteActual.puntos;
-  }
-}
-
-function sumarPuntos(){
-  if(clienteActual){
-    clienteActual.puntos += Math.floor(total);
-    localStorage.setItem("cliente_"+clienteActual.telefono, JSON.stringify(clienteActual));
-    document.getElementById("puntos").innerText = clienteActual.puntos;
-  }
-}
-
 function toggleGroup(element){
   let content = element.nextElementSibling;
   content.style.display = content.style.display === "block" ? "none" : "block";
@@ -350,7 +300,6 @@ function updateTotal(){
 function enviarPedido(){
   let nombre = document.getElementById("cliente").value;
   let telefono = document.getElementById("telefono").value;
-  cargarCliente(telefono);
   let hora = document.getElementById("hora").value;
   let pago = document.getElementById("pago").value;
 
@@ -363,7 +312,6 @@ function enviarPedido(){
   }
 
   mensaje += `\nMétodo de pago: ${pago}\nTotal: $${total.toFixed(2)}`;
-sumarPuntos();
   let numero = "503XXXXXXXX"; // CAMBIA POR TU NUMERO
   let url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
   window.open(url, "_blank");
