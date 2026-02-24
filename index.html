@@ -270,6 +270,7 @@ input, select{
 <script>
 let cantidades = {};
 let total = 0;
+
 function toggleGroup(element){
   let content = element.nextElementSibling;
   content.style.display = content.style.display === "block" ? "none" : "block";
@@ -312,6 +313,7 @@ function enviarPedido(){
   }
 
   mensaje += `\nMétodo de pago: ${pago}\nTotal: $${total.toFixed(2)}`;
+
   let numero = "503XXXXXXXX"; // CAMBIA POR TU NUMERO
   let url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
   window.open(url, "_blank");
