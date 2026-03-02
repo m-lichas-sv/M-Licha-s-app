@@ -340,5 +340,90 @@ function abrirCupones(){
   document.getElementById("modalCupones").style.display="block";
 }
 </script>
+
+<div id="modalCupones" style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#ffffff;
+z-index:9999;
+overflow-y:auto;
+padding:20px;
+">
+
+<!-- Encabezado -->
+<div style="display:flex; align-items:center; margin-bottom:20px;">
+  <button onclick="cerrarCupones()" 
+  style="background:none; border:none; font-size:18px; cursor:pointer;">
+  ← Volver
+  </button>
+</div>
+
+<h2 style="text-align:center;">🎁 Cupón de Regalo M Licha’s</h2>
+<p style="text-align:center; color:gray;">
+Regala sabor y momentos especiales 🍲✨
+</p>
+
+<div style="margin-top:30px; text-align:center;">
+
+  <button onclick="generarCupon(15,15)" 
+  style="width:100%; padding:15px; margin-bottom:15px; border-radius:10px;">
+  Cupón $15
+  </button>
+
+  <button onclick="generarCupon(20,20)" 
+  style="width:100%; padding:15px; margin-bottom:15px; border-radius:10px;">
+  Cupón $20
+  </button>
+
+  <button onclick="generarCupon(25,22)" 
+  style="width:100%; padding:15px; margin-bottom:15px; 
+  border-radius:10px; background:#d98928; color:white; font-weight:bold;">
+  🌸 Promoción para mamá  
+  Cupón $25 — Paga $22
+  </button>
+
+</div>
+
+</div>
+
+<script>
+function abrirCupones(){
+  document.getElementById("modalCupones").style.display="block";
+}
+
+function cerrarCupones(){
+  document.getElementById("modalCupones").style.display="none";
+}
+
+function generarCodigo() {
+  const letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const numeros = Math.floor(100 + Math.random() * 900);
+  const letra1 = letras.charAt(Math.floor(Math.random() * letras.length));
+  const letra2 = letras.charAt(Math.floor(Math.random() * letras.length));
+  return "ML-" + letra1 + letra2 + numeros;
+}
+
+function generarCupon(valor, precio) {
+  const codigo = generarCodigo();
+  const telefono = "503TU_NUMERO_AQUI"; // 👈 Cambia esto
+
+  const mensaje = 
+  "Hola M Licha’s 🍲✨\n\n" +
+  "Quiero adquirir un cupón de regalo.\n\n" +
+  "Valor del cupón: $" + valor + "\n" +
+  "Precio a pagar: $" + precio + "\n" +
+  "Código generado: " + codigo + "\n\n" +
+  "Quedo pendiente para realizar el pago.";
+
+  const url = "https://wa.me/" + telefono + "?text=" + encodeURIComponent(mensaje);
+
+  window.open(url, "_blank");
+}
+</script>
+
 </body>
 </html>
