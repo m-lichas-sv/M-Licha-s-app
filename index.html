@@ -105,16 +105,37 @@ input, select{
   margin-top:15px;
 }
 
-/* 🔥 FONDO SOLO PARA CUPONES */
+/* FONDO SOLO PARA CUPONES */
 #paginaCupones{
   min-height:100vh;
   padding:40px 20px;
   text-align:center;
 
-  background-image: url('fondo-cupones.png'); /* asegúrate que el nombre sea exacto */
+  background-image: url('fondo-cupones.png');
   background-size:cover;
   background-repeat:no-repeat;
   background-position:center;
+
+  display:none;
+  position:relative;
+}
+
+/* Capa blanca suave encima del fondo */
+#paginaCupones::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(255,255,255,0.85);
+  z-index:0;
+}
+
+/* Asegura que el contenido quede encima */
+#paginaCupones > *{
+  position:relative;
+  z-index:1;
 }
 </style>
 </head>
