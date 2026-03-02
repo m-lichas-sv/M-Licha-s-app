@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>M Licha’s</title>
-  
-  <dlink rel="apple-touch-icon" href="icon.png">
+
 <link rel="icon" type="image/png" href="icon.png">
 <meta name="theme-color" content="#d98928">
 
@@ -21,16 +20,6 @@ header{
   color:white;
   text-align:center;
   padding:30px 15px;
-}
-
-header h1{
-  margin:0;
-  font-size:28px;
-}
-
-header p{
-  margin:5px 0 0;
-  font-style:italic;
 }
 
 .maps-btn{
@@ -82,9 +71,10 @@ button{
   background:#d98928;
   color:white;
   border:none;
-  padding:5px 12px;
+  padding:6px 12px;
   border-radius:8px;
-  font-size:18px;
+  font-size:16px;
+  cursor:pointer;
 }
 
 .cart{
@@ -113,7 +103,6 @@ input, select{
   padding:15px;
   font-size:16px;
   margin-top:15px;
-  background:#d98928;
 }
 </style>
 </head>
@@ -128,45 +117,14 @@ input, select{
 </a>
 </header>
 
+<!-- ================== PAGINA PRINCIPAL ================== -->
+
 <div id="paginaPrincipal" class="container">
-  
-  <div style="text-align:center; margin:30px 0;">
-  <button onclick="abrirCupones()" 
-  style="
-  padding:14px 28px;
-  background:#d98928;
-  color:white;
-  border:none;
-  border-radius:10px;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;">
-  🎁 Adquiere cupón de regalo
-  </button>
-</div>
 
-<!-- PÁGINA CUPONES -->
-<div id="paginaCupones" style="display:none; padding:20px; text-align:center;">
-
-  <h2 style="color:#d98928;">🎁 Cupón M Licha’s</h2>
-
-  <p style="margin-bottom:20px;">
-    Elige el monto del cupón de regalo
-  </p>
-
-  <button onclick="enviarCupon(15)" class="btn-cupon">$15</button>
-  <button onclick="enviarCupon(20)" class="btn-cupon">$20</button>
-  <button onclick="enviarCuponPromo()" class="btn-cupon promo">
-    💖 Promoción para mamá<br>
-    Cupón $25 paga $22
-  </button>
-
-  <br><br>
-
-  <button onclick="volverInicio()" style="background:#ccc; padding:10px 20px; border:none; border-radius:8px;">
-    Volver al inicio
-  </button>
-
+<div style="text-align:center; margin:25px 0;">
+<button onclick="abrirCupones()" style="padding:14px 28px; font-weight:bold;">
+🎁 Adquiere cupón de regalo
+</button>
 </div>
 
 <!-- GRUPOS -->
@@ -189,120 +147,52 @@ input, select{
 <button onclick="changeQty('Carne asada',5,1)">+</button>
 </div></div>
 
-<div class="product">Camarones al ajillo $5
-<div class="controls">
-<button onclick="changeQty('Camarones al ajillo',5,-1)">-</button>
-<span id="Camarones al ajillo">0</span>
-<button onclick="changeQty('Camarones al ajillo',5,1)">+</button>
-</div></div>
-
-<div class="product">Pescado frito $4
-<div class="controls">
-<button onclick="changeQty('Pescado frito',4,-1)">-</button>
-<span id="Pescado frito">0</span>
-<button onclick="changeQty('Pescado frito',4,1)">+</button>
-</div></div>
-
 </div>
 </div>
-  
-<!-- BEBIDAS -->
-<div class="group">
-<h2 onclick="toggleGroup(this)">Bebidas</h2>
-<div class="products">
-
-<div class="product">Fresco 16oz $1.50
-<div class="controls">
-<button onclick="changeQty('Fresco 16oz',1.5,-1)">-</button>
-<span id="Fresco 16oz">0</span>
-<button onclick="changeQty('Fresco 16oz',1.5,1)">+</button>
-</div></div>
-
-<div class="product">Fresco 20oz $1.75
-<div class="controls">
-<button onclick="changeQty('Fresco 20oz',1.75,-1)">-</button>
-<span id="Fresco 20oz">0</span>
-<button onclick="changeQty('Fresco 20oz',1.75,1)">+</button>
-</div></div>
-
-</div>
-</div>
-
-<!-- HAMBURGUESAS -->
-<div class="group">
-<h2 onclick="toggleGroup(this)">Hamburguesas</h2>
-<div class="products">
-
-<div class="product">Hamburguesa pollo $2
-<div class="controls">
-<button onclick="changeQty('Hamburguesa pollo',2,-1)">-</button>
-<span id="Hamburguesa pollo">0</span>
-<button onclick="changeQty('Hamburguesa pollo',2,1)">+</button>
-</div></div>
-
-<div class="product">Hamburguesa carne $2.50
-<div class="controls">
-<button onclick="changeQty('Hamburguesa carne',2.5,-1)">-</button>
-<span id="Hamburguesa carne">0</span>
-<button onclick="changeQty('Hamburguesa carne',2.5,1)">+</button>
-</div></div>
-
-<div class="product">Hamburguesa doble carne $3
-<div class="controls">
-<button onclick="changeQty('Hamburguesa doble carne',3,-1)">-</button>
-<span id="Hamburguesa doble carne">0</span>
-<button onclick="changeQty('Hamburguesa doble carne',3,1)">+</button>
-</div></div>
-
-</div>
-</div>
-
-<!-- COMBO HAMBURGUESAS -->
-<div class="group">
-<h2 onclick="toggleGroup(this)">Combo hamburguesas</h2>
-<div class="products">
-
-<div class="product">Combo pollo $4
-<div class="controls">
-<button onclick="changeQty('Combo pollo',4,-1)">-</button>
-<span id="Combo pollo">0</span>
-<button onclick="changeQty('Combo pollo',4,1)">+</button>
-</div></div>
-
-<div class="product">Combo carne $4.50
-<div class="controls">
-<button onclick="changeQty('Combo carne',4.5,-1)">-</button>
-<span id="Combo carne">0</span>
-<button onclick="changeQty('Combo carne',4.5,1)">+</button>
-</div></div>
-
-<div class="product">Combo doble carne $5
-<div class="controls">
-<button onclick="changeQty('Combo doble carne',5,-1)">-</button>
-<span id="Combo doble carne">0</span>
-<button onclick="changeQty('Combo doble carne',5,1)">+</button>
-</div></div>
-
-</div>
-</div>
-<!-- Puedes duplicar estructura para Bebidas, Hamburguesas, Combos -->
 
 <div class="cart">
 <h2>🛒 Tu Pedido</h2>
 
 <input type="text" id="cliente" placeholder="Nombre del cliente">
 <input type="tel" id="telefono" placeholder="Número de teléfono">
-<input type="time" id="hora">
 
 <select id="pago">
-<option value="Efectivo en local">Pagar en efectivo en local</option>
-<option value="Transferencia">Pagar con transferencia</option>
+<option value="Efectivo en local">Efectivo en local</option>
+<option value="Transferencia">Transferencia</option>
 </select>
 
 <p class="total">Total: $<span id="total">0.00</span></p>
 
-<button class="main-btn" onclick="enviarPedido()">Enviar Pedido por WhatsApp</button>
+<button class="main-btn" onclick="enviarPedido()">
+Enviar Pedido por WhatsApp
+</button>
 </div>
+
+</div>
+
+<!-- ================== PAGINA CUPONES ================== -->
+
+<div id="paginaCupones" style="display:none; padding:20px; text-align:center;">
+
+<h2 style="color:#d98928;">🎁 Cupón M Licha’s</h2>
+<p>Elige el monto del cupón de regalo</p>
+
+<br>
+
+<button onclick="enviarCupon(15)">Cupón $15</button>
+<br><br>
+<button onclick="enviarCupon(20)">Cupón $20</button>
+<br><br>
+<button onclick="enviarCuponPromo()">
+💖 Promoción para mamá<br>
+Cupón $25 paga $22
+</button>
+
+<br><br><br>
+
+<button onclick="volverInicio()" style="background:#ccc; color:black;">
+Volver al inicio
+</button>
 
 </div>
 
@@ -340,10 +230,9 @@ function updateTotal(){
 function enviarPedido(){
   let nombre = document.getElementById("cliente").value;
   let telefono = document.getElementById("telefono").value;
-  let hora = document.getElementById("hora").value;
   let pago = document.getElementById("pago").value;
 
-  let mensaje = `Pedido M Licha’s\n\nCliente: ${nombre}\nTel: ${telefono}\nHora llegada: ${hora}\n\n`;
+  let mensaje = `Pedido M Licha’s\n\nCliente: ${nombre}\nTel: ${telefono}\n\n`;
 
   for(let item in cantidades){
     if(cantidades[item].qty > 0){
@@ -353,13 +242,13 @@ function enviarPedido(){
 
   mensaje += `\nMétodo de pago: ${pago}\nTotal: $${total.toFixed(2)}`;
 
-  let numero = "+503 7955 4663"; // CAMBIA POR TU NUMERO
+  let numero = "50379554663"; // TU NUMERO
   let url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
   window.open(url, "_blank");
 }
-</script>
 
-<script>
+/* ========= CUPONES ========= */
+
 function abrirCupones(){
   document.getElementById("paginaPrincipal").style.display="none";
   document.getElementById("paginaCupones").style.display="block";
@@ -371,49 +260,21 @@ function volverInicio(){
 }
 
 function generarCodigo(){
-  return "ML" + Math.floor(Math.random()*100000);
+  return "ML-" + Math.floor(1000 + Math.random() * 9000);
 }
 
 function enviarCupon(valor){
   let codigo = generarCodigo();
-  let mensaje = `Hola M Licha’s, quiero adquirir un cupón de $${valor}. Código: ${codigo}`;
+  let mensaje = `Hola M Licha’s 🍲\n\nQuiero adquirir un cupón de $${valor}\nCódigo: ${codigo}`;
   window.open(`https://wa.me/50379554663?text=${encodeURIComponent(mensaje)}`);
 }
 
 function enviarCuponPromo(){
   let codigo = generarCodigo();
-  let mensaje = `Hola M Licha’s, quiero adquirir el cupón PROMOCIÓN PARA MAMÁ. Pago $22 por cupón de $25. Código: ${codigo}`;
-  window.open(`https://wa.me/+503 7955 4663?text=${encodeURIComponent(mensaje)}`);
-  
-}
-
-function generarCodigo() {
-  const letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const numeros = Math.floor(100 + Math.random() * 900);
-  const letra1 = letras.charAt(Math.floor(Math.random() * letras.length));
-  const letra2 = letras.charAt(Math.floor(Math.random() * letras.length));
-  return "ML-" + letra1 + letra2 + numeros;
-}
-
-function generarCupon(valor, precio) {
-  const codigo = generarCodigo();
-  const telefono = "503TU_NUMERO_AQUI"; // 👈 Cambia esto
-
-  const mensaje = 
-  "Hola M Licha’s 🍲✨\n\n" +
-  "Quiero adquirir un cupón de regalo.\n\n" +
-  "Valor del cupón: $" + valor + "\n" +
-  "Precio a pagar: $" + precio + "\n" +
-  "Código generado: " + codigo + "\n\n" +
-  "Quedo pendiente para realizar el pago.";
-
-  const url = "https://wa.me/" + telefono + "?text=" + encodeURIComponent(mensaje);
-
-  window.open(url, "_blank");
+  let mensaje = `Hola M Licha’s 🍲\n\nPromoción para mamá\nPago $22 por cupón de $25\nCódigo: ${codigo}`;
+  window.open(`https://wa.me/50379554663?text=${encodeURIComponent(mensaje)}`);
 }
 </script>
- 
-</div>
 
 </body>
 </html>
