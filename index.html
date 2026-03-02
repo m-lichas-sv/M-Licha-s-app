@@ -128,11 +128,6 @@ input, select{
 </a>
 </header>
 
-  <button onclick="abrirCupones()" style="background:#d98928; color:white; padding:12px 25px; border:none; border-radius:10px; font-size:16px;">
-    🎁 Adquiere cupón de regalo
-  </button>
-</div>
-
 <div id="paginaPrincipal" class="container">
   
   <div style="text-align:center; margin:30px 0;">
@@ -358,8 +353,8 @@ function enviarPedido(){
 
   mensaje += `\nMétodo de pago: ${pago}\nTotal: $${total.toFixed(2)}`;
 
-  let numero = "503XXXXXXXX"; // CAMBIA POR TU NUMERO
-  let url = `https://wa.me/${+503 7955 4663}?text=${encodeURIComponent(mensaje)}`;
+  let numero = "+503 7955 4663"; // CAMBIA POR TU NUMERO
+  let url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
   window.open(url, "_blank");
 }
 </script>
@@ -382,16 +377,14 @@ function generarCodigo(){
 function enviarCupon(valor){
   let codigo = generarCodigo();
   let mensaje = `Hola M Licha’s, quiero adquirir un cupón de $${valor}. Código: ${codigo}`;
-  window.open(`https://wa.me/+503 7955 4663?text=${encodeURIComponent(mensaje)}`);
+  window.open(`https://wa.me/50379554663?text=${encodeURIComponent(mensaje)}`);
 }
 
 function enviarCuponPromo(){
   let codigo = generarCodigo();
   let mensaje = `Hola M Licha’s, quiero adquirir el cupón PROMOCIÓN PARA MAMÁ. Pago $22 por cupón de $25. Código: ${codigo}`;
   window.open(`https://wa.me/+503 7955 4663?text=${encodeURIComponent(mensaje)}`);
-}
-function abrirCupones(){
-  document.getElementById("modalCupones").style.display="block";
+  
 }
 
 function generarCodigo() {
@@ -419,33 +412,7 @@ function generarCupon(valor, precio) {
   window.open(url, "_blank");
 }
 </script>
-  <div class="cupon-contenido">
-
-    <button onclick="cerrarCupones()" 
-    style="background:none; border:none; font-size:18px; cursor:pointer;">
-    ← Volver
-    </button>
-
-    <h2>🎁 Cupón de Regalo</h2>
-    <p>Regala sabor y momentos especiales 🍲✨</p>
-
-    <button onclick="generarCupon(15,15)" class="main-btn">
-      Cupón $15
-    </button>
-
-    <button onclick="generarCupon(20,20)" class="main-btn">
-      Cupón $20
-    </button>
-
-    <button onclick="generarCupon(25,22)" 
-    class="main-btn" 
-    style="background:#d98928;">
-      🌸 Promoción mamá  
-      Cupón $25 — Paga $22
-    </button>
-
-  </div>
-
+ 
 </div>
 
 </body>
