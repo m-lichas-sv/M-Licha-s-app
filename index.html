@@ -83,7 +83,7 @@ button{
   background:#d98928;
   color:white;
   border:none;
-  padding:6px 12px;
+  padding:8px 14px;
   border-radius:8px;
   font-size:16px;
   cursor:pointer;
@@ -146,10 +146,36 @@ input, select{
   z-index:1;
 }
 
+/* RESERVACION */
 #paginaReservacion{
   display:none;
   padding:40px 20px;
   text-align:center;
+}
+
+.titulo-seccion{
+  color:#d98928;
+  margin-bottom:5px;
+}
+
+.subtitulo{
+  margin-bottom:25px;
+  color:#555;
+}
+
+.res-card{
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+  max-width:400px;
+  margin:0 auto;
+}
+
+.btn-volver{
+  margin-top:15px;
+  background:#ccc;
+  color:black;
 }
 </style>
 </head>
@@ -220,11 +246,11 @@ Enviar Pedido por WhatsApp
 <!-- PAGINA CUPONES -->
 <div id="paginaCupones">
 <h2 style="color:#d98928;">🎁 Cupón M Licha’s</h2>
-<p>Elige el monto del cupón de regalo</p>
+<p>Elige el monto del cupón</p>
 
 <button onclick="enviarCupon(15)">Cupón $15</button><br><br>
 <button onclick="enviarCupon(20)">Cupón $20</button><br><br>
-<button onclick="enviarCuponPromo()">💖 Promoción mamá $25 paga $22</button>
+<button onclick="enviarCuponPromo()">💖 Promo mamá $25 paga $22</button>
 <br><br>
 <button onclick="volverInicio()" style="background:#ccc; color:black;">
 Volver al inicio
@@ -233,21 +259,40 @@ Volver al inicio
 
 <!-- PAGINA RESERVACION -->
 <div id="paginaReservacion">
-<h2 style="color:#d98928;">📅 Reservación</h2>
-<p>Completa los datos para reservar tu mesa</p>
 
-<input type="text" id="resNombre" placeholder="Nombre">
+<h2 class="titulo-seccion">📅 Reservación</h2>
+<p class="subtitulo">Reserva tu mesa en M Licha’s</p>
+
+<div class="res-card">
+<input type="text" id="resNombre" placeholder="Nombre completo">
 <input type="tel" id="resTelefono" placeholder="Teléfono">
-<input type="date" id="resFecha">
-<input type="time" id="resHora">
-<input type="number" id="resPersonas" placeholder="Cantidad de personas">
 
-<br><br>
-<button onclick="enviarReservacion()">Confirmar Reservación</button>
-<br><br>
-<button onclick="volverInicio()" style="background:#ccc; color:black;">
+<label>Fecha</label>
+<input type="date" id="resFecha">
+
+<label>Hora</label>
+<input type="time" id="resHora">
+
+<label>Personas</label>
+<select id="resPersonas">
+<option value="">Seleccionar</option>
+<option>1 persona</option>
+<option>2 personas</option>
+<option>3 personas</option>
+<option>4 personas</option>
+<option>5 personas</option>
+<option>6 personas</option>
+<option>Más de 6</option>
+</select>
+
+<button class="main-btn" onclick="enviarReservacion()">
+Confirmar Reservación
+</button>
+
+<button class="btn-volver" onclick="volverInicio()">
 Volver al inicio
 </button>
+</div>
 </div>
 
 <script>
@@ -285,16 +330,17 @@ function enviarPedido(){
   let pago = document.getElementById("pago").value;
 
   let mensaje = `Pedido M Licha’s\n\nCliente: ${nombre}\nTel: ${telefono}\n\n`;
+
   for(let item in cantidades){
     if(cantidades[item].qty > 0){
       mensaje += `${item} x${cantidades[item].qty}\n`;
     }
   }
+
   mensaje += `\nMétodo de pago: ${pago}\nTotal: $${total.toFixed(2)}`;
   window.open(`https://wa.me/50379554663?text=${encodeURIComponent(mensaje)}`);
 }
 
-/* NAVEGACION */
 function abrirCupones(){
   document.getElementById("paginaPrincipal").style.display="none";
   document.getElementById("paginaReservacion").style.display="none";
@@ -313,7 +359,6 @@ function volverInicio(){
   document.getElementById("paginaPrincipal").style.display="block";
 }
 
-/* CUPONES */
 function generarCodigo(){
   return "ML-" + Math.floor(1000 + Math.random() * 9000);
 }
@@ -326,18 +371,24 @@ function enviarCupon(valor){
 
 function enviarCuponPromo(){
   let codigo = generarCodigo();
-  let mensaje = `Hola M Licha’s 🍲\n\nPromoción mamá\nPago $22 por cupón de $25\nCódigo: ${codigo}`;
+  let mensaje = `Hola M Licha’s 🍲\n\nPromo mamá\nPago $22 por cupón de $25\nCódigo: ${codigo}`;
   window.open(`https://wa.me/50379554663?text=${encodeURIComponent(mensaje)}`);
 }
 
 function enviarReservacion(){
-  let nombre = document.getElementById("resNombre").value;
-  let telefono = document.getElementById("resTelefono").value;
+  let nombre = document.getElementById("resNombre").value.trim();
+  let telefono = document.getElementById("resTelefono").value.trim();
   let fecha = document.getElementById("resFecha").value;
   let hora = document.getElementById("resHora").value;
   let personas = document.getElementById("resPersonas").value;
 
-  let mensaje = `Hola M Licha’s 🍲\n\nReservación:\nNombre: ${nombre}\nTel: ${telefono}\nFecha: ${fecha}\nHora: ${hora}\nPersonas: ${personas}`;
+  if(!nombre || !telefono || !fecha || !hora || !personas){
+    alert("Por favor completa todos los campos");
+    return;
+  }
+
+  let mensaje = `Hola M Licha’s 🍲\n\n📅 Reservación:\n\nNombre: ${nombre}\nTel: ${telefono}\nFecha: ${fecha}\nHora: ${hora}\nPersonas: ${personas}`;
+
   window.open(`https://wa.me/50379554663?text=${encodeURIComponent(mensaje)}`);
 }
 </script>
