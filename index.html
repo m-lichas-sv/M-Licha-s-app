@@ -10,27 +10,6 @@
 <meta name="theme-color" content="#d98928">
 
 <style>
-.cupon-modal{
-  position: fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background-image: url('Diseños varios.png');
-  background-size:300px;
-  background-repeat:repeat;
-  display:none;
-  z-index:999;
-}
-
-.cupon-contenido{
-  background:white;
-  margin:40px auto;
-  padding:25px;
-  width:90%;
-  max-width:400px;
-  border-radius:15px;
-}
 body{
   margin:0;
   font-family: Arial, sans-serif;
@@ -149,7 +128,6 @@ input, select{
 </a>
 </header>
 
-<div style="text-align:center; margin:20px 0;">
   <button onclick="abrirCupones()" style="background:#d98928; color:white; padding:12px 25px; border:none; border-radius:10px; font-size:16px;">
     🎁 Adquiere cupón de regalo
   </button>
@@ -381,14 +359,8 @@ function enviarPedido(){
   mensaje += `\nMétodo de pago: ${pago}\nTotal: $${total.toFixed(2)}`;
 
   let numero = "503XXXXXXXX"; // CAMBIA POR TU NUMERO
-  let url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+  let url = `https://wa.me/${+503 7955 4663}?text=${encodeURIComponent(mensaje)}`;
   window.open(url, "_blank");
-}
-</script>
-
-<script>
-function abrirCupones(){
-  document.getElementById("modalCupones").style.display="block";
 }
 </script>
 
@@ -410,20 +382,16 @@ function generarCodigo(){
 function enviarCupon(valor){
   let codigo = generarCodigo();
   let mensaje = `Hola M Licha’s, quiero adquirir un cupón de $${valor}. Código: ${codigo}`;
-  window.open(`https://wa.me/TUNUMERO?text=${encodeURIComponent(mensaje)}`);
+  window.open(`https://wa.me/+503 7955 4663?text=${encodeURIComponent(mensaje)}`);
 }
 
 function enviarCuponPromo(){
   let codigo = generarCodigo();
   let mensaje = `Hola M Licha’s, quiero adquirir el cupón PROMOCIÓN PARA MAMÁ. Pago $22 por cupón de $25. Código: ${codigo}`;
-  window.open(`https://wa.me/TUNUMERO?text=${encodeURIComponent(mensaje)}`);
+  window.open(`https://wa.me/+503 7955 4663?text=${encodeURIComponent(mensaje)}`);
 }
 function abrirCupones(){
   document.getElementById("modalCupones").style.display="block";
-}
-
-function cerrarCupones(){
-  document.getElementById("modalCupones").style.display="none";
 }
 
 function generarCodigo() {
@@ -451,9 +419,6 @@ function generarCupon(valor, precio) {
   window.open(url, "_blank");
 }
 </script>
-
-<div id="modalCupones" class="cupon-modal">
-
   <div class="cupon-contenido">
 
     <button onclick="cerrarCupones()" 
