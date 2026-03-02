@@ -149,7 +149,13 @@ input, select{
 </a>
 </header>
 
-<div class="container">
+<div style="text-align:center; margin:20px 0;">
+  <button onclick="abrirCupones()" style="background:#d98928; color:white; padding:12px 25px; border:none; border-radius:10px; font-size:16px;">
+    🎁 Adquiere cupón de regalo
+  </button>
+</div>
+
+<div id="paginaPrincipal" class="container">
   
   <div style="text-align:center; margin:30px 0;">
   <button onclick="abrirCupones()" 
@@ -164,6 +170,30 @@ input, select{
   cursor:pointer;">
   🎁 Adquiere cupón de regalo
   </button>
+</div>
+
+<!-- PÁGINA CUPONES -->
+<div id="paginaCupones" style="display:none; padding:20px; text-align:center;">
+
+  <h2 style="color:#d98928;">🎁 Cupón M Licha’s</h2>
+
+  <p style="margin-bottom:20px;">
+    Elige el monto del cupón de regalo
+  </p>
+
+  <button onclick="enviarCupon(15)" class="btn-cupon">$15</button>
+  <button onclick="enviarCupon(20)" class="btn-cupon">$20</button>
+  <button onclick="enviarCuponPromo()" class="btn-cupon promo">
+    💖 Promoción para mamá<br>
+    Cupón $25 paga $22
+  </button>
+
+  <br><br>
+
+  <button onclick="volverInicio()" style="background:#ccc; padding:10px 20px; border:none; border-radius:8px;">
+    Volver al inicio
+  </button>
+
 </div>
 
 <!-- GRUPOS -->
@@ -363,6 +393,31 @@ function abrirCupones(){
 </script>
 
 <script>
+function abrirCupones(){
+  document.getElementById("paginaPrincipal").style.display="none";
+  document.getElementById("paginaCupones").style.display="block";
+}
+
+function volverInicio(){
+  document.getElementById("paginaCupones").style.display="none";
+  document.getElementById("paginaPrincipal").style.display="block";
+}
+
+function generarCodigo(){
+  return "ML" + Math.floor(Math.random()*100000);
+}
+
+function enviarCupon(valor){
+  let codigo = generarCodigo();
+  let mensaje = `Hola M Licha’s, quiero adquirir un cupón de $${valor}. Código: ${codigo}`;
+  window.open(`https://wa.me/TUNUMERO?text=${encodeURIComponent(mensaje)}`);
+}
+
+function enviarCuponPromo(){
+  let codigo = generarCodigo();
+  let mensaje = `Hola M Licha’s, quiero adquirir el cupón PROMOCIÓN PARA MAMÁ. Pago $22 por cupón de $25. Código: ${codigo}`;
+  window.open(`https://wa.me/TUNUMERO?text=${encodeURIComponent(mensaje)}`);
+}
 function abrirCupones(){
   document.getElementById("modalCupones").style.display="block";
 }
