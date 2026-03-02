@@ -21,16 +21,26 @@ header{
   text-align:center;
   padding:30px 15px;
 }
-
-.maps-btn{
-  display:inline-block;
+.header-buttons{
   margin-top:15px;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.header-btn{
   background:white;
   color:#d98928;
-  padding:10px 15px;
+  padding:12px 18px;
   border-radius:10px;
-  text-decoration:none;
   font-weight:bold;
+  border:none;
+  text-decoration:none;
+  cursor:pointer;
+  min-width:140px;
+  text-align:center;
+  font-size:14px;
 }
 .header-buttons{
   margin-top:15px;
@@ -38,14 +48,6 @@ header{
   justify-content:center;
   gap:10px;
   flex-wrap:wrap;
-}
-
-.cupon-header-btn{
-  background:white;
-  color:#d98928;
-  padding:10px 15px;
-  border-radius:10px;
-  font-weight:bold;
 }
 
 .container{
@@ -162,15 +164,20 @@ input, select{
 <p>El toque de la abuela</p>
 
 <div class="header-buttons">
-  <a class="maps-btn" href="https://maps.app.goo.gl/JwZWv97vaaq2cpEx9?g_st=ic" target="_blank">
-    📍 Ver ubicación
+
+  <a class="header-btn" href="https://maps.app.goo.gl/JwZWv97vaaq2cpEx9?g_st=ic" target="_blank">
+    📍 Ubicación
   </a>
 
-  <button class="cupon-header-btn" onclick="abrirCupones()">
+  <button class="header-btn" onclick="abrirCupones()">
     🎁 Cupones
   </button>
-</div>
 
+  <button class="header-btn" onclick="abrirReservacion()">
+    📅 Reservación
+  </button>
+
+</div>
 </header>
 
 <!-- ================== PAGINA PRINCIPAL ================== -->
@@ -246,6 +253,38 @@ Volver al inicio
 </button>
 
 </div>
+</div> <!-- FIN paginaCupones -->
+
+
+<!-- ================== PAGINA RESERVACION ================== -->
+
+<div id="paginaReservacion" style="display:none; padding:40px 20px; text-align:center;">
+
+<h2 style="color:#d98928;">📅 Reservación</h2>
+<p>Completa los datos para reservar tu mesa</p>
+
+<br>
+
+<input type="text" id="resNombre" placeholder="Nombre">
+<input type="tel" id="resTelefono" placeholder="Teléfono">
+<input type="date" id="resFecha">
+<input type="time" id="resHora">
+<input type="number" id="resPersonas" placeholder="Cantidad de personas">
+
+<br><br>
+
+<button onclick="enviarReservacion()">
+Confirmar Reservación
+</button>
+
+<br><br>
+
+<button onclick="volverInicio()" style="background:#ccc; color:black;">
+Volver al inicio
+</button>
+
+</div>
+
 
 <script>
 let cantidades = {};
@@ -297,6 +336,34 @@ function enviarPedido(){
   let url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
   window.open(url, "_blank");
 }
+<!-- ================== PAGINA RESERVACION ================== -->
+
+<div id="paginaReservacion" style="display:none; padding:40px 20px; text-align:center;">
+
+<h2 style="color:#d98928;">📅 Reservación</h2>
+<p>Completa los datos para reservar tu mesa</p>
+
+<br>
+
+<input type="text" id="resNombre" placeholder="Nombre">
+<input type="tel" id="resTelefono" placeholder="Teléfono">
+<input type="date" id="resFecha">
+<input type="time" id="resHora">
+<input type="number" id="resPersonas" placeholder="Cantidad de personas">
+
+<br><br>
+
+<button onclick="enviarReservacion()">
+Confirmar Reservación
+</button>
+
+<br><br>
+
+<button onclick="volverInicio()" style="background:#ccc; color:black;">
+Volver al inicio
+</button>
+
+</div>
 
 /* ========= CUPONES ========= */
 
