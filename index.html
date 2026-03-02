@@ -348,10 +348,21 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:#ffffff;
 z-index:9999;
 overflow-y:auto;
-padding:20px;
+
+/* Fondo con imagen + degradado */
+background: 
+linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)),
+url('AQUI_TU_IMAGEN.jpg');
+background-size:cover;
+background-position:center;
+
+/* Centrado */
+display:flex;
+flex-direction:column;
+align-items:center;
+padding:30px 20px;
 ">
 
 <!-- Encabezado -->
