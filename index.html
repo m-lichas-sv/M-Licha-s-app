@@ -5,24 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>M Licha’s</title>
 
-<link rel="icon" type="image/png" href="icon.png">
-<meta name="theme-color" content="#d98928">
-
 <style>
+
 body{
   margin:0;
-  font-family: Arial, sans-serif;
-  background:#f5f2ed;
+  font-family:Arial, sans-serif;
+  background:#f5f5f5;
 }
 
+/* HEADER */
 header{
   background:#d98928;
-  color:white;
+  padding:20px;
   text-align:center;
-  padding:30px 15px;
+  color:white;
 }
 
-/* BOTONES HEADER */
 .header-buttons{
   margin-top:15px;
   display:flex;
@@ -45,122 +43,64 @@ header{
   font-size:14px;
 }
 
-.container{
-  padding:15px;
+/* SECCIONES */
+section{
+  padding:20px;
 }
 
-.group{
+/* PRODUCTOS */
+.producto{
   background:white;
-  margin-bottom:15px;
+  padding:15px;
   border-radius:12px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.1);
-  overflow:hidden;
-}
-
-.group h2{
-  margin:0;
-  padding:15px;
-  background:#eee;
-  cursor:pointer;
-}
-
-.products{
-  display:none;
-  padding:15px;
-}
-
-.product{
   margin-bottom:15px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.08);
 }
 
-.controls{
-  display:flex;
-  align-items:center;
-  gap:10px;
+.producto h3{
+  margin:0;
 }
 
+.precio{
+  color:#d98928;
+  font-weight:bold;
+}
+
+/* BOTONES GENERALES */
 button{
   background:#d98928;
   color:white;
   border:none;
-  padding:8px 14px;
+  padding:10px;
   border-radius:8px;
-  font-size:16px;
   cursor:pointer;
 }
 
-.cart{
-  background:white;
-  padding:20px;
-  border-radius:15px;
-  margin-top:20px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.1);
-}
-
-input, select{
-  width:100%;
-  padding:10px;
-  margin:8px 0;
-  border-radius:8px;
-  border:1px solid #ccc;
-}
-
-.total{
-  font-size:20px;
-  font-weight:bold;
-}
-
-.main-btn{
-  width:100%;
-  padding:15px;
-  font-size:16px;
-  margin-top:15px;
-}
-
-/* FONDO CUPONES */
+/* PAGINA CUPONES */
 #paginaCupones{
+  display:none;
   min-height:100vh;
   padding:40px 20px;
   text-align:center;
-  background-image: url('fondo-cupones.png');
+  background-image:url("fondo-cupones.png");
   background-size:cover;
-  background-repeat:no-repeat;
   background-position:center;
-  display:none;
-  position:relative;
 }
 
-#paginaCupones::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(255,255,255,0.85);
-  z-index:0;
+.cupon-overlay{
+  background:rgba(0,0,0,0.6);
+  padding:30px;
+  border-radius:15px;
+  color:white;
+  max-width:400px;
+  margin:auto;
 }
 
-#paginaCupones > *{
-  position:relative;
-  z-index:1;
-}
-
-/* RESERVACION */
+/* PAGINA RESERVACION */
 #paginaReservacion{
   display:none;
   padding:40px 20px;
   text-align:center;
-}
-
-.titulo-seccion{
-  color:#d98928;
-  margin-bottom:5px;
-}
-
-.subtitulo{
-  margin-bottom:25px;
-  color:#555;
 }
 
 .res-card{
@@ -169,113 +109,81 @@ input, select{
   border-radius:15px;
   box-shadow:0 4px 12px rgba(0,0,0,0.1);
   max-width:400px;
-  margin:0 auto;
+  margin:auto;
+}
+
+.res-card input,
+.res-card select{
+  width:100%;
+  padding:10px;
+  margin-bottom:12px;
+  border-radius:8px;
+  border:1px solid #ddd;
 }
 
 .btn-volver{
-  margin-top:15px;
   background:#ccc;
   color:black;
+  margin-top:10px;
 }
+
 </style>
 </head>
-
 <body>
 
+<!-- ================= HEADER ================= -->
 <header>
-<h1>M Licha’s</h1>
-<p>El toque de la abuela</p>
+  <h1>M Licha’s</h1>
 
-<div class="header-buttons">
-  <a class="header-btn" href="https://maps.app.goo.gl/JwZWv97vaaq2cpEx9?g_st=ic" target="_blank">
-    📍 Ubicación
-  </a>
-
-  <button class="header-btn" onclick="abrirCupones()">
-    🎁 Cupones
-  </button>
-
-  <button class="header-btn" onclick="abrirReservacion()">
-    📅 Reservación
-  </button>
-</div>
+  <div class="header-buttons">
+    <a class="header-btn" href="https://maps.google.com" target="_blank">📍 Maps</a>
+    <button class="header-btn" onclick="mostrarCupones()">🎁 Cupón</button>
+    <button class="header-btn" onclick="mostrarReservacion()">📅 Reservación</button>
+  </div>
 </header>
 
-<!-- PAGINA PRINCIPAL -->
-<div id="paginaPrincipal" class="container">
+<!-- ================= PAGINA PRINCIPAL ================= -->
+<section id="paginaInicio">
 
-<div class="group">
-<h2 onclick="toggleGroup(this)">Almuerzos</h2>
-<div class="products">
+  <h2>Menú</h2>
 
-<div class="product">Sopa de gallina $5
-<div class="controls">
-<button onclick="changeQty('Sopa de gallina',5,-1)">-</button>
-<span id="Sopa de gallina">0</span>
-<button onclick="changeQty('Sopa de gallina',5,1)">+</button>
-</div></div>
+  <div class="producto">
+    <h3>Sopa de Gallina</h3>
+    <p class="precio">$7.00</p>
+    <button>Agregar</button>
+  </div>
 
-<div class="product">Carne asada $5
-<div class="controls">
-<button onclick="changeQty('Carne asada',5,-1)">-</button>
-<span id="Carne asada">0</span>
-<button onclick="changeQty('Carne asada',5,1)">+</button>
-</div></div>
+  <div class="producto">
+    <h3>Camarones al Ajillo</h3>
+    <p class="precio">$10.00</p>
+    <button>Agregar</button>
+  </div>
 
-</div>
-</div>
+</section>
 
-<div class="cart">
-<h2>🛒 Tu Pedido</h2>
-<input type="text" id="cliente" placeholder="Nombre del cliente">
-<input type="tel" id="telefono" placeholder="Número de teléfono">
-
-<select id="pago">
-<option value="Efectivo en local">Efectivo en local</option>
-<option value="Transferencia">Transferencia</option>
-</select>
-
-<p class="total">Total: $<span id="total">0.00</span></p>
-
-<button class="main-btn" onclick="enviarPedido()">
-Enviar Pedido por WhatsApp
-</button>
-</div>
-</div>
-
-<!-- PAGINA CUPONES -->
+<!-- ================= PAGINA CUPONES ================= -->
 <div id="paginaCupones">
-<h2 style="color:#d98928;">🎁 Cupón M Licha’s</h2>
-<p>Elige el monto del cupón</p>
-
-<button onclick="enviarCupon(15)">Cupón $15</button><br><br>
-<button onclick="enviarCupon(20)">Cupón $20</button><br><br>
-<button onclick="enviarCuponPromo()">💖 Promo mamá $25 paga $22</button>
-<br><br>
-<button onclick="volverInicio()" style="background:#ccc; color:black;">
-Volver al inicio
-</button>
+  <div class="cupon-overlay">
+    <h2>🎁 Cupón Especial</h2>
+    <p>Presenta este cupón y recibe una bebida gratis en tu próxima compra.</p>
+    <button onclick="volverInicio()">Volver al inicio</button>
+  </div>
 </div>
 
-<!-- PAGINA RESERVACION -->
+<!-- ================= PAGINA RESERVACION ================= -->
 <div id="paginaReservacion">
 
-<h2 class="titulo-seccion">📅 Reservación</h2>
-<p class="subtitulo">Reserva tu mesa en M Licha’s</p>
+<h2 style="color:#d98928;">📅 Reservación</h2>
 
 <div class="res-card">
+
 <input type="text" id="resNombre" placeholder="Nombre completo">
 <input type="tel" id="resTelefono" placeholder="Teléfono">
-
-<label>Fecha</label>
 <input type="date" id="resFecha">
-
-<label>Hora</label>
 <input type="time" id="resHora">
 
-<label>Personas</label>
 <select id="resPersonas">
-<option value="">Seleccionar</option>
+<option value="">Cantidad de personas</option>
 <option>1 persona</option>
 <option>2 personas</option>
 <option>3 personas</option>
@@ -285,94 +193,35 @@ Volver al inicio
 <option>Más de 6</option>
 </select>
 
-<button class="main-btn" onclick="enviarReservacion()">
+<button onclick="enviarReservacion()">
 Confirmar Reservación
 </button>
 
 <button class="btn-volver" onclick="volverInicio()">
 Volver al inicio
 </button>
+
 </div>
 </div>
 
 <script>
-let cantidades = {};
-let total = 0;
 
-function toggleGroup(element){
-  let content = element.nextElementSibling;
-  content.style.display = content.style.display === "block" ? "none" : "block";
-}
-
-function changeQty(nombre, precio, cambio){
-  if(!cantidades[nombre]){
-    cantidades[nombre] = {qty:0, price:precio};
-  }
-  cantidades[nombre].qty += cambio;
-  if(cantidades[nombre].qty < 0){
-    cantidades[nombre].qty = 0;
-  }
-  document.getElementById(nombre).innerText = cantidades[nombre].qty;
-  updateTotal();
-}
-
-function updateTotal(){
-  total = 0;
-  for(let item in cantidades){
-    total += cantidades[item].qty * cantidades[item].price;
-  }
-  document.getElementById("total").innerText = total.toFixed(2);
-}
-
-function enviarPedido(){
-  let nombre = document.getElementById("cliente").value;
-  let telefono = document.getElementById("telefono").value;
-  let pago = document.getElementById("pago").value;
-
-  let mensaje = `Pedido M Licha’s\n\nCliente: ${nombre}\nTel: ${telefono}\n\n`;
-
-  for(let item in cantidades){
-    if(cantidades[item].qty > 0){
-      mensaje += `${item} x${cantidades[item].qty}\n`;
-    }
-  }
-
-  mensaje += `\nMétodo de pago: ${pago}\nTotal: $${total.toFixed(2)}`;
-  window.open(`https://wa.me/50379554663?text=${encodeURIComponent(mensaje)}`);
-}
-
-function abrirCupones(){
-  document.getElementById("paginaPrincipal").style.display="none";
+function mostrarCupones(){
+  document.getElementById("paginaInicio").style.display="none";
   document.getElementById("paginaReservacion").style.display="none";
   document.getElementById("paginaCupones").style.display="block";
 }
 
-function abrirReservacion(){
-  document.getElementById("paginaPrincipal").style.display="none";
+function mostrarReservacion(){
+  document.getElementById("paginaInicio").style.display="none";
   document.getElementById("paginaCupones").style.display="none";
   document.getElementById("paginaReservacion").style.display="block";
 }
 
 function volverInicio(){
+  document.getElementById("paginaInicio").style.display="block";
   document.getElementById("paginaCupones").style.display="none";
   document.getElementById("paginaReservacion").style.display="none";
-  document.getElementById("paginaPrincipal").style.display="block";
-}
-
-function generarCodigo(){
-  return "ML-" + Math.floor(1000 + Math.random() * 9000);
-}
-
-function enviarCupon(valor){
-  let codigo = generarCodigo();
-  let mensaje = `Hola M Licha’s 🍲\n\nQuiero adquirir un cupón de $${valor}\nCódigo: ${codigo}`;
-  window.open(`https://wa.me/50379554663?text=${encodeURIComponent(mensaje)}`);
-}
-
-function enviarCuponPromo(){
-  let codigo = generarCodigo();
-  let mensaje = `Hola M Licha’s 🍲\n\nPromo mamá\nPago $22 por cupón de $25\nCódigo: ${codigo}`;
-  window.open(`https://wa.me/50379554663?text=${encodeURIComponent(mensaje)}`);
 }
 
 function enviarReservacion(){
@@ -383,7 +232,7 @@ function enviarReservacion(){
   let personas = document.getElementById("resPersonas").value;
 
   if(!nombre || !telefono || !fecha || !hora || !personas){
-    alert("Por favor completa todos los campos");
+    alert("Completa todos los campos");
     return;
   }
 
@@ -391,6 +240,7 @@ function enviarReservacion(){
 
   window.open(`https://wa.me/50379554663?text=${encodeURIComponent(mensaje)}`);
 }
+
 </script>
 
 </body>
