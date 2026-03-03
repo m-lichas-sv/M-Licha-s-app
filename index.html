@@ -65,7 +65,13 @@ section{
   border-radius:20px;
   font-weight:bold;
   cursor:pointer;
-  transition:0.3s;
+  transition:all 0.3s ease;
+}
+
+.menu-categorias button.activo{
+  background:#d98928;
+  color:white;
+  transform:scale(1.05);
 }
 
 .menu-categorias button:hover{
@@ -79,14 +85,17 @@ section{
   border-radius:12px;
   margin-bottom:15px;
   box-shadow:0 4px 10px rgba(0,0,0,0.08);
+  opacity:1;
+  transform:translateY(0);
+  transition:opacity 0.3s ease, transform 0.3s ease;
 }
 
-.precio{
-  color:#d98928;
-  font-weight:bold;
+.producto.oculto{
+  opacity:0;
+  transform:translateY(10px);
 }
 
-/* PAGINA CUPONES */
+/* PAGINAS */
 #paginaCupones{
   display:none;
   min-height:100vh;
@@ -106,7 +115,6 @@ section{
   margin:auto;
 }
 
-/* PAGINA RESERVACION */
 #paginaReservacion{
   display:none;
   padding:40px 20px;
@@ -146,6 +154,11 @@ button{
   cursor:pointer;
 }
 
+.precio{
+  color:#d98928;
+  font-weight:bold;
+}
+
 </style>
 </head>
 <body>
@@ -165,9 +178,9 @@ button{
   <h2 style="text-align:center;">Menú</h2>
 
   <div class="menu-categorias">
-    <button onclick="mostrarCategoria('almuerzos')">Almuerzos</button>
-    <button onclick="mostrarCategoria('bebidas')">Bebidas</button>
-    <button onclick="mostrarCategoria('cocteles')">Cócteles</button>
+    <button class="activo" onclick="mostrarCategoria('almuerzos', this)">Almuerzos</button>
+    <button onclick="mostrarCategoria('bebidas', this)">Bebidas</button>
+    <button onclick="mostrarCategoria('cocteles', this)">Cócteles</button>
   </div>
 
   <!-- ALMUERZOS -->
@@ -233,12 +246,28 @@ button{
 
 <script>
 
-function mostrarCategoria(categoria){
-  let productos = document.querySelectorAll(".producto");
-  productos.forEach(producto => producto.style.display = "none");
+function mostrarCategoria(categoria, boton){
 
-  let seleccionados = document.querySelectorAll("." + categoria);
-  seleccionados.forEach(producto => producto.style.display = "block");
+  // Animación de salida
+  let productos = document.querySelectorAll(".producto");
+  productos.forEach(p => {
+    p.classList.add("oculto");
+    setTimeout(() => p.style.display = "none", 200);
+  });
+
+  // Cambiar botón activo
+  let botones = document.querySelectorAll(".menu-categorias button");
+  botones.forEach(b => b.classList.remove("activo"));
+  boton.classList.add("activo");
+
+  // Mostrar nueva categoría
+  setTimeout(() => {
+    let seleccionados = document.querySelectorAll("." + categoria);
+    seleccionados.forEach(p => {
+      p.style.display = "block";
+      setTimeout(() => p.classList.remove("oculto"), 10);
+    });
+  }, 250);
 }
 
 function mostrarCupones(){
