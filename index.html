@@ -6,11 +6,11 @@
 <title>M Licha’s</title>
 
 <style>
+
 body{
   margin:0;
   font-family:Arial, sans-serif;
   background:#f5f5f5;
-  padding-bottom:120px;
 }
 
 /* HEADER */
@@ -36,34 +36,16 @@ header{
   border-radius:10px;
   font-weight:bold;
   border:none;
+  text-decoration:none;
   cursor:pointer;
   min-width:140px;
   text-align:center;
   font-size:14px;
 }
 
-/* CATEGORÍAS */
-.menu-categorias{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  margin:20px 0;
-  flex-wrap:wrap;
-}
-
-.menu-categorias button{
-  background:#f4d35e;
-  border:none;
-  padding:10px 18px;
-  border-radius:20px;
-  font-weight:bold;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.menu-categorias button.activo{
-  background:#d98928;
-  color:white;
+/* SECCIONES */
+section{
+  padding:20px;
 }
 
 /* PRODUCTOS */
@@ -71,8 +53,13 @@ header{
   background:white;
   padding:15px;
   border-radius:12px;
-  margin:15px;
+  margin-bottom:15px;
   box-shadow:0 4px 10px rgba(0,0,0,0.08);
+  transition:0.3s;
+}
+
+.producto h3{
+  margin:0;
 }
 
 .precio{
@@ -80,6 +67,7 @@ header{
   font-weight:bold;
 }
 
+/* CONTROL CANTIDAD */
 .cantidad-control{
   display:flex;
   align-items:center;
@@ -98,44 +86,57 @@ header{
 
 .cantidad{
   font-weight:bold;
+  font-size:16px;
   min-width:20px;
   text-align:center;
 }
 
-/* CARRITO */
-#carrito{
-  position:fixed;
-  bottom:0;
-  left:0;
-  width:100%;
-  background:white;
-  box-shadow:0 -4px 12px rgba(0,0,0,0.2);
-  padding:15px;
-}
-
-#total{
-  font-size:18px;
-  font-weight:bold;
-  color:#d98928;
-}
-
-#btnWhatsApp{
-  width:100%;
-  margin-top:10px;
-  background:#25D366;
+/* BOTONES GENERALES */
+button{
+  background:#d98928;
   color:white;
-  padding:12px;
   border:none;
+  padding:10px;
   border-radius:8px;
-  font-weight:bold;
   cursor:pointer;
 }
+
+/* CATEGORÍAS */
+.menu-categorias{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin:20px 0;
+  flex-wrap:wrap;
+}
+
+.menu-categorias button{
+  background:#f4d35e;
+  color:#333;
+  border:none;
+  padding:10px 18px;
+  border-radius:20px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.menu-categorias button.activo{
+  background:#d98928;
+  color:white;
+}
+
+.menu-categorias button:hover{
+  transform:scale(1.05);
+}
+
 </style>
 </head>
 <body>
 
 <header>
   <h1>M Licha’s</h1>
+
   <div class="header-buttons">
     <a class="header-btn" href="https://maps.google.com" target="_blank">📍 Maps</a>
     <button class="header-btn" onclick="mostrarCupones()">🎁 Cupón</button>
@@ -145,7 +146,7 @@ header{
 
 <section id="paginaInicio">
 
-<h2 style="text-align:center;">Menú</h2>
+<h2>Menú</h2>
 
 <div class="menu-categorias">
   <button onclick="mostrarCategoria('almuerzos', this)" class="activo">Almuerzos</button>
@@ -153,60 +154,163 @@ header{
   <button onclick="mostrarCategoria('cocteles', this)">Cócteles</button>
 </div>
 
-<!-- ================= ALMUERZOS ================= -->
+<!-- ALMUERZOS -->
 <div class="producto almuerzos">
   <h3>Carne asada</h3>
-  <p class="precio" data-precio="5">\$5.00</p>
+  <p class="precio">$5.00</p>
   <div class="cantidad-control">
-    <button onclick="cambiarCantidad(this,-1)">-</button>
+    <button onclick="cambiarCantidad(this, -1)">-</button>
     <span class="cantidad">0</span>
-    <button onclick="cambiarCantidad(this,1)">+</button>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto almuerzos">
+  <h3>Camarones al ajillo</h3>
+  <p class="precio">$5.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
   </div>
 </div>
 
 <div class="producto almuerzos">
   <h3>Sopa de gallina</h3>
-  <p class="precio" data-precio="5">\$5.00</p>
+  <p class="precio">$5.00</p>
   <div class="cantidad-control">
-    <button onclick="cambiarCantidad(this,-1)">-</button>
+    <button onclick="cambiarCantidad(this, -1)">-</button>
     <span class="cantidad">0</span>
-    <button onclick="cambiarCantidad(this,1)">+</button>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
   </div>
 </div>
 
-<!-- ================= BEBIDAS ================= -->
+<div class="producto almuerzos">
+  <h3>Pescado frito</h3>
+  <p class="precio">$4.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto almuerzos">
+  <h3>Pescado y camarón</h3>
+  <p class="precio">$8.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto almuerzos">
+  <h3>Carnita y papa</h3>
+  <p class="precio">$6.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<!-- BEBIDAS -->
 <div class="producto bebidas" style="display:none;">
   <h3>Natural zumo de naranja</h3>
-  <p class="precio" data-precio="1.5">\$1.50</p>
+  <p class="precio">$1.50</p>
   <div class="cantidad-control">
-    <button onclick="cambiarCantidad(this,-1)">-</button>
+    <button onclick="cambiarCantidad(this, -1)">-</button>
     <span class="cantidad">0</span>
-    <button onclick="cambiarCantidad(this,1)">+</button>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
   </div>
 </div>
 
-<!-- ================= COCTELES ================= -->
+<div class="producto bebidas" style="display:none;">
+  <h3>Fresco natural del día</h3>
+  <p class="precio">$1.50</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto bebidas" style="display:none;">
+  <h3>Balde pilsener/golden 6un</h3>
+  <p class="precio">$8.50</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto bebidas" style="display:none;">
+  <h3>Balde regia/suprema 6un</h3>
+  <p class="precio">$10.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto bebidas" style="display:none;">
+  <h3>Balde mixto pilsener y regia 6un</h3>
+  <p class="precio">$9.50</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<!-- COCTELES -->
 <div class="producto cocteles" style="display:none;">
   <h3>Cóctel de camarón</h3>
-  <p class="precio" data-precio="7">\$7.00</p>
+  <p class="precio">$7.00</p>
   <div class="cantidad-control">
-    <button onclick="cambiarCantidad(this,-1)">-</button>
+    <button onclick="cambiarCantidad(this, -1)">-</button>
     <span class="cantidad">0</span>
-    <button onclick="cambiarCantidad(this,1)">+</button>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto cocteles" style="display:none;">
+  <h3>Cóctel de concha</h3>
+  <p class="precio">$7.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto cocteles" style="display:none;">
+  <h3>Cóctel de camarón en salsa rosa</h3>
+  <p class="precio">$7.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto cocteles" style="display:none;">
+  <h3>Tostadas de camarón</h3>
+  <p class="precio">$5.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
   </div>
 </div>
 
 </section>
 
-<!-- ================= CARRITO ================= -->
-<div id="carrito">
-  <div id="total">Total: $0.00</div>
-  <button id="btnWhatsApp" onclick="enviarPedido()">Enviar pedido por WhatsApp</button>
-</div>
-
 <script>
 
-/* CATEGORÍAS */
 function mostrarCategoria(categoria, boton){
   let productos = document.querySelectorAll(".producto");
   productos.forEach(p => p.style.display="none");
@@ -220,59 +324,15 @@ function mostrarCategoria(categoria, boton){
   boton.classList.add("activo");
 }
 
-/* CANTIDAD */
 function cambiarCantidad(btn, cambio){
-  let producto = btn.closest(".producto");
-  let cantidadSpan = producto.querySelector(".cantidad");
-  let precio = parseFloat(producto.querySelector(".precio").dataset.precio);
-
+  let contenedor = btn.parentElement;
+  let cantidadSpan = contenedor.querySelector(".cantidad");
   let cantidad = parseInt(cantidadSpan.textContent);
+
   cantidad += cambio;
   if(cantidad < 0) cantidad = 0;
 
   cantidadSpan.textContent = cantidad;
-  actualizarTotal();
-}
-
-/* TOTAL */
-function actualizarTotal(){
-  let total = 0;
-  let productos = document.querySelectorAll(".producto");
-
-  productos.forEach(p => {
-    let cantidad = parseInt(p.querySelector(".cantidad").textContent);
-    let precio = parseFloat(p.querySelector(".precio").dataset.precio);
-    total += cantidad * precio;
-  });
-
-  document.getElementById("total").textContent = "Total: $" + total.toFixed(2);
-}
-
-/* WHATSAPP */
-function enviarPedido(){
-  let mensaje = "Hola, quiero ordenar:%0A";
-  let productos = document.querySelectorAll(".producto");
-
-  productos.forEach(p => {
-    let cantidad = parseInt(p.querySelector(".cantidad").textContent);
-    if(cantidad > 0){
-      let nombre = p.querySelector("h3").textContent;
-      mensaje += cantidad + " x " + nombre + "%0A";
-    }
-  });
-
-  mensaje += "%0A" + document.getElementById("total").textContent;
-
-  window.open("https://wa.me/50379554663?text=" + mensaje, "_blank");
-}
-
-/* PÁGINAS SECUNDARIAS */
-function mostrarCupones(){
-  alert("Aquí irá la página de cupones");
-}
-
-function mostrarReservacion(){
-  alert("Aquí irá la página de reservación");
 }
 
 </script>
