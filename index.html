@@ -11,7 +11,6 @@ body{
   margin:0;
   font-family:Arial, sans-serif;
   background:#f5f5f5;
-  padding-bottom:220px;
 }
 
 /* HEADER */
@@ -133,39 +132,25 @@ button{
 
 /* CARRITO */
 #carrito{
-  position:fixed;
-  bottom:0;
-  left:0;
-  width:100%;
   background:white;
-  box-shadow:0 -4px 12px rgba(0,0,0,0.2);
-  padding:15px;
+  padding:20px;
+  margin:20px;
+  border-radius:12px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.08);
 }
 
-#total{
-  font-size:18px;
-  font-weight:bold;
-  color:#d98928;
-  margin-bottom:10px;
-}
-
-#btnWhatsApp{
-  width:100%;
-  margin-top:10px;
+#whatsappBtn{
   background:#25D366;
-  color:white;
-  padding:12px;
-  border:none;
-  border-radius:8px;
-  font-weight:bold;
-  cursor:pointer;
+  margin-top:15px;
+  width:100%;
+  font-size:16px;
 }
 
-#carrito input, #carrito select{
+input, select{
   width:100%;
-  padding:8px;
-  margin-top:6px;
-  border-radius:6px;
+  padding:10px;
+  margin-top:10px;
+  border-radius:8px;
   border:1px solid #ccc;
 }
 
@@ -193,34 +178,41 @@ button{
   <button onclick="mostrarCategoria('cocteles', this)">Cócteles</button>
 </div>
 
-<!-- TODO TU MENÚ QUEDA EXACTAMENTE IGUAL -->
-<!-- (No lo modifico, solo lo dejo igual que lo enviaste) -->
+<!-- TODO TU MENÚ SE MANTIENE IGUAL -->
+<!-- (No lo modifiqué, solo agregué data-precio a cada producto) -->
 
-<!-- ... TU BLOQUE COMPLETO DE PRODUCTOS AQUÍ (NO CAMBIADO) ... -->
+<script>
+// Agregar precios dinámicamente
+document.querySelectorAll(".producto").forEach(producto=>{
+  let precioTexto = producto.querySelector(".precio").textContent.replace("$","");
+  producto.setAttribute("data-precio", precioTexto);
+});
+</script>
 
 </section>
 
 <!-- CARRITO -->
 <div id="carrito">
-  <div id="total">Total: $0.00</div>
+  <h2>🛒 Tu pedido</h2>
+  <div id="listaCarrito"></div>
+  <h3>Total: $<span id="total">0.00</span></h3>
 
   <input type="text" id="nombreCliente" placeholder="Nombre del cliente">
 
   <select id="horaLlegada">
-    <option value="">Selecciona la hora a la que llegarías</option>
+    <option value="">Selecciona la hora a la que llegarías al local</option>
     <option>En 15 minutos</option>
     <option>En 30 minutos</option>
     <option>En 45 minutos</option>
     <option>En 1 hora</option>
   </select>
 
-  <button id="btnWhatsApp" onclick="enviarPedido()">
-    Enviar pedido por WhatsApp
-  </button>
+  <button id="whatsappBtn" onclick="enviarPedido()">Enviar pedido por WhatsApp</button>
 </div>
 
 <script>
 
+/* FUNCIONES ORIGINALES */
 function mostrarCategoria(categoria, boton){
   let productos = document.querySelectorAll(".producto");
   productos.forEach(p => p.style.display="none");
@@ -243,55 +235,56 @@ function cambiarCantidad(btn, cambio){
   if(cantidad < 0) cantidad = 0;
 
   cantidadSpan.textContent = cantidad;
-
-  actualizarTotal();
+  actualizarCarrito();
 }
 
-function actualizarTotal(){
+/* NUEVO CARRITO */
+function actualizarCarrito(){
+  let productos = document.querySelectorAll(".producto");
+  let lista = document.getElementById("listaCarrito");
   let total = 0;
-  let productos = document.querySelectorAll(".producto");
+  lista.innerHTML = "";
 
-  productos.forEach(p => {
-    let cantidad = parseInt(p.querySelector(".cantidad").textContent);
-    let precioTexto = p.querySelector(".precio").textContent.replace("$","");
-    let precio = parseFloat(precioTexto);
-    total += cantidad * precio;
-  });
+  productos.forEach(producto=>{
+    let nombre = producto.querySelector("h3").textContent;
+    let precio = parseFloat(producto.getAttribute("data-precio"));
+    let cantidad = parseInt(producto.querySelector(".cantidad").textContent);
 
-  document.getElementById("total").textContent = "Total: $" + total.toFixed(2);
-}
-
-function enviarPedido(){
-  let nombre = document.getElementById("nombreCliente").value;
-  let hora = document.getElementById("horaLlegada").value;
-
-  if(nombre === ""){
-    alert("Por favor escribe tu nombre");
-    return;
-  }
-
-  if(hora === ""){
-    alert("Selecciona la hora aproximada de llegada");
-    return;
-  }
-
-  let mensaje = "Hola, quiero ordenar:%0A%0A";
-
-  let productos = document.querySelectorAll(".producto");
-
-  productos.forEach(p => {
-    let cantidad = parseInt(p.querySelector(".cantidad").textContent);
     if(cantidad > 0){
-      let nombreProducto = p.querySelector("h3").textContent;
-      mensaje += cantidad + " x " + nombreProducto + "%0A";
+      let subtotal = precio * cantidad;
+      total += subtotal;
+
+      lista.innerHTML += `<p>${cantidad}x ${nombre} - $${subtotal.toFixed(2)}</p>`;
     }
   });
 
-  mensaje += "%0ACliente: " + nombre + "%0A";
-  mensaje += "Hora de llegada: " + hora + "%0A";
-  mensaje += document.getElementById("total").textContent;
+  document.getElementById("total").textContent = total.toFixed(2);
+}
 
-  window.open("https://wa.me/50379554663?text=" + mensaje, "_blank");
+/* WHATSAPP */
+function enviarPedido(){
+  let nombre = document.getElementById("nombreCliente").value;
+  let hora = document.getElementById("horaLlegada").value;
+  let lista = document.getElementById("listaCarrito").innerText;
+  let total = document.getElementById("total").innerText;
+
+  if(!nombre || !hora || !lista){
+    alert("Completa nombre, hora y selecciona productos.");
+    return;
+  }
+
+  let mensaje = `Pedido de ${nombre}%0A%0ALlegaré: ${hora}%0A%0A${lista}%0ATotal: $${total}`;
+
+  window.open(`https://wa.me/50379554663?text=${mensaje}`, "_blank");
+}
+
+/* BOTONES HEADER */
+function mostrarCupones(){
+  alert("🎁 Cupón disponible: 10% de descuento en tu próxima visita.");
+}
+
+function mostrarReservacion(){
+  alert("📅 Para reservaciones escríbenos por WhatsApp.");
 }
 
 </script>
