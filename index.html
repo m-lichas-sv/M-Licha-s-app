@@ -48,6 +48,30 @@ section{
   padding:20px;
 }
 
+/* CATEGORIAS */
+.menu-categorias{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin:20px 0;
+  flex-wrap:wrap;
+}
+
+.menu-categorias button{
+  background:#f4d35e;
+  color:#333;
+  border:none;
+  padding:10px 18px;
+  border-radius:20px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.menu-categorias button:hover{
+  background:#e9c949;
+}
+
 /* PRODUCTOS */
 .producto{
   background:white;
@@ -57,23 +81,9 @@ section{
   box-shadow:0 4px 10px rgba(0,0,0,0.08);
 }
 
-.producto h3{
-  margin:0;
-}
-
 .precio{
   color:#d98928;
   font-weight:bold;
-}
-
-/* BOTONES GENERALES */
-button{
-  background:#d98928;
-  color:white;
-  border:none;
-  padding:10px;
-  border-radius:8px;
-  cursor:pointer;
 }
 
 /* PAGINA CUPONES */
@@ -127,11 +137,19 @@ button{
   margin-top:10px;
 }
 
+button{
+  background:#d98928;
+  color:white;
+  border:none;
+  padding:10px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
 </style>
 </head>
 <body>
 
-<!-- ================= HEADER ================= -->
 <header>
   <h1>M Licha’s</h1>
 
@@ -142,90 +160,49 @@ button{
   </div>
 </header>
 
-<!-- ================= PAGINA PRINCIPAL ================= -->
 <section id="paginaInicio">
 
-  <h2>Menú</h2>
-  
-<div class="menu-categorias">
-  <button onclick="mostrarCategoria('almuerzos')">Almuerzos</button>
-  <button onclick="mostrarCategoria('bebidas')">Bebidas</button>
-  <button onclick="mostrarCategoria('cocteles')">Cócteles</button>
-</div>
+  <h2 style="text-align:center;">Menú</h2>
+
+  <div class="menu-categorias">
+    <button onclick="mostrarCategoria('almuerzos')">Almuerzos</button>
+    <button onclick="mostrarCategoria('bebidas')">Bebidas</button>
+    <button onclick="mostrarCategoria('cocteles')">Cócteles</button>
+  </div>
 
   <!-- ALMUERZOS -->
-<div class="producto almuerzos">
-  <h3>Sopa de Gallina</h3>
-  <p class="precio">$7.00</p>
-</div>
+  <div class="producto almuerzos">
+    <h3>Sopa de Gallina</h3>
+    <p class="precio">$7.00</p>
+  </div>
 
-<div class="producto almuerzos">
-  <h3>Camarones al Ajillo</h3>
-  <p class="precio">$10.00</p>
-</div>
+  <div class="producto almuerzos">
+    <h3>Camarones al Ajillo</h3>
+    <p class="precio">$10.00</p>
+  </div>
 
-<!-- BEBIDAS -->
-<div class="producto bebidas" style="display:none;">
-  <h3>Refresco Natural</h3>
-  <p class="precio">$2.00</p>
-</div>
+  <!-- BEBIDAS -->
+  <div class="producto bebidas" style="display:none;">
+    <h3>Refresco Natural</h3>
+    <p class="precio">$2.00</p>
+  </div>
 
-<!-- COCTELES -->
-<div class="producto cocteles" style="display:none;">
-  <h3>Margarita</h3>
-  <p class="precio">$5.00</p>
-</div>
-<style>
-.menu-categorias{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  margin:20px 0;
-  flex-wrap:wrap;
-}
+  <!-- COCTELES -->
+  <div class="producto cocteles" style="display:none;">
+    <h3>Margarita</h3>
+    <p class="precio">$5.00</p>
+  </div>
 
-.menu-categorias button{
-  background:#f4d35e; /* amarillo suave */
-  color:#333;
-  border:none;
-  padding:10px 18px;
-  border-radius:20px;
-  font-weight:bold;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.menu-categorias button:hover{
-  background:#e9c949;
-}
-</style>
-function mostrarCategoria(categoria){
-
-  let productos = document.querySelectorAll(".producto");
-
-  productos.forEach(producto => {
-    producto.style.display = "none";
-  });
-
-  let seleccionados = document.querySelectorAll("." + categoria);
-
-  seleccionados.forEach(producto => {
-    producto.style.display = "block";
-  });
-
-}
 </section>
 
-<!-- ================= PAGINA CUPONES ================= -->
 <div id="paginaCupones">
   <div class="cupon-overlay">
     <h2>🎁 Cupón Especial</h2>
-    <p>Presenta este cupón y recibe una bebida gratis en tu próxima compra.</p>
+    <p>Presenta este cupón y recibe una bebida gratis.</p>
     <button onclick="volverInicio()">Volver al inicio</button>
   </div>
 </div>
 
-<!-- ================= PAGINA RESERVACION ================= -->
 <div id="paginaReservacion">
 
 <h2 style="color:#d98928;">📅 Reservación</h2>
@@ -248,18 +225,21 @@ function mostrarCategoria(categoria){
 <option>Más de 6</option>
 </select>
 
-<button onclick="enviarReservacion()">
-Confirmar Reservación
-</button>
-
-<button class="btn-volver" onclick="volverInicio()">
-Volver al inicio
-</button>
+<button onclick="enviarReservacion()">Confirmar Reservación</button>
+<button class="btn-volver" onclick="volverInicio()">Volver al inicio</button>
 
 </div>
 </div>
 
 <script>
+
+function mostrarCategoria(categoria){
+  let productos = document.querySelectorAll(".producto");
+  productos.forEach(producto => producto.style.display = "none");
+
+  let seleccionados = document.querySelectorAll("." + categoria);
+  seleccionados.forEach(producto => producto.style.display = "block");
+}
 
 function mostrarCupones(){
   document.getElementById("paginaInicio").style.display="none";
