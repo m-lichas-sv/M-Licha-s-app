@@ -48,7 +48,60 @@ section{
   padding:20px;
 }
 
-/* CATEGORIAS */
+/* PRODUCTOS */
+.producto{
+  background:white;
+  padding:15px;
+  border-radius:12px;
+  margin-bottom:15px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.08);
+  transition:0.3s;
+}
+
+.producto h3{
+  margin:0;
+}
+
+.precio{
+  color:#d98928;
+  font-weight:bold;
+}
+
+/* CONTROL CANTIDAD */
+.cantidad-control{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:10px;
+}
+
+.cantidad-control button{
+  background:#d98928;
+  color:white;
+  border:none;
+  padding:6px 12px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.cantidad{
+  font-weight:bold;
+  font-size:16px;
+  min-width:20px;
+  text-align:center;
+}
+
+/* BOTONES GENERALES */
+button{
+  background:#d98928;
+  color:white;
+  border:none;
+  padding:10px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* CATEGORÍAS */
 .menu-categorias{
   display:flex;
   justify-content:center;
@@ -65,67 +118,19 @@ section{
   border-radius:20px;
   font-weight:bold;
   cursor:pointer;
-  transition:all 0.3s ease;
+  transition:0.3s;
 }
 
 .menu-categorias button.activo{
   background:#d98928;
   color:white;
-  transform:scale(1.05);
 }
 
 .menu-categorias button:hover{
-  background:#e9c949;
+  transform:scale(1.05);
 }
 
-/* PRODUCTOS */
-.producto{
-  background:white;
-  padding:15px;
-  border-radius:12px;
-  margin-bottom:15px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.08);
-  opacity:1;
-  transform:translateY(0);
-  transition:opacity 0.3s ease, transform 0.3s ease;
-}
-
-.producto.oculto{
-  opacity:0;
-  transform:translateY(10px);
-}
-
-.precio{
-  color:#d98928;
-  font-weight:bold;
-}
-
-/* CONTROL CANTIDAD */
-.cantidad-control{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:15px;
-  margin-top:10px;
-}
-
-.cantidad-control button{
-  width:35px;
-  height:35px;
-  border-radius:50%;
-  background:#d98928;
-  color:white;
-  font-size:18px;
-}
-
-.cantidad-control span{
-  font-weight:bold;
-  font-size:18px;
-  min-width:20px;
-  text-align:center;
-}
-
-/* PAGINAS */
+/* PAGINA CUPONES */
 #paginaCupones{
   display:none;
   min-height:100vh;
@@ -145,6 +150,7 @@ section{
   margin:auto;
 }
 
+/* PAGINA RESERVACION */
 #paginaReservacion{
   display:none;
   padding:40px 20px;
@@ -175,15 +181,6 @@ section{
   margin-top:10px;
 }
 
-button{
-  background:#d98928;
-  color:white;
-  border:none;
-  padding:10px;
-  border-radius:8px;
-  cursor:pointer;
-}
-
 </style>
 </head>
 <body>
@@ -200,187 +197,152 @@ button{
 
 <section id="paginaInicio">
 
-  <h2 style="text-align:center;">Menú</h2>
+<h2>Menú</h2>
 
-  <div class="menu-categorias">
-    <button class="activo" onclick="mostrarCategoria('almuerzos', this)">Almuerzos</button>
-    <button onclick="mostrarCategoria('bebidas', this)">Bebidas</button>
-    <button onclick="mostrarCategoria('cocteles', this)">Cócteles</button>
-  </div>
+<div class="menu-categorias">
+  <button onclick="mostrarCategoria('almuerzos', this)" class="activo">Almuerzos</button>
+  <button onclick="mostrarCategoria('bebidas', this)">Bebidas</button>
+  <button onclick="mostrarCategoria('cocteles', this)">Cócteles</button>
+</div>
 
-  <!-- ALMUERZOS -->
-  <div class="producto almuerzos">
-    <h3>Carne Asada</h3>
-    <p class="precio">$5</p>
-    <div class="cantidad-control">
-      <button onclick="cambiarCantidad('carne', -1)">−</button>
-      <span id="cantidad-carne">0</span>
-      <button onclick="cambiarCantidad('carne', 1)">+</button>
-    </div>
+<!-- ALMUERZOS -->
+<div class="producto almuerzos">
+  <h3>Carne asada</h3>
+  <p class="precio">$5.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
   </div>
+</div>
 
-  <div class="producto almuerzos">
-    <h3>Camarones al Ajillo</h3>
-    <p class="precio">$5</p>
-    <div class="cantidad-control">
-      <button onclick="cambiarCantidad('camarones', -1)">−</button>
-      <span id="cantidad-camarones">0</span>
-      <button onclick="cambiarCantidad('camarones', 1)">+</button>
-    </div>
+<div class="producto almuerzos">
+  <h3>Camarones al ajillo</h3>
+  <p class="precio">$5.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
   </div>
+</div>
 
-  <div class="producto almuerzos">
-    <h3>Sopa de Gallina</h3>
-    <p class="precio">$5</p>
-    <div class="cantidad-control">
-      <button onclick="cambiarCantidad('sopa', -1)">−</button>
-      <span id="cantidad-sopa">0</span>
-      <button onclick="cambiarCantidad('sopa', 1)">+</button>
-    </div>
+<div class="producto almuerzos">
+  <h3>Sopa de gallina</h3>
+  <p class="precio">$5.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
   </div>
+</div>
 
-  <div class="producto almuerzos">
-    <h3>Pescado Frito</h3>
-    <p class="precio">$4</p>
-    <div class="cantidad-control">
-      <button onclick="cambiarCantidad('pescado', -1)">−</button>
-      <span id="cantidad-pescado">0</span>
-      <button onclick="cambiarCantidad('pescado', 1)">+</button>
-    </div>
+<div class="producto almuerzos">
+  <h3>Pescado frito</h3>
+  <p class="precio">$4.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
   </div>
+</div>
 
-  <div class="producto almuerzos">
-    <h3>Pescado y Camarón</h3>
-    <p class="precio">$8</p>
-    <div class="cantidad-control">
-      <button onclick="cambiarCantidad('pescadoCamarones', -1)">−</button>
-      <span id="cantidad-pescadoCamarones">0</span>
-      <button onclick="cambiarCantidad('pescadoCamarones', 1)">+</button>
-    </div>
+<div class="producto almuerzos">
+  <h3>Pescado y camarón</h3>
+  <p class="precio">$8.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
   </div>
+</div>
 
-  <div class="producto almuerzos">
-    <h3>Carnita y Papa</h3>
-    <p class="precio">$6</p>
-    <div class="cantidad-control">
-      <button onclick="cambiarCantidad('carnita', -1)">−</button>
-      <span id="cantidad-carnita">0</span>
-      <button onclick="cambiarCantidad('carnita', 1)">+</button>
-    </div>
+<div class="producto almuerzos">
+  <h3>Carnita y papa</h3>
+  <p class="precio">$6.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
   </div>
+</div>
+
+<!-- BEBIDAS -->
+<div class="producto bebidas" style="display:none;">
+  <h3>Natural zumo de naranja</h3>
+  <p class="precio">$1.50</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto bebidas" style="display:none;">
+  <h3>Fresco natural del día</h3>
+  <p class="precio">$1.50</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto bebidas" style="display:none;">
+  <h3>Balde pilsener/golden 6un</h3>
+  <p class="precio">$8.50</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto bebidas" style="display:none;">
+  <h3>Balde regia/suprema 6un</h3>
+  <p class="precio">$10.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto bebidas" style="display:none;">
+  <h3>Balde mixto pilsener y regia 6un</h3>
+  <p class="precio">$9.50</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
 
 </section>
 
-<!-- CUPONES -->
-<div id="paginaCupones">
-  <div class="cupon-overlay">
-    <h2>🎁 Cupón Especial</h2>
-    <p>Presenta este cupón y recibe una bebida gratis.</p>
-    <button onclick="volverInicio()">Volver al inicio</button>
-  </div>
-</div>
-
-<!-- RESERVACION -->
-<div id="paginaReservacion">
-<h2 style="color:#d98928;">📅 Reservación</h2>
-<div class="res-card">
-<input type="text" id="resNombre" placeholder="Nombre completo">
-<input type="tel" id="resTelefono" placeholder="Teléfono">
-<input type="date" id="resFecha">
-<input type="time" id="resHora">
-<select id="resPersonas">
-<option value="">Cantidad de personas</option>
-<option>1 persona</option>
-<option>2 personas</option>
-<option>3 personas</option>
-<option>4 personas</option>
-<option>5 personas</option>
-<option>6 personas</option>
-<option>Más de 6</option>
-</select>
-<button onclick="enviarReservacion()">Confirmar Reservación</button>
-<button class="btn-volver" onclick="volverInicio()">Volver al inicio</button>
-</div>
-</div>
-
 <script>
-
-let carrito = {
-  carne:0,
-  camarones:0,
-  sopa:0,
-  pescado:0,
-  pescadoCamarones:0,
-  carnita:0
-};
-
-function cambiarCantidad(producto, cambio){
-  carrito[producto] += cambio;
-  if(carrito[producto] < 0) carrito[producto] = 0;
-  document.getElementById("cantidad-"+producto).innerText = carrito[producto];
-}
 
 function mostrarCategoria(categoria, boton){
   let productos = document.querySelectorAll(".producto");
-  productos.forEach(p=>{
-    p.classList.add("oculto");
-    setTimeout(()=>p.style.display="none",200);
-  });
+  productos.forEach(p => p.style.display="none");
 
-  let botones=document.querySelectorAll(".menu-categorias button");
-  botones.forEach(b=>b.classList.remove("activo"));
+  let seleccionados = document.querySelectorAll("." + categoria);
+  seleccionados.forEach(p => p.style.display="block");
+
+  let botones = document.querySelectorAll(".menu-categorias button");
+  botones.forEach(b => b.classList.remove("activo"));
+
   boton.classList.add("activo");
-
-  setTimeout(()=>{
-    let seleccionados=document.querySelectorAll("."+categoria);
-    seleccionados.forEach(p=>{
-      p.style.display="block";
-      setTimeout(()=>p.classList.remove("oculto"),10);
-    });
-  },250);
 }
 
-function mostrarCupones(){
-  paginaInicio.style.display="none";
-  paginaReservacion.style.display="none";
-  paginaCupones.style.display="block";
-}
+function cambiarCantidad(btn, cambio){
+  let contenedor = btn.parentElement;
+  let cantidadSpan = contenedor.querySelector(".cantidad");
+  let cantidad = parseInt(cantidadSpan.textContent);
 
-function mostrarReservacion(){
-  paginaInicio.style.display="none";
-  paginaCupones.style.display="none";
-  paginaReservacion.style.display="block";
-}
+  cantidad += cambio;
+  if(cantidad < 0) cantidad = 0;
 
-function volverInicio(){
-  paginaInicio.style.display="block";
-  paginaCupones.style.display="none";
-  paginaReservacion.style.display="none";
-}
-
-function enviarReservacion(){
-  let nombre=resNombre.value.trim();
-  let telefono=resTelefono.value.trim();
-  let fecha=resFecha.value;
-  let hora=resHora.value;
-  let personas=resPersonas.value;
-
-  if(!nombre||!telefono||!fecha||!hora||!personas){
-    alert("Completa todos los campos");
-    return;
-  }
-
-  let mensaje=`Hola M Licha’s 🍲
-
-📅 Reservación:
-
-Nombre: ${nombre}
-Tel: ${telefono}
-Fecha: ${fecha}
-Hora: ${hora}
-Personas: ${personas}`;
-
-  window.open(`https://wa.me/50379554663?text=${encodeURIComponent(mensaje)}`);
+  cantidadSpan.textContent = cantidad;
 }
 
 </script>
