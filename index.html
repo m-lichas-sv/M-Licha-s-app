@@ -130,30 +130,6 @@ button{
   transform:scale(1.05);
 }
 
-/* CARRITO */
-#carrito{
-  background:white;
-  padding:20px;
-  margin:20px;
-  border-radius:12px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.08);
-}
-
-#whatsappBtn{
-  background:#25D366;
-  margin-top:15px;
-  width:100%;
-  font-size:16px;
-}
-
-input, select{
-  width:100%;
-  padding:10px;
-  margin-top:10px;
-  border-radius:8px;
-  border:1px solid #ccc;
-}
-
 </style>
 </head>
 <body>
@@ -178,41 +154,163 @@ input, select{
   <button onclick="mostrarCategoria('cocteles', this)">Cócteles</button>
 </div>
 
-<!-- TODO TU MENÚ SE MANTIENE IGUAL -->
-<!-- (No lo modifiqué, solo agregué data-precio a cada producto) -->
+<!-- ALMUERZOS -->
+<div class="producto almuerzos">
+  <h3>Carne asada</h3>
+  <p class="precio">$5.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
 
-<script>
-// Agregar precios dinámicamente
-document.querySelectorAll(".producto").forEach(producto=>{
-  let precioTexto = producto.querySelector(".precio").textContent.replace("$","");
-  producto.setAttribute("data-precio", precioTexto);
-});
-</script>
+<div class="producto almuerzos">
+  <h3>Camarones al ajillo</h3>
+  <p class="precio">$5.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto almuerzos">
+  <h3>Sopa de gallina</h3>
+  <p class="precio">$5.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto almuerzos">
+  <h3>Pescado frito</h3>
+  <p class="precio">$4.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto almuerzos">
+  <h3>Pescado y camarón</h3>
+  <p class="precio">$8.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto almuerzos">
+  <h3>Carnita y papa</h3>
+  <p class="precio">$6.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<!-- BEBIDAS -->
+<div class="producto bebidas" style="display:none;">
+  <h3>Natural zumo de naranja</h3>
+  <p class="precio">$1.50</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto bebidas" style="display:none;">
+  <h3>Fresco natural del día</h3>
+  <p class="precio">$1.50</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto bebidas" style="display:none;">
+  <h3>Balde pilsener/golden 6un</h3>
+  <p class="precio">$8.50</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto bebidas" style="display:none;">
+  <h3>Balde regia/suprema 6un</h3>
+  <p class="precio">$10.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto bebidas" style="display:none;">
+  <h3>Balde mixto pilsener y regia 6un</h3>
+  <p class="precio">$9.50</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<!-- COCTELES -->
+<div class="producto cocteles" style="display:none;">
+  <h3>Cóctel de camarón</h3>
+  <p class="precio">$7.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto cocteles" style="display:none;">
+  <h3>Cóctel de concha</h3>
+  <p class="precio">$7.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto cocteles" style="display:none;">
+  <h3>Cóctel de camarón en salsa rosa</h3>
+  <p class="precio">$7.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto cocteles" style="display:none;">
+  <h3>Tostadas de camarón</h3>
+  <p class="precio">$5.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
 
 </section>
 
-<!-- CARRITO -->
-<div id="carrito">
-  <h2>🛒 Tu pedido</h2>
-  <div id="listaCarrito"></div>
-  <h3>Total: $<span id="total">0.00</span></h3>
-
-  <input type="text" id="nombreCliente" placeholder="Nombre del cliente">
-
-  <select id="horaLlegada">
-    <option value="">Selecciona la hora a la que llegarías al local</option>
-    <option>En 15 minutos</option>
-    <option>En 30 minutos</option>
-    <option>En 45 minutos</option>
-    <option>En 1 hora</option>
-  </select>
-
-  <button id="whatsappBtn" onclick="enviarPedido()">Enviar pedido por WhatsApp</button>
-</div>
-
 <script>
 
-/* FUNCIONES ORIGINALES */
 function mostrarCategoria(categoria, boton){
   let productos = document.querySelectorAll(".producto");
   productos.forEach(p => p.style.display="none");
@@ -235,56 +333,6 @@ function cambiarCantidad(btn, cambio){
   if(cantidad < 0) cantidad = 0;
 
   cantidadSpan.textContent = cantidad;
-  actualizarCarrito();
-}
-
-/* NUEVO CARRITO */
-function actualizarCarrito(){
-  let productos = document.querySelectorAll(".producto");
-  let lista = document.getElementById("listaCarrito");
-  let total = 0;
-  lista.innerHTML = "";
-
-  productos.forEach(producto=>{
-    let nombre = producto.querySelector("h3").textContent;
-    let precio = parseFloat(producto.getAttribute("data-precio"));
-    let cantidad = parseInt(producto.querySelector(".cantidad").textContent);
-
-    if(cantidad > 0){
-      let subtotal = precio * cantidad;
-      total += subtotal;
-
-      lista.innerHTML += `<p>${cantidad}x ${nombre} - $${subtotal.toFixed(2)}</p>`;
-    }
-  });
-
-  document.getElementById("total").textContent = total.toFixed(2);
-}
-
-/* WHATSAPP */
-function enviarPedido(){
-  let nombre = document.getElementById("nombreCliente").value;
-  let hora = document.getElementById("horaLlegada").value;
-  let lista = document.getElementById("listaCarrito").innerText;
-  let total = document.getElementById("total").innerText;
-
-  if(!nombre || !hora || !lista){
-    alert("Completa nombre, hora y selecciona productos.");
-    return;
-  }
-
-  let mensaje = `Pedido de ${nombre}%0A%0ALlegaré: ${hora}%0A%0A${lista}%0ATotal: $${total}`;
-
-  window.open(`https://wa.me/50379554663?text=${mensaje}`, "_blank");
-}
-
-/* BOTONES HEADER */
-function mostrarCupones(){
-  alert("🎁 Cupón disponible: 10% de descuento en tu próxima visita.");
-}
-
-function mostrarReservacion(){
-  alert("📅 Para reservaciones escríbenos por WhatsApp.");
 }
 
 </script>
