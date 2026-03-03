@@ -95,6 +95,36 @@ section{
   transform:translateY(10px);
 }
 
+.precio{
+  color:#d98928;
+  font-weight:bold;
+}
+
+/* CONTROL CANTIDAD */
+.cantidad-control{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:15px;
+  margin-top:10px;
+}
+
+.cantidad-control button{
+  width:35px;
+  height:35px;
+  border-radius:50%;
+  background:#d98928;
+  color:white;
+  font-size:18px;
+}
+
+.cantidad-control span{
+  font-weight:bold;
+  font-size:18px;
+  min-width:20px;
+  text-align:center;
+}
+
 /* PAGINAS */
 #paginaCupones{
   display:none;
@@ -154,11 +184,6 @@ button{
   cursor:pointer;
 }
 
-.precio{
-  color:#d98928;
-  font-weight:bold;
-}
-
 </style>
 </head>
 <body>
@@ -185,29 +210,68 @@ button{
 
   <!-- ALMUERZOS -->
   <div class="producto almuerzos">
-    <h3>Sopa de Gallina</h3>
-    <p class="precio">$7.00</p>
+    <h3>Carne Asada</h3>
+    <p class="precio">$5</p>
+    <div class="cantidad-control">
+      <button onclick="cambiarCantidad('carne', -1)">−</button>
+      <span id="cantidad-carne">0</span>
+      <button onclick="cambiarCantidad('carne', 1)">+</button>
+    </div>
   </div>
 
   <div class="producto almuerzos">
     <h3>Camarones al Ajillo</h3>
-    <p class="precio">$10.00</p>
+    <p class="precio">$5</p>
+    <div class="cantidad-control">
+      <button onclick="cambiarCantidad('camarones', -1)">−</button>
+      <span id="cantidad-camarones">0</span>
+      <button onclick="cambiarCantidad('camarones', 1)">+</button>
+    </div>
   </div>
 
-  <!-- BEBIDAS -->
-  <div class="producto bebidas" style="display:none;">
-    <h3>Refresco Natural</h3>
-    <p class="precio">$2.00</p>
+  <div class="producto almuerzos">
+    <h3>Sopa de Gallina</h3>
+    <p class="precio">$5</p>
+    <div class="cantidad-control">
+      <button onclick="cambiarCantidad('sopa', -1)">−</button>
+      <span id="cantidad-sopa">0</span>
+      <button onclick="cambiarCantidad('sopa', 1)">+</button>
+    </div>
   </div>
 
-  <!-- COCTELES -->
-  <div class="producto cocteles" style="display:none;">
-    <h3>Margarita</h3>
-    <p class="precio">$5.00</p>
+  <div class="producto almuerzos">
+    <h3>Pescado Frito</h3>
+    <p class="precio">$4</p>
+    <div class="cantidad-control">
+      <button onclick="cambiarCantidad('pescado', -1)">−</button>
+      <span id="cantidad-pescado">0</span>
+      <button onclick="cambiarCantidad('pescado', 1)">+</button>
+    </div>
+  </div>
+
+  <div class="producto almuerzos">
+    <h3>Pescado y Camarón</h3>
+    <p class="precio">$8</p>
+    <div class="cantidad-control">
+      <button onclick="cambiarCantidad('pescadoCamarones', -1)">−</button>
+      <span id="cantidad-pescadoCamarones">0</span>
+      <button onclick="cambiarCantidad('pescadoCamarones', 1)">+</button>
+    </div>
+  </div>
+
+  <div class="producto almuerzos">
+    <h3>Carnita y Papa</h3>
+    <p class="precio">$6</p>
+    <div class="cantidad-control">
+      <button onclick="cambiarCantidad('carnita', -1)">−</button>
+      <span id="cantidad-carnita">0</span>
+      <button onclick="cambiarCantidad('carnita', 1)">+</button>
+    </div>
   </div>
 
 </section>
 
+<!-- CUPONES -->
 <div id="paginaCupones">
   <div class="cupon-overlay">
     <h2>🎁 Cupón Especial</h2>
@@ -216,17 +280,14 @@ button{
   </div>
 </div>
 
+<!-- RESERVACION -->
 <div id="paginaReservacion">
-
 <h2 style="color:#d98928;">📅 Reservación</h2>
-
 <div class="res-card">
-
 <input type="text" id="resNombre" placeholder="Nombre completo">
 <input type="tel" id="resTelefono" placeholder="Teléfono">
 <input type="date" id="resFecha">
 <input type="time" id="resHora">
-
 <select id="resPersonas">
 <option value="">Cantidad de personas</option>
 <option>1 persona</option>
@@ -237,70 +298,87 @@ button{
 <option>6 personas</option>
 <option>Más de 6</option>
 </select>
-
 <button onclick="enviarReservacion()">Confirmar Reservación</button>
 <button class="btn-volver" onclick="volverInicio()">Volver al inicio</button>
-
 </div>
 </div>
 
 <script>
 
-function mostrarCategoria(categoria, boton){
+let carrito = {
+  carne:0,
+  camarones:0,
+  sopa:0,
+  pescado:0,
+  pescadoCamarones:0,
+  carnita:0
+};
 
-  // Animación de salida
+function cambiarCantidad(producto, cambio){
+  carrito[producto] += cambio;
+  if(carrito[producto] < 0) carrito[producto] = 0;
+  document.getElementById("cantidad-"+producto).innerText = carrito[producto];
+}
+
+function mostrarCategoria(categoria, boton){
   let productos = document.querySelectorAll(".producto");
-  productos.forEach(p => {
+  productos.forEach(p=>{
     p.classList.add("oculto");
-    setTimeout(() => p.style.display = "none", 200);
+    setTimeout(()=>p.style.display="none",200);
   });
 
-  // Cambiar botón activo
-  let botones = document.querySelectorAll(".menu-categorias button");
-  botones.forEach(b => b.classList.remove("activo"));
+  let botones=document.querySelectorAll(".menu-categorias button");
+  botones.forEach(b=>b.classList.remove("activo"));
   boton.classList.add("activo");
 
-  // Mostrar nueva categoría
-  setTimeout(() => {
-    let seleccionados = document.querySelectorAll("." + categoria);
-    seleccionados.forEach(p => {
-      p.style.display = "block";
-      setTimeout(() => p.classList.remove("oculto"), 10);
+  setTimeout(()=>{
+    let seleccionados=document.querySelectorAll("."+categoria);
+    seleccionados.forEach(p=>{
+      p.style.display="block";
+      setTimeout(()=>p.classList.remove("oculto"),10);
     });
-  }, 250);
+  },250);
 }
 
 function mostrarCupones(){
-  document.getElementById("paginaInicio").style.display="none";
-  document.getElementById("paginaReservacion").style.display="none";
-  document.getElementById("paginaCupones").style.display="block";
+  paginaInicio.style.display="none";
+  paginaReservacion.style.display="none";
+  paginaCupones.style.display="block";
 }
 
 function mostrarReservacion(){
-  document.getElementById("paginaInicio").style.display="none";
-  document.getElementById("paginaCupones").style.display="none";
-  document.getElementById("paginaReservacion").style.display="block";
+  paginaInicio.style.display="none";
+  paginaCupones.style.display="none";
+  paginaReservacion.style.display="block";
 }
 
 function volverInicio(){
-  document.getElementById("paginaInicio").style.display="block";
-  document.getElementById("paginaCupones").style.display="none";
-  document.getElementById("paginaReservacion").style.display="none";
+  paginaInicio.style.display="block";
+  paginaCupones.style.display="none";
+  paginaReservacion.style.display="none";
 }
 
 function enviarReservacion(){
-  let nombre = document.getElementById("resNombre").value.trim();
-  let telefono = document.getElementById("resTelefono").value.trim();
-  let fecha = document.getElementById("resFecha").value;
-  let hora = document.getElementById("resHora").value;
-  let personas = document.getElementById("resPersonas").value;
+  let nombre=resNombre.value.trim();
+  let telefono=resTelefono.value.trim();
+  let fecha=resFecha.value;
+  let hora=resHora.value;
+  let personas=resPersonas.value;
 
-  if(!nombre || !telefono || !fecha || !hora || !personas){
+  if(!nombre||!telefono||!fecha||!hora||!personas){
     alert("Completa todos los campos");
     return;
   }
 
-  let mensaje = `Hola M Licha’s 🍲\n\n📅 Reservación:\n\nNombre: ${nombre}\nTel: ${telefono}\nFecha: ${fecha}\nHora: ${hora}\nPersonas: ${personas}`;
+  let mensaje=`Hola M Licha’s 🍲
+
+📅 Reservación:
+
+Nombre: ${nombre}
+Tel: ${telefono}
+Fecha: ${fecha}
+Hora: ${hora}
+Personas: ${personas}`;
 
   window.open(`https://wa.me/50379554663?text=${encodeURIComponent(mensaje)}`);
 }
