@@ -6,11 +6,11 @@
 <title>M Licha’s</title>
 
 <style>
-
 body{
   margin:0;
   font-family:Arial, sans-serif;
   background:#f5f5f5;
+  padding-bottom:120px;
 }
 
 /* HEADER */
@@ -36,23 +36,42 @@ header{
   border-radius:10px;
   font-weight:bold;
   border:none;
-  text-decoration:none;
   cursor:pointer;
   min-width:140px;
   text-align:center;
   font-size:14px;
 }
 
-/* PRODUCTOS */
-section{
-  padding:20px;
+/* CATEGORÍAS */
+.menu-categorias{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin:20px 0;
+  flex-wrap:wrap;
 }
 
+.menu-categorias button{
+  background:#f4d35e;
+  border:none;
+  padding:10px 18px;
+  border-radius:20px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.menu-categorias button.activo{
+  background:#d98928;
+  color:white;
+}
+
+/* PRODUCTOS */
 .producto{
   background:white;
   padding:15px;
   border-radius:12px;
-  margin-bottom:15px;
+  margin:15px;
   box-shadow:0 4px 10px rgba(0,0,0,0.08);
 }
 
@@ -83,31 +102,6 @@ section{
   text-align:center;
 }
 
-/* CATEGORÍAS */
-.menu-categorias{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  margin:20px 0;
-  flex-wrap:wrap;
-}
-
-.menu-categorias button{
-  background:#f4d35e;
-  color:#333;
-  border:none;
-  padding:10px 18px;
-  border-radius:20px;
-  font-weight:bold;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.menu-categorias button.activo{
-  background:#d98928;
-  color:white;
-}
-
 /* CARRITO */
 #carrito{
   position:fixed;
@@ -136,18 +130,22 @@ section{
   font-weight:bold;
   cursor:pointer;
 }
-
 </style>
 </head>
 <body>
 
 <header>
   <h1>M Licha’s</h1>
+  <div class="header-buttons">
+    <a class="header-btn" href="https://maps.google.com" target="_blank">📍 Maps</a>
+    <button class="header-btn" onclick="mostrarCupones()">🎁 Cupón</button>
+    <button class="header-btn" onclick="mostrarReservacion()">📅 Reservación</button>
+  </div>
 </header>
 
-<section>
+<section id="paginaInicio">
 
-<h2>Menú</h2>
+<h2 style="text-align:center;">Menú</h2>
 
 <div class="menu-categorias">
   <button onclick="mostrarCategoria('almuerzos', this)" class="activo">Almuerzos</button>
@@ -155,20 +153,52 @@ section{
   <button onclick="mostrarCategoria('cocteles', this)">Cócteles</button>
 </div>
 
-<!-- EJEMPLO PRODUCTO (APLICA IGUAL A TODOS LOS DEMÁS) -->
+<!-- ================= ALMUERZOS ================= -->
 <div class="producto almuerzos">
   <h3>Carne asada</h3>
   <p class="precio" data-precio="5">\$5.00</p>
   <div class="cantidad-control">
-    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <button onclick="cambiarCantidad(this,-1)">-</button>
     <span class="cantidad">0</span>
-    <button onclick="cambiarCantidad(this, 1)">+</button>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+  </div>
+</div>
+
+<div class="producto almuerzos">
+  <h3>Sopa de gallina</h3>
+  <p class="precio" data-precio="5">\$5.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this,-1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+  </div>
+</div>
+
+<!-- ================= BEBIDAS ================= -->
+<div class="producto bebidas" style="display:none;">
+  <h3>Natural zumo de naranja</h3>
+  <p class="precio" data-precio="1.5">\$1.50</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this,-1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+  </div>
+</div>
+
+<!-- ================= COCTELES ================= -->
+<div class="producto cocteles" style="display:none;">
+  <h3>Cóctel de camarón</h3>
+  <p class="precio" data-precio="7">\$7.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this,-1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
   </div>
 </div>
 
 </section>
 
-<!-- CARRITO -->
+<!-- ================= CARRITO ================= -->
 <div id="carrito">
   <div id="total">Total: $0.00</div>
   <button id="btnWhatsApp" onclick="enviarPedido()">Enviar pedido por WhatsApp</button>
@@ -176,6 +206,7 @@ section{
 
 <script>
 
+/* CATEGORÍAS */
 function mostrarCategoria(categoria, boton){
   let productos = document.querySelectorAll(".producto");
   productos.forEach(p => p.style.display="none");
@@ -189,6 +220,7 @@ function mostrarCategoria(categoria, boton){
   boton.classList.add("activo");
 }
 
+/* CANTIDAD */
 function cambiarCantidad(btn, cambio){
   let producto = btn.closest(".producto");
   let cantidadSpan = producto.querySelector(".cantidad");
@@ -202,6 +234,7 @@ function cambiarCantidad(btn, cambio){
   actualizarTotal();
 }
 
+/* TOTAL */
 function actualizarTotal(){
   let total = 0;
   let productos = document.querySelectorAll(".producto");
@@ -215,6 +248,7 @@ function actualizarTotal(){
   document.getElementById("total").textContent = "Total: $" + total.toFixed(2);
 }
 
+/* WHATSAPP */
 function enviarPedido(){
   let mensaje = "Hola, quiero ordenar:%0A";
   let productos = document.querySelectorAll(".producto");
@@ -227,10 +261,18 @@ function enviarPedido(){
     }
   });
 
-  let total = document.getElementById("total").textContent;
-  mensaje += "%0A" + total;
+  mensaje += "%0A" + document.getElementById("total").textContent;
 
-  window.open("https://wa.me/50379554663text=" + mensaje, "_blank");
+  window.open("https://wa.me/50379554663?text=" + mensaje, "_blank");
+}
+
+/* PÁGINAS SECUNDARIAS */
+function mostrarCupones(){
+  alert("Aquí irá la página de cupones");
+}
+
+function mostrarReservacion(){
+  alert("Aquí irá la página de reservación");
 }
 
 </script>
