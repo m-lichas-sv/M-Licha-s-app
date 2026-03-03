@@ -146,19 +146,74 @@ button{
 <section id="paginaInicio">
 
   <h2>Menú</h2>
+  
+<div class="menu-categorias">
+  <button onclick="mostrarCategoria('almuerzos')">Almuerzos</button>
+  <button onclick="mostrarCategoria('bebidas')">Bebidas</button>
+  <button onclick="mostrarCategoria('cocteles')">Cócteles</button>
+</div>
 
-  <div class="producto">
-    <h3>Sopa de Gallina</h3>
-    <p class="precio">$7.00</p>
-    <button>Agregar</button>
-  </div>
+  <!-- ALMUERZOS -->
+<div class="producto almuerzos">
+  <h3>Sopa de Gallina</h3>
+  <p class="precio">$7.00</p>
+</div>
 
-  <div class="producto">
-    <h3>Camarones al Ajillo</h3>
-    <p class="precio">$10.00</p>
-    <button>Agregar</button>
-  </div>
+<div class="producto almuerzos">
+  <h3>Camarones al Ajillo</h3>
+  <p class="precio">$10.00</p>
+</div>
 
+<!-- BEBIDAS -->
+<div class="producto bebidas" style="display:none;">
+  <h3>Refresco Natural</h3>
+  <p class="precio">$2.00</p>
+</div>
+
+<!-- COCTELES -->
+<div class="producto cocteles" style="display:none;">
+  <h3>Margarita</h3>
+  <p class="precio">$5.00</p>
+</div>
+<style>
+.menu-categorias{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin:20px 0;
+  flex-wrap:wrap;
+}
+
+.menu-categorias button{
+  background:#f4d35e; /* amarillo suave */
+  color:#333;
+  border:none;
+  padding:10px 18px;
+  border-radius:20px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.menu-categorias button:hover{
+  background:#e9c949;
+}
+</style>
+function mostrarCategoria(categoria){
+
+  let productos = document.querySelectorAll(".producto");
+
+  productos.forEach(producto => {
+    producto.style.display = "none";
+  });
+
+  let seleccionados = document.querySelectorAll("." + categoria);
+
+  seleccionados.forEach(producto => {
+    producto.style.display = "block";
+  });
+
+}
 </section>
 
 <!-- ================= PAGINA CUPONES ================= -->
