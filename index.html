@@ -554,15 +554,19 @@ function enviarPedido(){
     return;
   }
 
-  let mensaje = 
-  `🍽️ *Nuevo Pedido - M Licha’s*%0A%0A` +
-  `👤 Cliente: ${nombre}%0A` +
-  `🕒 Hora de llegada: ${hora}%0A%0A` +
-  `📋 Pedido:%0A${lista}%0A` +
-  `💰 Total: $${total}`;
+  let mensajeTexto = `Nuevo Pedido - M Licha’s
 
-  window.open(`https://wa.me/50379554663?text=${mensaje}`);
-}
+Cliente: ${nombre}
+Hora: ${hora}
+
+Pedido:
+${lista}
+
+Total: $${total}`;
+
+let mensaje = encodeURIComponent(mensajeTexto);
+
+window.location.href = `https://wa.me/50379554663?text=${mensaje}`;
 
 /* OCULTAR TODO AL INICIO */
 window.onload = function(){
