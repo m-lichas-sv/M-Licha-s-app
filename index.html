@@ -229,7 +229,86 @@ button{
   border-radius:8px;
   border:1px solid #ccc;
 }
+/* ===== MODAL PREMIUM ===== */
 
+.modal-overlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.5);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity 0.3s ease;
+  z-index:999;
+}
+
+.modal-overlay.active{
+  opacity:1;
+  visibility:visible;
+}
+
+.modal{
+  background:white;
+  padding:25px;
+  border-radius:18px;
+  width:90%;
+  max-width:320px;
+  text-align:center;
+  transform:scale(0.8);
+  transition:transform 0.3s ease;
+  box-shadow:0 20px 40px rgba(0,0,0,0.2);
+}
+
+.modal-overlay.active .modal{
+  transform:scale(1);
+}
+
+.modal h3{
+  margin-bottom:10px;
+}
+
+.modal p{
+  font-size:14px;
+  color:#555;
+  margin-bottom:20px;
+}
+
+.modal-buttons{
+  display:flex;
+  gap:10px;
+}
+
+.modal-buttons button{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  cursor:pointer;
+  font-weight:bold;
+  transition:0.2s ease;
+}
+
+.btn-cancelar{
+  background:#eee;
+}
+
+.btn-cancelar:hover{
+  background:#ddd;
+}
+
+.btn-confirmar{
+  background:#d98928;
+  color:white;
+}
+
+.btn-confirmar:hover{
+  background:#c6781f;
+}
 </style>
 </head>
 <body>
@@ -423,7 +502,7 @@ button{
     <input type="text" id="nombreCliente" placeholder="Tu nombre">
     <input type="time" id="horaLlegada">
 
-    <button onclick="enviarPedido()">Enviar por WhatsApp</button>
+   <button onclick="abrirModal()">Enviar por WhatsApp</button>
     <button onclick="cerrarPanel()">Cerrar</button>
   </div>
 </div>
@@ -572,11 +651,6 @@ function enviarPedido(){
   }
 
   // Confirmación elegante
-  let confirmar = confirm(`¿Confirmar pedido por $${total}?`);
-
-  if(!confirmar){
-    return;
-  }
 
   let mensajeTexto = 
   `🍽️ Nuevo Pedido - M Licha’s
@@ -620,8 +694,30 @@ window.onload = function(){
   let botones = document.querySelectorAll(".menu-categorias button");
   botones.forEach(b => b.classList.remove("activo"));
 };
+function abrirModal(){
+  document.getElementById("modalConfirmacion").classList.add("active");
+}
 
+function cerrarModal(){
+  document.getElementById("modalConfirmacion").classList.remove("active");
+}
+
+function confirmarEnvio(){
+  cerrarModal();
+  enviarPedido(); // usa tu función actual de WhatsApp
+}
 </script>
-
+<!-- MODAL CONFIRMAR PEDIDO -->
+<div id="modalConfirmacion" class="modal-overlay">
+  <div class="modal">
+    <h3>Confirmar pedido</h3>
+    <p>¿Deseas enviar tu pedido por WhatsApp?</p>
+    
+    <div class="modal-buttons">
+      <button onclick="cerrarModal()" class="btn-cancelar">Cancelar</button>
+      <button onclick="confirmarEnvio()" class="btn-confirmar">Enviar</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
