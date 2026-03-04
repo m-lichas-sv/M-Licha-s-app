@@ -226,7 +226,86 @@ button{
   </div>
 </div>
 
-<!-- (continúan las demás bebidas y cócteles exactamente igual que tu versión) -->
+<div class="producto bebidas" style="display:none;">
+  <h3>Fresco natural del día</h3>
+  <p class="precio">$1.50</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto bebidas" style="display:none;">
+  <h3>Balde pilsener/golden 6un</h3>
+  <p class="precio">$8.50</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto bebidas" style="display:none;">
+  <h3>Balde regia/suprema 6un</h3>
+  <p class="precio">$10.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto bebidas" style="display:none;">
+  <h3>Balde mixto pilsener y regia 6un</h3>
+  <p class="precio">$9.50</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<!-- COCTELES -->
+<div class="producto cocteles" style="display:none;">
+  <h3>Cóctel de camarón</h3>
+  <p class="precio">$7.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto cocteles" style="display:none;">
+  <h3>Cóctel de concha</h3>
+  <p class="precio">$7.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto cocteles" style="display:none;">
+  <h3>Cóctel de camarón en salsa rosa</h3>
+  <p class="precio">$7.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto cocteles" style="display:none;">
+  <h3>Tostadas de camarón</h3>
+  <p class="precio">$5.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
 
 </section>
 
@@ -256,21 +335,6 @@ function cambiarCantidad(btn, cambio){
   cantidadSpan.textContent = cantidad;
 }
 
-function mostrarCupones(){
-  alert("🎁 Cupón disponible.");
-}
-
-function mostrarReservacion(){
-  alert("📅 Para reservaciones escríbenos por WhatsApp.");
-}
-/* OCULTAR TODO AL INICIO */
-window.onload = function(){
-  let productos = document.querySelectorAll(".producto");
-  productos.forEach(p => p.style.display="none");
-
-  let botones = document.querySelectorAll(".menu-categorias button");
-  botones.forEach(b => b.classList.remove("activo"));
-};
 </script>
 
 </body>
