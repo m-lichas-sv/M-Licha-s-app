@@ -334,7 +334,14 @@ function cambiarCantidad(btn, cambio){
 
   cantidadSpan.textContent = cantidad;
 }
+/* OCULTAR TODO AL INICIO */
+window.onload = function(){
+  let productos = document.querySelectorAll(".producto");
+  productos.forEach(p => p.style.display="none");
 
+  let botones = document.querySelectorAll(".menu-categorias button");
+  botones.forEach(b => b.classList.remove("activo"));
+};
 </script>
 
 </body>
