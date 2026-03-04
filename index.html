@@ -582,12 +582,23 @@ Total: $${total}`;
 
   window.location.href = `https://wa.me/50379554663?text=${mensaje}`;
 
-  // 🔥 Limpiar carrito automáticamente
-  document.getElementById("listaPedido").innerHTML = "";
-  document.getElementById("panelTotal").textContent = "0.00";
-  document.getElementById("nombreCliente").value = "";
-  document.getElementById("horaLlegada").value = "";
+  // 🔥 Limpiar carrito completamente
+document.getElementById("listaPedido").innerHTML = "";
+document.getElementById("panelTotal").textContent = "0.00";
+document.getElementById("nombreCliente").value = "";
+document.getElementById("horaLlegada").value = "";
 
+// Reiniciar cantidades visuales
+let productos = document.querySelectorAll(".producto");
+productos.forEach(p => {
+  p.querySelector(".cantidad").textContent = "0";
+});
+
+// Actualizar carrito flotante
+actualizarCarrito();
+
+// Cerrar panel
+cerrarPanel();
 }
 
 /* OCULTAR TODO AL INICIO */
