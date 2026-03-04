@@ -312,11 +312,24 @@ button{
 <script>
 
 function mostrarCategoria(categoria, boton){
-  let productos = document.querySelectorAll(".producto");
-  productos.forEach(p => p.style.display="none");
 
-  let seleccionados = document.querySelectorAll("." + categoria);
-  seleccionados.forEach(p => p.style.display="block");
+  let productos = document.querySelectorAll(".producto");
+  productos.forEach(p => {
+    p.classList.remove("mostrar");
+    setTimeout(() => {
+      p.style.display="none";
+    }, 300);
+  });
+
+  setTimeout(() => {
+    let seleccionados = document.querySelectorAll("." + categoria);
+    seleccionados.forEach(p => {
+      p.style.display="block";
+      setTimeout(() => {
+        p.classList.add("mostrar");
+      }, 50);
+    });
+  }, 300);
 
   let botones = document.querySelectorAll(".menu-categorias button");
   botones.forEach(b => b.classList.remove("activo"));
@@ -342,6 +355,19 @@ window.onload = function(){
   let botones = document.querySelectorAll(".menu-categorias button");
   botones.forEach(b => b.classList.remove("activo"));
 };
+/* ANIMACIÓN SUAVE CATEGORÍAS */
+.producto{
+  opacity:0;
+  transform:translateY(10px);
+  transition:opacity 0.4s ease, transform 0.4s ease;
+  display:none;
+}
+
+.producto.mostrar{
+  display:block;
+  opacity:1;
+  transform:translateY(0);
+}
 </script>
 
 </body>
