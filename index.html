@@ -159,6 +159,36 @@ button{
   50%{ transform:scale(1.3); }
   100%{ transform:scale(1); }
 }
+/* BOTÓN FLOTANTE */
+#carritoFlotante{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#d98928;
+  color:white;
+  padding:14px 18px;
+  border-radius:50px;
+  font-weight:bold;
+  box-shadow:0 6px 15px rgba(0,0,0,0.2);
+  cursor:pointer;
+  display:none;
+  transition:transform 0.2s ease, opacity 0.3s ease;
+  z-index:1000;
+}
+
+#carritoFlotante:hover{
+  transform:scale(1.05);
+}
+
+#carritoFlotante.animar{
+  animation:popCarrito 0.2s ease;
+}
+
+@keyframes popCarrito{
+  0%{ transform:scale(1); }
+  50%{ transform:scale(1.1); }
+  100%{ transform:scale(1); }
+}
 </style>
 </head>
 <body>
@@ -340,6 +370,10 @@ button{
 
 <script>
 
+<div id="carritoFlotante" onclick="abrirCarrito()">
+  🛒 <span id="totalCantidad">0</span> | $<span id="totalPrecio">0.00</span>
+</div>
+
 function mostrarCategoria(categoria, boton){
 
   // Si el botón ya está activo → cerrar todo
@@ -398,8 +432,43 @@ function cambiarCantidad(btn, cambio){
   cantidadSpan.classList.remove("animar");
   void cantidadSpan.offsetWidth;
   cantidadSpan.classList.add("animar");
+  
+  actualizarCarrito();
 }
 
+function actualizarCarrito(){
+  let productos = document.querySelectorAll(".producto");
+  let totalCantidad = 0;
+  let totalPrecio = 0;
+
+  productos.forEach(p => {
+    let cantidad = parseInt(p.querySelector(".cantidad").textContent);
+    let precioTexto = p.querySelector(".precio").textContent.replace("$","");
+    let precio = parseFloat(precioTexto);
+
+    totalCantidad += cantidad;
+    totalPrecio += cantidad * precio;
+  });
+
+  let carrito = document.getElementById("carritoFlotante");
+  let spanCantidad = document.getElementById("totalCantidad");
+  let spanPrecio = document.getElementById("totalPrecio");
+
+  spanCantidad.textContent = totalCantidad;
+  spanPrecio.textContent = totalPrecio.toFixed(2);
+
+  if(totalCantidad > 0){
+    carrito.style.display = "block";
+    carrito.classList.remove("animar");
+    void carrito.offsetWidth;
+    carrito.classList.add("animar");
+  }else{
+    carrito.style.display = "none";
+  }
+}
+function abrirCarrito(){
+  alert("Aquí luego pondremos el resumen del pedido 😎");
+}
 /* OCULTAR TODO AL INICIO */
 window.onload = function(){
   let productos = document.querySelectorAll(".producto");
