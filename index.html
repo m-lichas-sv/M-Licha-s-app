@@ -696,6 +696,11 @@ window.onload = function(){
 };
 function abrirModal(){
 
+  let total = document.getElementById("panelTotal").textContent;
+
+  // Colocar total dinámico en el modal
+  document.getElementById("modalTotal").textContent = total;
+
   // Cerrar panel carrito
   document.getElementById("panelCarrito").classList.remove("activo");
 
@@ -723,7 +728,7 @@ function confirmarEnvio(){
 <div id="modalConfirmacion" class="modal-overlay">
   <div class="modal">
     <h3>Confirmar pedido</h3>
-    <p>¿Deseas enviar tu pedido por WhatsApp?</p>
+    <p>¿Confirmar pedido por <strong>$<span id="modalTotal">0.00</span></strong>?</p>
     
     <div class="modal-buttons">
       <button onclick="cerrarModal()" class="btn-cancelar">Cancelar</button>
