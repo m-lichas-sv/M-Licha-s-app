@@ -695,11 +695,23 @@ window.onload = function(){
   botones.forEach(b => b.classList.remove("activo"));
 };
 function abrirModal(){
-  document.getElementById("modalConfirmacion").classList.add("active");
+
+  // Cerrar panel carrito
+  document.getElementById("panelCarrito").classList.remove("activo");
+
+  // Esperar animación y luego abrir modal
+  setTimeout(() => {
+    document.getElementById("modalConfirmacion").classList.add("active");
+  }, 300);
 }
 
 function cerrarModal(){
   document.getElementById("modalConfirmacion").classList.remove("active");
+
+  // Volver a abrir carrito si canceló
+  setTimeout(() => {
+    document.getElementById("panelCarrito").classList.add("activo");
+  }, 200);
 }
 
 function confirmarEnvio(){
