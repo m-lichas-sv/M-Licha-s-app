@@ -189,6 +189,36 @@ button{
   50%{ transform:scale(1.1); }
   100%{ transform:scale(1); }
 }
+
+/* PANEL DESLIZABLE */
+.panel-carrito{
+  position:fixed;
+  bottom:-100%;
+  left:0;
+  width:100%;
+  height:80%;
+  background:white;
+  box-shadow:0 -5px 20px rgba(0,0,0,0.2);
+  border-top-left-radius:20px;
+  border-top-right-radius:20px;
+  transition:bottom 0.4s ease;
+  z-index:2000;
+  padding:20px;
+  overflow-y:auto;
+}
+
+.panel-carrito.activo{
+  bottom:0;
+}
+
+.panel-contenido input{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+
 </style>
 </head>
 <body>
@@ -371,7 +401,21 @@ button{
 <div id="carritoFlotante" onclick="abrirCarrito()">
   🛒 <span id="totalCantidad">0</span> | $<span id="totalPrecio">0.00</span>
 </div>
+<div id="panelCarrito" class="panel-carrito">
+  <div class="panel-contenido">
+    <h2>Tu pedido</h2>
 
+    <div id="listaPedido"></div>
+
+    <p><strong>Total: $<span id="panelTotal">0.00</span></strong></p>
+
+    <input type="text" id="nombreCliente" placeholder="Tu nombre">
+    <input type="time" id="horaLlegada">
+
+    <button onclick="enviarPedido()">Enviar por WhatsApp</button>
+    <button onclick="cerrarPanel()">Cerrar</button>
+  </div>
+</div>
 <script>
 
 function mostrarCategoria(categoria, boton){
@@ -467,7 +511,53 @@ function actualizarCarrito(){
   }
 }
 function abrirCarrito(){
-  alert("Aquí luego pondremos el resumen del pedido 😎");
+  generarResumen();
+  document.getElementById("panelCarrito").classList.add("activo");
+}
+function cerrarPanel(){
+  document.getElementById("panelCarrito").classList.remove("activo");
+}
+
+function generarResumen(){
+  let productos = document.querySelectorAll(".producto");
+  let lista = document.getElementById("listaPedido");
+  let total = 0;
+
+  lista.innerHTML = "";
+
+  productos.forEach(p => {
+    let nombre = p.querySelector("h3").textContent;
+    let cantidad = parseInt(p.querySelector(".cantidad").textContent);
+    let precio = parseFloat(p.querySelector(".precio").textContent.replace("$",""));
+
+    if(cantidad > 0){
+      let subtotal = cantidad * precio;
+      total += subtotal;
+
+      lista.innerHTML += `
+        <p>${cantidad}x ${nombre} - $${subtotal.toFixed(2)}</p>
+      `;
+    }
+  });
+
+  document.getElementById("panelTotal").textContent = total.toFixed(2);
+}
+
+function enviarPedido(){
+  let nombre = document.getElementById("nombreCliente").value;
+  let hora = document.getElementById("horaLlegada").value;
+  let lista = document.getElementById("listaPedido").innerText;
+  let total = document.getElementById("panelTotal").textContent;
+
+  if(nombre === "" || hora === ""){
+    alert("Por favor completa tu nombre y hora de llegada.");
+    return;
+  }
+
+  let mensaje = `Pedido de ${nombre}%0A%0A${lista}%0ATotal: $${total}%0AHora de llegada: ${hora}`;
+
+  window.open(`https://wa.me/NUMERO_AQUI?text=${mensaje}`);
+}
 }
 /* OCULTAR TODO AL INICIO */
 window.onload = function(){
