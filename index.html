@@ -554,7 +554,12 @@ function enviarPedido(){
     return;
   }
 
-  let mensaje = `Pedido de ${nombre}%0A%0A${lista}%0ATotal: $${total}%0AHora de llegada: ${hora}`;
+  let mensaje = 
+  `🍽️ *Nuevo Pedido - M Licha’s*%0A%0A` +
+  `👤 Cliente: ${nombre}%0A` +
+  `🕒 Hora de llegada: ${hora}%0A%0A` +
+  `📋 Pedido:%0A${lista}%0A` +
+  `💰 Total: $${total}`;
 
   window.open(`https://wa.me/50379554663text=${mensaje}`);
 }
