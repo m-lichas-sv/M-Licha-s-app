@@ -4,25 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>M Licha’s</title>
-/* ANIMACIÓN SUAVE CATEGORÍAS */
-.producto{
-  background:white;
-  padding:15px;
-  border-radius:12px;
-  margin-bottom:15px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.08);
-
-  opacity:0;
-  transform:translateY(10px);
-  transition:opacity 0.4s ease, transform 0.4s ease;
-  display:none;
-}
-
-.producto.mostrar{
-  display:block;
-  opacity:1;
-  transform:translateY(0);
-}
 
 <style>
 
@@ -67,14 +48,24 @@ section{
   padding:20px;
 }
 
-/* PRODUCTOS */
+/* PRODUCTOS + ANIMACIÓN */
 .producto{
   background:white;
   padding:15px;
   border-radius:12px;
   margin-bottom:15px;
   box-shadow:0 4px 10px rgba(0,0,0,0.08);
-  transition:0.3s;
+
+  opacity:0;
+  transform:translateY(10px);
+  transition:opacity 0.4s ease, transform 0.4s ease;
+  display:none;
+}
+
+.producto.mostrar{
+  display:block;
+  opacity:1;
+  transform:translateY(0);
 }
 
 .producto h3{
@@ -235,7 +226,7 @@ button{
 </div>
 
 <!-- BEBIDAS -->
-<div class="producto bebidas" style="display:none;">
+<div class="producto bebidas"
   <h3>Natural zumo de naranja</h3>
   <p class="precio">$1.50</p>
   <div class="cantidad-control">
@@ -245,7 +236,7 @@ button{
   </div>
 </div>
 
-<div class="producto bebidas" style="display:none;">
+<div class="producto bebidas"
   <h3>Fresco natural del día</h3>
   <p class="precio">$1.50</p>
   <div class="cantidad-control">
@@ -255,7 +246,7 @@ button{
   </div>
 </div>
 
-<div class="producto bebidas" style="display:none;">
+<div class="producto bebidas"
   <h3>Balde pilsener/golden 6un</h3>
   <p class="precio">$8.50</p>
   <div class="cantidad-control">
@@ -265,7 +256,7 @@ button{
   </div>
 </div>
 
-<div class="producto bebidas" style="display:none;">
+<div class="producto bebidas"
   <h3>Balde regia/suprema 6un</h3>
   <p class="precio">$10.00</p>
   <div class="cantidad-control">
@@ -275,7 +266,7 @@ button{
   </div>
 </div>
 
-<div class="producto bebidas" style="display:none;">
+<div class="producto bebidas"
   <h3>Balde mixto pilsener y regia 6un</h3>
   <p class="precio">$9.50</p>
   <div class="cantidad-control">
@@ -286,7 +277,7 @@ button{
 </div>
 
 <!-- COCTELES -->
-<div class="producto cocteles" style="display:none;">
+<div class="producto cocteles"
   <h3>Cóctel de camarón</h3>
   <p class="precio">$7.00</p>
   <div class="cantidad-control">
@@ -296,7 +287,7 @@ button{
   </div>
 </div>
 
-<div class="producto cocteles" style="display:none;">
+<div class="producto cocteles"
   <h3>Cóctel de concha</h3>
   <p class="precio">$7.00</p>
   <div class="cantidad-control">
@@ -306,7 +297,7 @@ button{
   </div>
 </div>
 
-<div class="producto cocteles" style="display:none;">
+<div class="producto cocteles"
   <h3>Cóctel de camarón en salsa rosa</h3>
   <p class="precio">$7.00</p>
   <div class="cantidad-control">
@@ -316,7 +307,7 @@ button{
   </div>
 </div>
 
-<div class="producto cocteles" style="display:none;">
+<div class="producto cocteles" 
   <h3>Tostadas de camarón</h3>
   <p class="precio">$5.00</p>
   <div class="cantidad-control">
