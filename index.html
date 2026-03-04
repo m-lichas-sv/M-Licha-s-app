@@ -149,7 +149,7 @@ button{
 <h2>Menú</h2>
 
 <div class="menu-categorias">
-  <button onclick="mostrarCategoria('almuerzos', this)" class="activo">Almuerzos</button>
+ <button onclick="mostrarCategoria('almuerzos', this)">Almuerzos</button>
   <button onclick="mostrarCategoria('bebidas', this)">Bebidas</button>
   <button onclick="mostrarCategoria('cocteles', this)">Cócteles</button>
 </div>
@@ -263,7 +263,14 @@ function mostrarCupones(){
 function mostrarReservacion(){
   alert("📅 Para reservaciones escríbenos por WhatsApp.");
 }
+/* OCULTAR TODO AL INICIO */
+window.onload = function(){
+  let productos = document.querySelectorAll(".producto");
+  productos.forEach(p => p.style.display="none");
 
+  let botones = document.querySelectorAll(".menu-categorias button");
+  botones.forEach(b => b.classList.remove("activo"));
+};
 </script>
 
 </body>
