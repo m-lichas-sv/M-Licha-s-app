@@ -310,6 +310,30 @@ button{
 .btn-confirmar:hover{
   background:#c6781f;
 }
+#metodosPago{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  margin-bottom:15px;
+}
+
+#metodosPago label{
+  background:#f9f9f9;
+  padding:10px;
+  border-radius:10px;
+  cursor:pointer;
+  transition:0.2s ease;
+  border:1px solid #eee;
+}
+
+#metodosPago label:hover{
+  background:#fff3e0;
+  border-color:#d98928;
+}
+
+#metodosPago input{
+  margin-right:8px;
+}
 </style>
 </head>
 <body>
@@ -502,7 +526,24 @@ button{
 
     <input type="text" id="nombreCliente" placeholder="Tu nombre">
     <input type="time" id="horaLlegada">
+<h3>Método de pago</h3>
 
+<div id="metodosPago">
+  <label>
+    <input type="radio" name="pago" value="Efectivo">
+    Efectivo
+  </label>
+
+  <label>
+    <input type="radio" name="pago" value="Transferencia">
+    Transferencia
+  </label>
+
+  <label>
+    <input type="radio" name="pago" value="Tarjeta">
+    Tarjeta (+5.5%)
+  </label>
+</div>
    <button onclick="abrirModal()">Enviar por WhatsApp</button>
     <button onclick="cerrarPanel()">Cerrar</button>
   </div>
@@ -631,7 +672,15 @@ function generarResumen(){
     }
   });
 
-  document.getElementById("panelTotal").textContent = total.toFixed(2);
+  let totalFinal = total;
+
+let metodoSeleccionado = document.querySelector('input[name="pago"]:checked');
+
+if(metodoSeleccionado && metodoSeleccionado.value === "Tarjeta"){
+  totalFinal = total * 1.055;
+}
+
+document.getElementById("panelTotal").textContent = totalFinal.toFixed(2);
 }
 
 function enviarPedido(){
@@ -645,6 +694,14 @@ function enviarPedido(){
     alert("Por favor completa tu nombre y hora de llegada.");
     return;
   }
+  let metodoSeleccionado = document.querySelector('input[name="pago"]:checked');
+
+if(!metodoSeleccionado){
+  alert("Selecciona un método de pago.");
+  return;
+}
+
+let metodo = metodoSeleccionado.value;
 
   if(lista.trim() === ""){
     alert("Tu carrito está vacío.");
@@ -658,6 +715,7 @@ function enviarPedido(){
 
 Cliente: ${nombre}
 Hora de llegada: ${hora}
+Método de pago: ${metodo}
 
 Pedido:
 ${lista}
@@ -673,7 +731,8 @@ document.getElementById("listaPedido").innerHTML = "";
 document.getElementById("panelTotal").textContent = "0.00";
 document.getElementById("nombreCliente").value = "";
 document.getElementById("horaLlegada").value = "";
-
+let radios = document.querySelectorAll('input[name="pago"]');
+radios.forEach(r => r.checked = false);
 // Reiniciar cantidades visuales
 let productos = document.querySelectorAll(".producto");
 productos.forEach(p => {
