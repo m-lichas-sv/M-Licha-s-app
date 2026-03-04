@@ -544,6 +544,7 @@ function generarResumen(){
 }
 
 function enviarPedido(){
+
   let nombre = document.getElementById("nombreCliente").value;
   let hora = document.getElementById("horaLlegada").value;
   let lista = document.getElementById("listaPedido").innerText;
@@ -554,19 +555,40 @@ function enviarPedido(){
     return;
   }
 
-  let mensajeTexto = `Nuevo Pedido - M Licha’s
+  if(lista.trim() === ""){
+    alert("Tu carrito está vacío.");
+    return;
+  }
+
+  // Confirmación elegante
+  let confirmar = confirm(`¿Confirmar pedido por $${total}?`);
+
+  if(!confirmar){
+    return;
+  }
+
+  let mensajeTexto = 
+  `🍽️ Nuevo Pedido - M Licha’s
 
 Cliente: ${nombre}
-Hora: ${hora}
+Hora de llegada: ${hora}
 
 Pedido:
 ${lista}
 
 Total: $${total}`;
 
-let mensaje = encodeURIComponent(mensajeTexto);
+  let mensaje = encodeURIComponent(mensajeTexto);
 
-window.location.href = `https://wa.me/50379554663?text=${mensaje}`;
+  window.location.href = `https://wa.me/50379554663?text=${mensaje}`;
+
+  // 🔥 Limpiar carrito automáticamente
+  document.getElementById("listaPedido").innerHTML = "";
+  document.getElementById("panelTotal").textContent = "0.00";
+  document.getElementById("nombreCliente").value = "";
+  document.getElementById("horaLlegada").value = "";
+
+}
 
 /* OCULTAR TODO AL INICIO */
 window.onload = function(){
