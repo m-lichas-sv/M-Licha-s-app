@@ -334,6 +334,16 @@ button{
 #metodosPago input{
   margin-right:8px;
 }
+.nota-responsable{
+  font-size:12px;
+  color:#777;
+  margin:15px 0;
+  line-height:1.4;
+  background:#fff8f0;
+  padding:10px;
+  border-radius:10px;
+  border-left:4px solid #d98928;
+}
 </style>
 </head>
 <body>
@@ -544,6 +554,11 @@ button{
     Tarjeta (+5.5%)
   </label>
 </div>
+
+<p class="nota-responsable">
+  Te pedimos reservar y realizar tus pedidos de manera responsable. 
+  Los pedidos no retirados sin previo aviso podrán limitar futuras solicitudes.
+</p>
    <button onclick="abrirModal()">Enviar por WhatsApp</button>
     <button onclick="cerrarPanel()">Cerrar</button>
   </div>
@@ -733,6 +748,7 @@ document.getElementById("nombreCliente").value = "";
 document.getElementById("horaLlegada").value = "";
 let radios = document.querySelectorAll('input[name="pago"]');
 radios.forEach(r => r.checked = false);
+
 // Reiniciar cantidades visuales
 let productos = document.querySelectorAll(".producto");
 productos.forEach(p => {
