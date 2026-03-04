@@ -323,6 +323,22 @@ button{
 
 function mostrarCategoria(categoria, boton){
 
+  // Si el botón ya está activo → cerrar todo
+  if(boton.classList.contains("activo")){
+    
+    let productos = document.querySelectorAll(".producto");
+    productos.forEach(p => {
+      p.classList.remove("mostrar");
+      setTimeout(() => {
+        p.style.display="none";
+      }, 300);
+    });
+
+    boton.classList.remove("activo");
+    return;
+  }
+
+  // Cerrar todo primero
   let productos = document.querySelectorAll(".producto");
   productos.forEach(p => {
     p.classList.remove("mostrar");
@@ -331,6 +347,11 @@ function mostrarCategoria(categoria, boton){
     }, 300);
   });
 
+  // Quitar estado activo de todos
+  let botones = document.querySelectorAll(".menu-categorias button");
+  botones.forEach(b => b.classList.remove("activo"));
+
+  // Esperar animación y mostrar nuevos
   setTimeout(() => {
     let seleccionados = document.querySelectorAll("." + categoria);
     seleccionados.forEach(p => {
@@ -340,9 +361,6 @@ function mostrarCategoria(categoria, boton){
       }, 50);
     });
   }, 300);
-
-  let botones = document.querySelectorAll(".menu-categorias button");
-  botones.forEach(b => b.classList.remove("activo"));
 
   boton.classList.add("activo");
 }
