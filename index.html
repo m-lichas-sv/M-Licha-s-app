@@ -258,7 +258,7 @@ border-radius:25px 25px 0 0;
   border:1px solid #ccc;
 }
 /* PRODUCTO DESTACADO */
-.destacado{
+.producto.destacado{
   border:2px solid #d98928;
   background:linear-gradient(145deg,#fffaf2,#ffffff);
   box-shadow:0 10px 25px rgba(217,137,40,0.25);
@@ -266,7 +266,7 @@ border-radius:25px 25px 0 0;
 }
 
 /* etiqueta recomendada */
-.destacado::before{
+.producto.destacado::before{
   content:"⭐ Más pedido";
   position:absolute;
   top:-10px;
@@ -543,7 +543,7 @@ border-radius:25px 25px 0 0;
 </div>
 
 <div class="producto baldes destacado-balde">
-  <h3>🔥 Balde pilsener/golden 6un</h3> 
+  <h3>Balde pilsener/golden 6un</h3> 
   <p class="precio">$8.50</p>
   <div class="cantidad-control">
     <button onclick="cambiarCantidad(this, -1)">-</button>
@@ -800,6 +800,7 @@ if(nombre === "" || hora === ""){
   alert("Por favor completa tu nombre y hora de llegada.");
   return;
 }
+let partes = hora.split(":");
 let horas = parseInt(partes[0]);
 let minutos = partes[1];
 
