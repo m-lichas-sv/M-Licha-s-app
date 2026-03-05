@@ -257,6 +257,26 @@ border-radius:25px 25px 0 0;
   border-radius:8px;
   border:1px solid #ccc;
 }
+/* PRODUCTO DESTACADO */
+
+.producto.destacado{
+  border:2px solid #f4d35e;
+  position:relative;
+}
+
+.producto.destacado::before{
+  content:"⭐ Plato estrella";
+  position:absolute;
+  top:-10px;
+  left:15px;
+  background:#f4d35e;
+  color:#333;
+  font-size:12px;
+  font-weight:bold;
+  padding:4px 10px;
+  border-radius:12px;
+  box-shadow:0 3px 8px rgba(0,0,0,0.15);
+}
 /* ===== MODAL PREMIUM ===== */
 
 .modal-overlay{
@@ -412,8 +432,11 @@ border-radius:25px 25px 0 0;
 
 <div class="menu-categorias">
  <button onclick="mostrarCategoria('almuerzos', this)">Almuerzos</button>
-  <button onclick="mostrarCategoria('bebidas', this)">Bebidas</button>
-  <button onclick="mostrarCategoria('cocteles', this)">Cócteles</button>
+ <button onclick="mostrarCategoria('bebidas', this)">Bebidas</button>
+ <button onclick="mostrarCategoria('cocteles', this)">Cócteles</button>
+ <button onclick="mostrarCategoria('baldes', this)">Baldes y cervezas</button>
+ <button onclick="mostrarCategoria('bocas', this)">Bocas</button>
+ <button onclick="mostrarCategoria('hamburguesas', this)">Hamburguesas</button>
 </div>
 
 <!-- ALMUERZOS -->
@@ -437,7 +460,7 @@ border-radius:25px 25px 0 0;
   </div>
 </div>
 
-<div class="producto almuerzos">
+<div class="producto almuerzos destacado">
   <h3>Sopa de gallina</h3>
   <p class="precio">$5.00</p>
   <div class="cantidad-control">
