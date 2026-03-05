@@ -328,13 +328,21 @@ button{
 }
 
 
+#metodosPago{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  margin-bottom:12px;
+}
+
 #metodosPago label{
   background:#f9f9f9;
-  padding:10px;
-  border-radius:10px;
+  padding:8px 10px;
+  border-radius:8px;
   cursor:pointer;
   transition:0.2s ease;
   border:1px solid #eee;
+  font-size:14px;
 }
 
 #metodosPago label:hover{
@@ -343,7 +351,17 @@ button{
 }
 
 #metodosPago input{
-  margin-right:8px;
+  margin-right:6px;
+  transform:scale(0.9);
+}
+.input-compacto{
+  padding:10px;
+  border-radius:10px;
+  border:1px solid #ddd;
+  font-size:14px;
+  width:100%;
+  margin-bottom:10px;
+}
 }
 
 </style>
@@ -536,8 +554,13 @@ button{
 
     <p><strong>Total: $<span id="panelTotal">0.00</span></strong></p>
 
-    <input type="text" id="nombreCliente" placeholder="Tu nombre">
-    <input type="time" id="horaLlegada">
+  <input type="text" id="nombreCliente" class="input-compacto">
+<input type="time" 
+       id="horaLlegada" 
+       class="input-compacto"
+       min="11:00" 
+       max="19:00" 
+       required>
 <h3>Método de pago</h3>
 
 <div id="metodosPago">
