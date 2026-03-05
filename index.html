@@ -258,26 +258,6 @@ border-radius:25px 25px 0 0;
   border:1px solid #ccc;
 }
 /* PRODUCTO DESTACADO */
-
-.producto.destacado{
-  border:2px solid #f4d35e;
-  position:relative;
-}
-
-.producto.destacado::before{
-  content:"⭐ Plato estrella";
-  position:absolute;
-  top:-10px;
-  left:15px;
-  background:#f4d35e;
-  color:#333;
-  font-size:12px;
-  font-weight:bold;
-  padding:4px 10px;
-  border-radius:12px;
-  box-shadow:0 3px 8px rgba(0,0,0,0.15);
-}
-/* PRODUCTO DESTACADO */
 .destacado{
   border:2px solid #d98928;
   background:linear-gradient(145deg,#fffaf2,#ffffff);
@@ -794,9 +774,12 @@ document.getElementById("panelTotal").textContent = totalFinal.toFixed(2);
 function enviarPedido(){
 
   let nombre = document.getElementById("nombreCliente").value;
-  let hora = document.getElementById("horaLlegada").value;
+let hora = document.getElementById("horaLlegada").value;
 
-let partes = hora.split(":");
+if(nombre === "" || hora === ""){
+  alert("Por favor completa tu nombre y hora de llegada.");
+  return;
+}
 let horas = parseInt(partes[0]);
 let minutos = partes[1];
 
