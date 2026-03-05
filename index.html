@@ -793,7 +793,11 @@ function abrirModal(){
   document.getElementById("panelCarrito").classList.remove("activo");
 
   // Esperar animación y luego abrir modal
-  setTimeout(() => {
+ if(parseFloat(document.getElementById("panelTotal").textContent) === 0){
+  alert("Tu carrito está vacío.");
+  return;
+}
+   setTimeout(() => {
     document.getElementById("modalConfirmacion").classList.add("active");
   }, 300);
 }
