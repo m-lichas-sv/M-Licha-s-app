@@ -798,9 +798,12 @@ function cerrarModal(){
 }
 
 function confirmarEnvio(){
-  cerrarModal();
-  enviarPedido(); // usa tu función actual de WhatsApp
+  document.getElementById("modalConfirmacion").classList.remove("active");
+  enviarPedido();
 }
+document.querySelectorAll('input[name="pago"]').forEach(radio => {
+  radio.addEventListener("change", generarResumen);
+});
 </script>
 <!-- MODAL CONFIRMAR PEDIDO -->
 <div id="modalConfirmacion" class="modal-overlay">
