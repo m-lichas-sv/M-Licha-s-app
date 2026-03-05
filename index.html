@@ -577,7 +577,7 @@ border-radius:25px 25px 0 0;
 
   <div class="cantidad-control">
     <button onclick="cambiarCantidad(this,-1)">-</button>
-    <span>0</span>
+    <span class="cantidad">0</span>
     <button onclick="cambiarCantidad(this,1)">+</button>
   </div>
 
@@ -592,7 +592,7 @@ border-radius:25px 25px 0 0;
 
   <div class="cantidad-control">
     <button onclick="cambiarCantidad(this,-1)">-</button>
-    <span>0</span>
+   <span class="cantidad">0</span>
     <button onclick="cambiarCantidad(this,1)">+</button>
   </div>
 
@@ -601,17 +601,19 @@ border-radius:25px 25px 0 0;
   </button>
 </div>
 
-<div class="producto">
-  <h2>🍺 Baldes para compartir</h2>
+<div class="producto baldes">
+ <h2>🍺 Baldes para compartir</h2>
+
+<div class="producto baldes destacado-balde">
   <h3>Balde mixto pilsener y regia 8un</h3>
-  <div class="producto destacado-balde">
-  <p>$12.50</p>
+  <p class="precio">$12.50</p>
 
   <div class="cantidad-control">
     <button onclick="cambiarCantidad(this,-1)">-</button>
-    <span>0</span>
+    <span class="cantidad">0</span>
     <button onclick="cambiarCantidad(this,1)">+</button>
   </div>
+</div>
 
   <button onclick="agregar('Balde mixto pilsener y regia 8un',12.50,this)">
     Agregar
