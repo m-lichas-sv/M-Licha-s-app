@@ -277,6 +277,27 @@ border-radius:25px 25px 0 0;
   border-radius:12px;
   box-shadow:0 3px 8px rgba(0,0,0,0.15);
 }
+/* PRODUCTO DESTACADO */
+.destacado{
+  border:2px solid #d98928;
+  background:linear-gradient(145deg,#fffaf2,#ffffff);
+  box-shadow:0 10px 25px rgba(217,137,40,0.25);
+  position:relative;
+}
+
+/* etiqueta recomendada */
+.destacado::before{
+  content:"⭐ Más pedido";
+  position:absolute;
+  top:-10px;
+  left:15px;
+  background:#d98928;
+  color:white;
+  padding:4px 10px;
+  border-radius:8px;
+  font-size:12px;
+  font-weight:bold;
+}
 /* ===== MODAL PREMIUM ===== */
 
 .modal-overlay{
