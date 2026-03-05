@@ -320,13 +320,6 @@ button{
   border-radius:10px;
   border-left:4px solid #d98928;
 }
-#metodosPago{
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-  margin-bottom:15px;
-}
-
 
 #metodosPago{
   display:flex;
@@ -361,7 +354,6 @@ button{
   font-size:14px;
   width:100%;
   margin-bottom:10px;
-}
 }
 
 </style>
@@ -554,13 +546,8 @@ button{
 
     <p><strong>Total: $<span id="panelTotal">0.00</span></strong></p>
 
-  <input type="text" id="nombreCliente" class="input-compacto">
-<input type="time" 
-       id="horaLlegada" 
-       class="input-compacto"
-       min="11:00" 
-       max="19:00" 
-       required>
+ <input type="text" id="nombreCliente" class="input-compacto" placeholder="Tu nombre">
+<input type="time" id="horaLlegada" class="input-compacto" min="11:00" max="19:00" required>
 <h3>Método de pago</h3>
 
 <div id="metodosPago">
