@@ -278,6 +278,26 @@ border-radius:25px 25px 0 0;
   font-size:12px;
   font-weight:bold;
 }
+/* DESTACADO BALDES */
+.producto.destacado-balde{
+  border:2px solid #d98928;
+  background:linear-gradient(145deg,#fffaf2,#ffffff);
+  box-shadow:0 10px 25px rgba(217,137,40,0.25);
+  position:relative;
+}
+
+.producto.destacado-balde::before{
+  content:"🍺 Más vendido";
+  position:absolute;
+  top:-10px;
+  left:15px;
+  background:#d98928;
+  color:white;
+  padding:4px 10px;
+  border-radius:8px;
+  font-size:12px;
+  font-weight:bold;
+}
 /* ===== MODAL PREMIUM ===== */
 
 .modal-overlay{
@@ -522,7 +542,7 @@ border-radius:25px 25px 0 0;
   </div>
 </div>
 
-<div class="producto baldes destacado">
+<div class="producto baldes destacado-balde">
   <h3>🔥 Balde pilsener/golden 6un</h3> 
   <p class="precio">$8.50</p>
   <div class="cantidad-control">
