@@ -125,6 +125,20 @@ button{
   border-radius:8px;
   cursor:pointer;
 }
+.btn-whatsapp{
+  background:#25D366;
+  color:white;
+  border:none;
+  padding:12px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+  transition:0.2s ease;
+}
+
+.btn-whatsapp:hover{
+  background:#1ebe5d;
+}
 
 /* CATEGORÍAS */
 .menu-categorias{
@@ -355,6 +369,12 @@ button{
   width:80%;
   max-width:260px;
   margin-bottom:10px;
+  }
+  .label-input{
+  display:block;
+  margin-top:10px;
+  margin-bottom:4px;
+  font-weight:bold;
 }
 
 </style>
@@ -548,7 +568,7 @@ button{
     <p><strong>Total: $<span id="panelTotal">0.00</span></strong></p>
 
  <input type="text" id="nombreCliente" class="input-compacto" placeholder="Tu nombre">
-<label for="horaLlegada"><strong>Hora de llegada</strong></label>
+<label for="horaLlegada" class="label-input">Hora de llegada</label>
 <input type="time" id="horaLlegada" class="input-compacto" min="11:00" max="19:00" required>
 <h3>Método de pago</h3>
 
@@ -573,7 +593,7 @@ button{
   Te pedimos reservar y realizar tus pedidos de manera responsable. 
   Los pedidos no retirados sin previo aviso podrán limitar futuras solicitudes.
 </p>
-   <button onclick="abrirModal()">Enviar por WhatsApp</button>
+   <button class="btn-whatsapp" onclick="abrirModal()">Enviar por WhatsApp</button>
     <button onclick="cerrarPanel()">Cerrar</button>
   </div>
 </div>
