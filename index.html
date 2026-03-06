@@ -1033,14 +1033,21 @@ function mostrarCategoria(categoria, boton){
 
   // Esperar animación y mostrar nuevos
   setTimeout(() => {
-    let productos = document.querySelectorAll(".producto, .titulo-categoria, .separador-menu");
-    seleccionados.forEach(p => {
-      p.style.display="block";
-      setTimeout(() => {
-        p.classList.add("mostrar");
-      }, 50);
-    });
-  }, 200);
+
+  let seleccionados = document.querySelectorAll(
+    ".producto." + categoria +
+    ", .titulo-categoria." + categoria +
+    ", .separador-menu." + categoria
+  );
+
+  seleccionados.forEach(p => {
+    p.style.display="block";
+    setTimeout(() => {
+      p.classList.add("mostrar");
+    }, 50);
+  });
+
+}, 200);
 
   boton.classList.add("activo");
 }
