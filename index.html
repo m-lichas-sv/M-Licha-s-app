@@ -636,7 +636,7 @@ border-radius:25px 25px 0 0;
   </div>
 </div>
 
-<h2 class="titulo-categoria baldes">🍺 Cervezas por unidad</h2>
+<h2 class="titulo-categoria baldes producto">🍺 Cervezas por unidad</h2>
 
 <div class="grid-cervezas">
 
@@ -856,7 +856,10 @@ function actualizarCarrito(){
   let totalPrecio = 0;
 
   productos.forEach(p => {
-    let cantidad = parseInt(p.querySelector(".cantidad").textContent);
+    let cantidadElemento = p.querySelector(".cantidad");
+if(!cantidadElemento) return;
+
+let cantidad = parseInt(cantidadElemento.textContent);
     let precioTexto = p.querySelector(".precio").textContent.replace("$","");
     let precio = parseFloat(precioTexto);
 
