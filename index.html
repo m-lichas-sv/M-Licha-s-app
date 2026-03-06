@@ -1273,6 +1273,24 @@ function confirmarEnvio(){
 document.querySelectorAll('input[name="pago"]').forEach(radio => {
   radio.addEventListener("change", generarResumen);
 });
+function ubicacion(){
+
+  let mensaje = confirm(
+`📍 M Licha’s
+
+Encuentra nuestra ubicación en Google Maps.
+
+⭐ Si te gustó nuestra comida,
+¡tu reseña nos ayuda muchísimo!
+
+¿Deseas abrir la ubicación ahora?`
+  );
+
+  if(mensaje){
+    window.open("https://maps.app.goo.gl/Cht6T1Y4MsUJMeQN7?g_st=ic", "_blank");
+  }
+
+}
 </script>
 <!-- MODAL CONFIRMAR PEDIDO -->
 <div id="modalConfirmacion" class="modal-overlay">
