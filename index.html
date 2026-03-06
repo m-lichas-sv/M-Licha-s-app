@@ -275,6 +275,26 @@ border-radius:25px 25px 0 0;
   font-size:12px;
   font-weight:bold;
 }
+/* PRODUCTO MÁS VENDIDO */
+.destacado-vendido{
+border:2px solid #2e7d32;
+background:linear-gradient(145deg,#f1fff3,#ffffff);
+box-shadow:0 10px 25px rgba(46,125,50,0.25);
+position:relative;
+}
+
+.destacado-vendido::before{
+content:"🔥 Más vendido";
+position:absolute;
+top:-10px;
+left:15px;
+background:#2e7d32;
+color:white;
+padding:4px 10px;
+border-radius:8px;
+font-size:12px;
+font-weight:bold;
+}
 /* DESTACADO BALDES */
 .producto.destacado-balde{
   border:2px solid #d98928;
@@ -741,6 +761,90 @@ border-radius:25px 25px 0 0;
     <span class="cantidad">0</span>
     <button onclick="cambiarCantidad(this, 1)">+</button>
   </div>
+</div>
+<!-- BOCAS -->
+
+<div class="producto bocas">
+<h3>Fajitas de tortilla</h3>
+<p class="precio">$2.00</p>
+
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+
+
+<div class="producto bocas destacado">
+<h3>Caldito de gallina</h3>
+<p class="precio">$2.50</p>
+
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+
+
+<div class="producto bocas">
+<h3>De Laguna (chimbolo)</h3>
+<p class="precio">$3.00</p>
+
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+
+
+<div class="producto bocas">
+<h3>Aros de cebolla</h3>
+<p class="precio">$3.75</p>
+
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+
+
+<div class="producto bocas">
+<h3>Carnita picada</h3>
+<p class="precio">$4.00</p>
+
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+
+
+<div class="producto bocas">
+<h3>Camaroncito</h3>
+<p class="precio">$5.00</p>
+
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+
+
+<div class="producto bocas destacado-vendido">
+<h3>Plato Licha’s</h3>
+<p class="precio">$5.50</p>
+
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
 </div>
 
 </section>
