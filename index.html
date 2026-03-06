@@ -528,7 +528,7 @@ font-weight:bold;
 <img src="header.jpg" class="header-img">
 
 <div class="header-botones">
-<button onclick="ubicacion()">📍 Ubicación</button>
+<button onclick="mostrarUbicacion()">📍 Ubicación</button>
 <button onclick="cupones()">🎟 Cupones</button>
 <button onclick="reservar()">📅 Reservación</button>
 </div>
@@ -1291,6 +1291,17 @@ Encuentra nuestra ubicación en Google Maps.
   }
 
 }
+function mostrarUbicacion(){
+  document.getElementById("modalUbicacion").classList.add("active");
+}
+
+function cerrarUbicacion(){
+  document.getElementById("modalUbicacion").classList.remove("active");
+}
+
+function abrirMaps(){
+  window.open("https://maps.app.goo.gl/Cht6T1Y4MsUJMeQN7?g_st=ic","_blank");
+}
 </script>
 <!-- MODAL CONFIRMAR PEDIDO -->
 <div id="modalConfirmacion" class="modal-overlay">
@@ -1302,6 +1313,26 @@ Encuentra nuestra ubicación en Google Maps.
       <button onclick="cerrarModal()" class="btn-cancelar">Cancelar</button>
       <button onclick="confirmarEnvio()" class="btn-confirmar">Enviar</button>
     </div>
+  </div>
+</div>
+<div id="modalUbicacion" class="modal-overlay">
+  <div class="modal">
+    <h3>📍 Encuéntranos en Maps</h3>
+
+    <p>
+      Estamos disponibles en Google Maps para que puedas llegar fácilmente.
+    </p>
+
+    <p class="nota-responsable">
+      ⭐ Si disfrutaste tu visita en <b>M Licha’s</b>, 
+      tu reseña nos ayuda mucho a seguir creciendo.
+    </p>
+
+    <div class="modal-buttons">
+      <button class="btn-cancelar" onclick="cerrarUbicacion()">Cerrar</button>
+      <button class="btn-confirmar" onclick="abrirMaps()">Abrir Maps</button>
+    </div>
+
   </div>
 </div>
 </body>
