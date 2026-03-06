@@ -518,26 +518,44 @@ padding:10px 14px;
 border-radius:8px;
 font-weight:bold;
 }
-/* BANNER PROMOCIÓN */
-.promo-banner{
-  background:linear-gradient(90deg,#d98928,#f4a640);
-  color:white;
-  text-align:center;
-  padding:12px;
-  border-radius:12px;
-  font-weight:bold;
-  margin-bottom:15px;
-  box-shadow:0 6px 15px rgba(0,0,0,0.15);
-  animation:brillar 3s infinite alternate;
+/* CARRUSEL PROMOCIONES */
+
+.carrusel{
+  width:100%;
+  overflow:hidden;
+  border-radius:18px;
+  margin-bottom:20px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
 }
 
-@keyframes brillar{
-  from{
-    transform:scale(1);
-  }
-  to{
-    transform:scale(1.02);
-  }
+.slides{
+  display:flex;
+  width:400%;
+  animation:slideAuto 16s infinite;
+}
+
+.slides img{
+  width:100%;
+  height:170px;
+  object-fit:cover;
+  flex-shrink:0;
+}
+
+@keyframes slideAuto{
+
+  0%{transform:translateX(0);}
+  20%{transform:translateX(0);}
+
+  25%{transform:translateX(-100%);}
+  45%{transform:translateX(-100%);}
+
+  50%{transform:translateX(-200%);}
+  70%{transform:translateX(-200%);}
+
+  75%{transform:translateX(-300%);}
+  95%{transform:translateX(-300%);}
+
+  100%{transform:translateX(0);}
 }
 </style>
 </head>
@@ -559,8 +577,13 @@ font-weight:bold;
 
 <section id="paginaInicio" class="menu">
   
-<div class="promo-banner">
-  🔥 PROMO DEL DÍA — Cóctel de camarón $6.50
+<div class="carrusel">
+  <div class="slides">
+    <img src="promo1.jpg">
+    <img src="promo2.jpg">
+    <img src="promo3.jpg">
+    <img src="promo4.jpg">
+  </div>
 </div>
 <h2>Menú</h2>
 
