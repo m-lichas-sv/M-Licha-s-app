@@ -1226,9 +1226,16 @@ cerrarPanel();
 
 /* OCULTAR TODO AL INICIO */
 window.onload = function(){
-  let productos = document.querySelectorAll(".producto");
-  productos.forEach(p => p.style.display="none");
 
+  let elementos = document.querySelectorAll(
+    ".producto, .titulo-categoria, .separador-menu"
+  );
+
+  elementos.forEach(e => e.style.display = "none");
+
+  let botones = document.querySelectorAll(".menu-categorias button");
+  botones.forEach(b => b.classList.remove("activo"));
+};
   let botones = document.querySelectorAll(".menu-categorias button");
   botones.forEach(b => b.classList.remove("activo"));
 };
