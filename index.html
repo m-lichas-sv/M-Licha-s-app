@@ -295,6 +295,26 @@ border-radius:25px 25px 0 0;
   font-size:12px;
   font-weight:bold;
 }
+/* DESTACADO CÓCTEL */
+.producto.destacado-coctel{
+  border:2px solid #ff7b54;
+  background:linear-gradient(145deg,#fff6f2,#ffffff);
+  box-shadow:0 10px 25px rgba(255,123,84,0.25);
+  position:relative;
+}
+
+.producto.destacado-coctel::before{
+  content:"🍤 Más pedido";
+  position:absolute;
+  top:-10px;
+  left:15px;
+  background:#ff7b54;
+  color:white;
+  padding:4px 10px;
+  border-radius:8px;
+  font-size:12px;
+  font-weight:bold;
+}
 /* ===== MODAL PREMIUM ===== */
 
 .modal-overlay{
@@ -607,7 +627,7 @@ border-radius:25px 25px 0 0;
 
   
 <!-- COCTELES -->
-<div class="producto cocteles">
+<div class="producto cocteles destacado-coctel">
   <h3>Cóctel de camarón</h3>
   <p class="precio">$7.00</p>
   <div class="cantidad-control">
