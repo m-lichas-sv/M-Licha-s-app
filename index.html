@@ -315,6 +315,17 @@ border-radius:25px 25px 0 0;
   font-size:12px;
   font-weight:bold;
 }
+/* CERvEZAS EN DOS COLUMNAS */
+.grid-cervezas{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.grid-cervezas .producto{
+  padding:12px;
+  margin-bottom:0;
+}
 /* ===== MODAL PREMIUM ===== */
 
 .modal-overlay{
@@ -627,64 +638,38 @@ border-radius:25px 25px 0 0;
 
 <h2 class="titulo-categoria baldes producto">🍺 Cervezas por unidad</h2>
 
+<div class="grid-cervezas">
+
 <div class="producto baldes">
-  <h3>Pilsener pequeña</h3>
-  <p class="precio">$1.30</p>
-  <div class="cantidad-control">
-    <button onclick="cambiarCantidad(this,-1)">-</button>
-    <span class="cantidad">0</span>
-    <button onclick="cambiarCantidad(this,1)">+</button>
-  </div>
+<p>Pilsener pequeña</p>
+<span>$1.30</span>
 </div>
 
 <div class="producto baldes">
-  <h3>Golden pequeña</h3>
-  <p class="precio">$1.30</p>
-  <div class="cantidad-control">
-    <button onclick="cambiarCantidad(this,-1)">-</button>
-    <span class="cantidad">0</span>
-    <button onclick="cambiarCantidad(this,1)">+</button>
-  </div>
+<p>Golden pequeña</p>
+<span>$1.30</span>
 </div>
 
 <div class="producto baldes">
-  <h3>Golden extra pequeña</h3>
-  <p class="precio">$1.30</p>
-  <div class="cantidad-control">
-    <button onclick="cambiarCantidad(this,-1)">-</button>
-    <span class="cantidad">0</span>
-    <button onclick="cambiarCantidad(this,1)">+</button>
-  </div>
+<p>Golden extra pequeña</p>
+<span>$1.30</span>
 </div>
 
 <div class="producto baldes">
-  <h3>Coronita</h3>
-  <p class="precio">$1.30</p>
-  <div class="cantidad-control">
-    <button onclick="cambiarCantidad(this,-1)">-</button>
-    <span class="cantidad">0</span>
-    <button onclick="cambiarCantidad(this,1)">+</button>
-  </div>
+<p>Coronita</p>
+<span>$1.30</span>
 </div>
 
 <div class="producto baldes">
-  <h3>Regia pequeña</h3>
-  <p class="precio">$1.50</p>
-  <div class="cantidad-control">
-    <button onclick="cambiarCantidad(this,-1)">-</button>
-    <span class="cantidad">0</span>
-    <button onclick="cambiarCantidad(this,1)">+</button>
-  </div>
+<p>Regia pequeña</p>
+<span>$1.50</span>
 </div>
 
 <div class="producto baldes">
-  <h3>Suprema</h3>
-  <p class="precio">$1.50</p>
-  <div class="cantidad-control">
-    <button onclick="cambiarCantidad(this,-1)">-</button>
-    <span class="cantidad">0</span>
-    <button onclick="cambiarCantidad(this,1)">+</button>
-  </div>
+<p>Suprema</p>
+<span>$1.50</span>
+</div>
+
 </div>
   
 <!-- COCTELES -->
