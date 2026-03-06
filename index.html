@@ -518,6 +518,27 @@ padding:10px 14px;
 border-radius:8px;
 font-weight:bold;
 }
+/* BANNER PROMOCIÓN */
+.promo-banner{
+  background:linear-gradient(90deg,#d98928,#f4a640);
+  color:white;
+  text-align:center;
+  padding:12px;
+  border-radius:12px;
+  font-weight:bold;
+  margin-bottom:15px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.15);
+  animation:brillar 3s infinite alternate;
+}
+
+@keyframes brillar{
+  from{
+    transform:scale(1);
+  }
+  to{
+    transform:scale(1.02);
+  }
+}
 </style>
 </head>
 <body>
@@ -537,7 +558,10 @@ font-weight:bold;
 </header>
 
 <section id="paginaInicio" class="menu">
-
+  
+<div class="promo-banner">
+  🔥 PROMO DEL DÍA — Cóctel de camarón $6.50
+</div>
 <h2>Menú</h2>
 
 <div class="menu-categorias">
