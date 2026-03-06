@@ -491,13 +491,51 @@ color:#d98928;
   margin:25px 0 10px 0;
   color:#d98928;
 }
+.header-app{
+width:100%;
+text-align:center;
+background:black;
+}
 
+.header-img{
+width:100%;
+max-height:200px;
+object-fit:cover;
+display:block;
+}
+
+.header-botones{
+display:flex;
+justify-content:center;
+gap:10px;
+padding:10px;
+background:black;
+}
+
+.header-botones button{
+background:#d98928;
+color:white;
+border:none;
+padding:10px 14px;
+border-radius:8px;
+font-weight:bold;
+}
 </style>
 </head>
 <body>
 
 <header>
-  <h1>M Licha’s</h1>
+ <div class="header-app">
+
+<img src="header.jpg" class="header-img">
+
+<div class="header-botones">
+<button onclick="ubicacion()">📍 Ubicación</button>
+<button onclick="cupones()">🎟 Cupones</button>
+<button onclick="reservar()">📅 Reservación</button>
+</div>
+
+</div>
 
   <div class="header-buttons">
     <a class="header-btn" href="https://maps.google.com" target="_blank">📍 Maps</a>
