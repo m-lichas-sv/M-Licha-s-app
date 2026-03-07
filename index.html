@@ -376,6 +376,12 @@ font-weight:bold;
   font-size:14px;
   letter-spacing:1px;
 }
+.separador-menu{
+text-align:center;
+font-weight:bold;
+margin:20px 0;
+color:#d98928;
+}
 /* ===== MODAL PREMIUM ===== */
 
 .modal-overlay{
@@ -617,10 +623,19 @@ font-weight:bold;
 
 <div class="menu-categorias">
 
-categorias">
+<button onclick="mostrarCategoria('almuerzos', this)">🍲 Almuerzos</button>
+
+<button onclick="mostrarCategoria('bebidas', this)">🥤 Bebidas</button>
+
+<button onclick="mostrarCategoria('cocteles', this)">🍤 Cócteles</button>
+
+<button onclick="mostrarCategoria('baldes', this)">🍺 Baldes</button>
+
+<button onclick="mostrarCategoria('bocas', this)">🍟 Bocas</button>
+
+<button onclick="mostrarCategoria('hamburguesas', this)">🍔 Hamburguesas</button>
 
 </div>
-
 <!-- ALMUERZOS -->
 <div class="producto almuerzos">
   <h3>Carne asada</h3>
