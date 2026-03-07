@@ -44,7 +44,7 @@ header{
 
 /* SECCIONES */
 section{
-  padding:20px;
+  padding:10px 20px 20px 20px;
   background:rgba(255,255,255,0.92);
   border-radius:20px 20px 0 0;
 }
@@ -144,6 +144,17 @@ button{
   margin-bottom:15px;
   scroll-snap-type:x mandatory;
 }
+.fondo-menu{
+background:
+linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.88)),
+url("fondo-menu.png");
+
+background-size:220px;
+background-repeat:repeat;
+padding:20px;
+border-radius:20px;
+margin-top:15px;
+}
 
 .menu-categorias::-webkit-scrollbar{
   display:none;
@@ -172,14 +183,6 @@ button{
 }
 .menu{
 padding:30px 20px;
-
-background:
-linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.88)),
-url("fondo-menu.png");
-
-background-size:220px;
-background-repeat:repeat;
-
 border-radius:25px 25px 0 0;
 }
 
@@ -622,7 +625,7 @@ font-weight:bold;
 </div>
 
 <div class="menu-categorias">
-
+<div class="fondo-menu">
 <button onclick="mostrarCategoria('almuerzos', this)">🍲 Almuerzos</button>
 
 <button onclick="mostrarCategoria('bebidas', this)">🥤 Bebidas</button>
@@ -1042,6 +1045,7 @@ font-weight:bold;
 <button onclick="cambiarCantidad(this,-1)">-</button>
 <span class="cantidad">0</span>
 <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
 </div>
 </div>
 </section>
