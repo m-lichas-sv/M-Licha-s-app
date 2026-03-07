@@ -350,11 +350,31 @@ font-weight:bold;
   padding:12px;
   margin-bottom:0;
 }
-.separador-menu{
-font-size:18px;
-font-weight:bold;
-margin:25px 0 10px 0;
-color:#d98928;
+.separador-menu-principal{
+  display:flex;
+  align-items:center;
+  text-align:center;
+  margin:20px 0;
+}
+
+.separador-menu-principal::before,
+.separador-menu-principal::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:linear-gradient(to right, transparent, #d98928);
+}
+
+.separador-menu-principal::after{
+  background:linear-gradient(to left, transparent, #d98928);
+}
+
+.separador-menu-principal span{
+  padding:0 12px;
+  font-weight:bold;
+  color:#d98928;
+  font-size:14px;
+  letter-spacing:1px;
 }
 /* ===== MODAL PREMIUM ===== */
 
@@ -590,6 +610,9 @@ font-weight:bold;
     <img src="promo3.jpg">
     <img src="promo4.jpg">
   </div>
+</div>
+<div class="separador-menu-principal">
+  <span>MENÚ</span>
 </div>
 <h2>Menú</h2>
 
