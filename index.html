@@ -138,30 +138,32 @@ button{
 /* CATEGORÍAS */
 .menu-categorias{
   display:flex;
-  justify-content:center;
-  gap:12px;
-  margin:20px 0;
-  flex-wrap:wrap;
+  gap:10px;
+  overflow-x:auto;
+  padding:10px 5px;
+  margin-bottom:15px;
+  scroll-snap-type:x mandatory;
+}
+
+.menu-categorias::-webkit-scrollbar{
+  display:none;
 }
 
 .menu-categorias button{
-  background:#f4d35e;
-  color:#333;
+  flex:0 0 auto;
+  padding:10px 16px;
   border:none;
-  padding:10px 18px;
-  border-radius:20px;
+  border-radius:25px;
+  background:#f2f2f2;
   font-weight:bold;
+  white-space:nowrap;
   cursor:pointer;
-  transition:0.3s;
+  transition:0.2s;
 }
 
 .menu-categorias button.activo{
   background:#d98928;
   color:white;
-}
-
-.menu-categorias button:hover{
-  transform:scale(1.05);
 }
 .menu{
 padding:30px 20px;
@@ -587,12 +589,19 @@ font-weight:bold;
 <h2>Menú</h2>
 
 <div class="menu-categorias">
- <button onclick="mostrarCategoria('almuerzos', this)">Almuerzos</button>
- <button onclick="mostrarCategoria('bebidas', this)">Bebidas</button>
- <button onclick="mostrarCategoria('cocteles', this)">Cócteles</button>
- <button onclick="mostrarCategoria('baldes', this)">Baldes y cervezas</button>
- <button onclick="mostrarCategoria('bocas', this)">Bocas</button>
- <button onclick="mostrarCategoria('hamburguesas', this)">Hamburguesas</button>
+
+<button onclick="mostrarCategoria('almuerzos')">🍲 Almuerzos</button>
+
+<button onclick="mostrarCategoria('bebidas')">🥤 Bebidas</button>
+
+<button onclick="mostrarCategoria('cocteles')">🍤 Cócteles</button>
+
+<button onclick="mostrarCategoria('baldes')">🍺 Baldes</button>
+
+<button onclick="mostrarCategoria('bocas')">🍟 Bocas</button>
+
+<button onclick="mostrarCategoria('hamburguesas')">🍔 Hamburguesas</button>
+
 </div>
 
 <!-- ALMUERZOS -->
