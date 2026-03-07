@@ -144,22 +144,15 @@ button{
   margin-bottom:15px;
   scroll-snap-type:x mandatory;
 }
-.fondo-menu{
-background:
-linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.88)),
-url("fondo-menu.png");
-
-background-size:220px;
-background-repeat:repeat;
-padding:20px;
-border-radius:20px;
-margin-top:15px;
-}
 
 .menu-categorias::-webkit-scrollbar{
   display:none;
 }
-
+.fondo-menu{
+padding:20px;
+border-radius:20px;
+margin-top:15px;
+}
 .menu-categorias button{
   flex:0 0 auto;
   padding:10px 16px;
@@ -182,10 +175,16 @@ margin-top:15px;
   transform:scale(0.95);
 }
 .menu{
-padding:20px;
-background-image:url("patron.png");
-background-size:260px;
+padding:30px 20px;
+
+background:
+linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.88)),
+url("fondo-menu.png");
+
+background-size:220px;
 background-repeat:repeat;
+
+border-radius:25px 25px 0 0;
 }
 
 .cantidad-control button:active{
