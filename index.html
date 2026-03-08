@@ -9,9 +9,11 @@
 <style>
 
 body{
-  margin:0;
-  font-family:Arial, sans-serif;
-  background:#f5f5f5;
+  background-color:#fafafa;
+  background-image:url("patron.png");
+  background-size:320px;
+  background-repeat:repeat;
+  opacity:1;
 }
 
 /* HEADER */
@@ -52,9 +54,9 @@ section{
 /* PRODUCTOS + ANIMACIÓN */
 .producto{
   background:white;
-  padding:16px;
-  border-radius:14px;
-  margin-bottom:16px;
+  border-radius:16px;
+  padding:14px;
+  margin-bottom:14px;
   box-shadow:0 6px 18px rgba(0,0,0,0.08);
   transition:transform 0.15s ease, box-shadow 0.15s ease;
 }
@@ -77,6 +79,13 @@ section{
   font-size:18px;
   font-weight:bold;
   color:#d98928;
+}
+.producto:active{
+  transform:scale(0.98);
+  box-shadow:0 3px 10px rgba(0,0,0,0.12);
+}
+.seccion-menu{
+  margin-top:20px;
 }
 
 /* CONTROL CANTIDAD */
