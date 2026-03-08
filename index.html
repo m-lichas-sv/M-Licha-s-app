@@ -387,6 +387,14 @@ font-weight:bold;
 margin:20px 0;
 color:#d98928;
 }
+.descripcion{
+font-size:13px;
+color:#777;
+margin:2px 0 6px 0;
+}
+.menu{
+margin-top:-5px;
+}
 /* ===== MODAL PREMIUM ===== */
 
 .modal-overlay{
@@ -1127,10 +1135,11 @@ function mostrarCategoria(categoria, boton){
   setTimeout(() => {
 
   let seleccionados = document.querySelectorAll(
-    ".producto." + categoria +
-    ", .titulo-categoria." + categoria +
-    ", .separador-menu." + categoria
-  );
+".producto." + categoria +
+", .titulo-categoria." + categoria +
+", .separador-menu." + categoria +
+", .grid-cervezas"
+);
 
   seleccionados.forEach(p => {
     p.style.display="";
@@ -1319,8 +1328,8 @@ cerrarPanel();
 window.onload = function(){
 
   let elementos = document.querySelectorAll(
-    ".producto, .titulo-categoria, .separador-menu"
-  );
+  ".producto, .titulo-categoria, .separador-menu, .grid-cervezas"
+);
 
   elementos.forEach(e => e.style.display = "none");
 
