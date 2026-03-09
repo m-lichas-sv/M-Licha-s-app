@@ -528,8 +528,27 @@ width:100%;
 text-align:center;
 background:#111;
 padding-bottom:10px;
+transition:all 0.3s ease;
+position:sticky;
+top:0;
+z-index:100;
+}
+.header-app.compacto{
+padding-bottom:2px;
 }
 
+.header-app.compacto .header-img{
+max-height:90px;
+}
+
+.header-app.compacto .header-botones{
+padding:2px;
+}
+
+.header-app.compacto .header-botones button{
+font-size:12px;
+padding:6px 10px;
+}
 .header-img{
 width:100%;
 max-height:180px;
@@ -1390,6 +1409,17 @@ function cerrarUbicacion(){
 function abrirMaps(){
   window.open("https://maps.app.goo.gl/Cht6T1Y4MsUJMeQN7?g_st=ic","_blank");
 }
+window.addEventListener("scroll", function(){
+
+  let header = document.querySelector(".header-app");
+
+  if(window.scrollY > 80){
+    header.classList.add("compacto");
+  }else{
+    header.classList.remove("compacto");
+  }
+
+});
 </script>
 <!-- MODAL CONFIRMAR PEDIDO -->
 <div id="modalConfirmacion" class="modal-overlay">
