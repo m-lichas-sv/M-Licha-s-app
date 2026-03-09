@@ -267,6 +267,19 @@ z-index:200;
 .panel-reserva.activo{
 bottom:0;
 }
+.panel-reserva input,
+.panel-reserva select{
+width:100%;
+padding:10px;
+margin:6px 0;
+border-radius:10px;
+border:1px solid #ccc;
+}
+
+.panel-reserva button{
+width:100%;
+margin-top:10px;
+}
 /* PRODUCTO DESTACADO */
 .producto.destacado{
   border:2px solid #d98928;
@@ -1083,32 +1096,7 @@ transform:scale(0.95);
 <div id="carritoFlotante" onclick="abrirCarrito()">
   🛒 <span id="totalCantidad">0</span> | $<span id="totalPrecio">0.00</span>
 </div>
-<div id="panelCarrito" class="panel-carrito">
-  <div class="panel-contenido">
-    <h2>Tu pedido</h2>
-<div id="panelReserva" class="panel-reserva">
 
-<h3>Reservar mesa</h3>
-
-<select id="tipoReserva">
-<option value="normal">Reserva fin de semana</option>
-<option value="anticipada">Reserva anticipada (9-11am)</option>
-<option value="semana">Reserva lunes a viernes</option>
-</select>
-
-<input type="date" id="fechaReserva">
-
-<input type="time" id="horaReserva">
-
-<input type="number" id="personasReserva" placeholder="Personas">
-
-<input type="text" id="nombreReserva" placeholder="Nombre">
-
-<input type="tel" id="telefonoReserva" placeholder="Teléfono">
-
-<button onclick="enviarReserva()">Confirmar reserva</button>
-
-</div>
     <div id="listaPedido"></div>
 
     <p><strong>Total: $<span id="panelTotal">0.00</span></strong></p>
@@ -1142,6 +1130,32 @@ transform:scale(0.95);
    <button class="btn-whatsapp" onclick="abrirModal()">Enviar por WhatsApp</button>
     <button onclick="cerrarPanel()">Cerrar</button>
   </div>
+</div>
+<div id="panelCarrito" class="panel-carrito">
+  <div class="panel-contenido">
+    <h2>Tu pedido</h2>
+<div id="panelReserva" class="panel-reserva">
+
+<h3>Reservar mesa</h3>
+
+<select id="tipoReserva">
+<option value="normal">Reserva fin de semana</option>
+<option value="anticipada">Reserva anticipada (9-11am)</option>
+<option value="semana">Reserva lunes a viernes</option>
+</select>
+
+<input type="date" id="fechaReserva">
+
+<input type="time" id="horaReserva">
+
+<input type="number" id="personasReserva" placeholder="Personas">
+
+<input type="text" id="nombreReserva" placeholder="Nombre">
+
+<input type="tel" id="telefonoReserva" placeholder="Teléfono">
+
+<button onclick="enviarReserva()">Confirmar reserva</button>
+
 </div>
 <script>
 
@@ -1433,7 +1447,7 @@ Fecha: ${fecha}
 Hora: ${hora}
 Personas: ${personas}`;
 
-let url = "https://wa.me/50379554663text=" + encodeURIComponent(mensaje);
+let url = "https://wa.me/50379554663?text=" + encodeURIComponent(mensaje);
 
 window.open(url);
 
