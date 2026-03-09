@@ -629,7 +629,7 @@ transform:scale(0.95);
 
 <div class="header-botones">
 <button onclick="mostrarUbicacion()">📍 Ubicación</button>
-<button onclick="cupones()">🎟 Cupones</button>
+<a href="cupones.html">🎟 Cupones</a>
 <a href="reservas.html" class="header-btn">📅 Reservación</a>
 </div>
 
@@ -1075,16 +1075,7 @@ transform:scale(0.95);
   🛒 <span id="totalCantidad">0</span> | $<span id="totalPrecio">0.00</span>
 </div>
 
-    <div id="listaPedido"></div>
-
-    <p><strong>Total: $<span id="panelTotal">0.00</span></strong></p>
-
- <input type="text" id="nombreCliente" class="input-compacto" placeholder="Tu nombre">
-<label for="horaLlegada" class="label-input">Hora de llegada</label>
-<input type="time" id="horaLlegada" class="input-compacto" min="11:00" max="19:00" required>
-<h3>Método de pago</h3>
-
-<div id="metodosPago">
+   
   <label>
     <input type="radio" name="pago" value="Efectivo">
     Efectivo
@@ -1112,7 +1103,16 @@ transform:scale(0.95);
 <div id="panelCarrito" class="panel-carrito">
   <div class="panel-contenido">
     <h2>Tu pedido</h2>
+ <div id="listaPedido"></div>
 
+    <p><strong>Total: $<span id="panelTotal">0.00</span></strong></p>
+
+ <input type="text" id="nombreCliente" class="input-compacto" placeholder="Tu nombre">
+<label for="horaLlegada" class="label-input">Hora de llegada</label>
+<input type="time" id="horaLlegada" class="input-compacto" min="11:00" max="19:00" required>
+<h3>Método de pago</h3>
+
+<div id="metodosPago">
 <script>
 
 function mostrarCategoria(categoria, boton){
