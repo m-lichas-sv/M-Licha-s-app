@@ -252,19 +252,7 @@ border-radius:25px 25px 0 0;
   border-radius:8px;
   border:1px solid #ccc;
 }
-.panel-reserva input,
-.panel-reserva select{
-width:100%;
-padding:10px;
-margin:6px 0;
-border-radius:10px;
-border:1px solid #ccc;
-}
 
-.panel-reserva button{
-width:100%;
-margin-top:10px;
-}
 /* PRODUCTO DESTACADO */
 .producto.destacado{
   border:2px solid #d98928;
@@ -577,15 +565,20 @@ padding:6px;
 background:black;
 }
 
-.header-botones button{
+.header-botones button,
+.header-botones a{
 background:white;
 color:#333;
 border:none;
-padding:10px 14px;
-border-radius:12px;
+padding:7px 10px;
+border-radius:10px;
 font-weight:bold;
-box-shadow:0 4px 10px rgba(0,0,0,0.15);
-font-size:13px;
+box-shadow:0 3px 8px rgba(0,0,0,0.15);
+font-size:12px;
+text-decoration:none;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 .header-botones button:active{
 transform:scale(0.95);
@@ -1385,35 +1378,6 @@ function cerrarModal(){
   setTimeout(() => {
     document.getElementById("panelCarrito").classList.add("activo");
   }, 200);
-}
-function abrirReserva(){
-document.getElementById("panelReserva").classList.toggle("activo");
-}
-
-function enviarReserva(){
-
-let tipo = document.getElementById("tipoReserva").value;
-let fecha = document.getElementById("fechaReserva").value;
-let hora = document.getElementById("horaReserva").value;
-let personas = document.getElementById("personasReserva").value;
-let nombre = document.getElementById("nombreReserva").value;
-let telefono = document.getElementById("telefonoReserva").value;
-
-let mensaje =
-`Reserva M Licha's
-
-Nombre: ${nombre}
-Teléfono: ${telefono}
-
-Tipo: ${tipo}
-Fecha: ${fecha}
-Hora: ${hora}
-Personas: ${personas}`;
-
-let url = "https://wa.me/50379554663?text=" + encodeURIComponent(mensaje);
-
-window.open(url);
-
 }
 function confirmarEnvio(){
   document.getElementById("modalConfirmacion").classList.remove("active");
