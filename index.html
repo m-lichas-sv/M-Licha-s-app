@@ -564,7 +564,8 @@ transform:scale(0.95);
   width:100%;
   height:150px;
   margin-top:10px;
-
+  overflow:hidden;
+}
 .slides{
   display:flex;
   animation:slideAuto 16s infinite;
@@ -572,9 +573,8 @@ transform:scale(0.95);
 
 .slides img{
   width:100%;
-  height:140px;
-  object-fit:contain;
-  flex-shrink:0;
+  height:150px;
+  object-fit:cover;
 }
 
 @keyframes slideAuto{
