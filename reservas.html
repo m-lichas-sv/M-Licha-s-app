@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reservar - M Licha’s</title>
+<style>
+
+body{
+font-family:Arial;
+background:#fafafa;
+padding:20px;
+text-align:center;
+}
+
+h2{
+color:#d98928;
+}
+
+.form-reserva{
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
+max-width:400px;
+margin:auto;
+}
+
+input, select{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:10px;
+border:1px solid #ccc;
+}
+
+button{
+background:#d98928;
+color:white;
+border:none;
+padding:12px;
+border-radius:10px;
+font-weight:bold;
+width:100%;
+cursor:pointer;
+}
+
+.volver{
+margin-top:15px;
+display:block;
+color:#555;
+text-decoration:none;
+}
+
+</style>
+</head>
+<body>
+<h2>📅 Reservar mesa</h2>
+<div class="form-reserva">
+<select id="tipoReserva">
+<option value="Fin de semana">Fin de semana (Gratis)</option>
+<option value="Anticipada">Anticipada 9am - 11am ($5 por persona)</option>
+<option value="Semana">Lunes a viernes ($10 consumible)</option>
+</select>
+<input type="date" id="fecha">
+<input type="time" id="hora">
+<input type="number" id="personas" placeholder="Número de personas">
+<input type="text" id="nombre" placeholder="Tu nombre">
+<input type="tel" id="telefono" placeholder="Teléfono">
+</div>
+<script>
+
+function enviarReserva(){
+
+let tipo = document.getElementById("tipoReserva").value;
+let fecha = document.getElementById("fecha").value;
+let hora = document.getElementById("hora").value;
+let personas = document.getElementById("personas").value;
+let nombre = document.getElementById("nombre").value;
+let telefono = document.getElementById("telefono").value;
+
+let mensaje = 
+`Reserva M Licha's
+
+Nombre: ${nombre}
+Teléfono: ${telefono}
+
+Tipo de reserva: ${tipo}
+Fecha: ${fecha}
+Hora: ${hora}
+Personas: ${personas}`;
+
+let url = "https://wa.me/50379554663?text=" + encodeURIComponent(mensaje);
+
+window.open(url);
+
+}
+
+</script>
+</body>
+</html>
+:::
