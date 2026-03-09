@@ -252,21 +252,6 @@ border-radius:25px 25px 0 0;
   border-radius:8px;
   border:1px solid #ccc;
 }
-.panel-reserva{
-position:fixed;
-bottom:-100%;
-left:0;
-width:100%;
-background:white;
-border-radius:20px 20px 0 0;
-padding:20px;
-transition:0.4s;
-z-index:200;
-}
-
-.panel-reserva.activo{
-bottom:0;
-}
 .panel-reserva input,
 .panel-reserva select{
 width:100%;
@@ -1134,29 +1119,7 @@ transform:scale(0.95);
 <div id="panelCarrito" class="panel-carrito">
   <div class="panel-contenido">
     <h2>Tu pedido</h2>
-<div id="panelReserva" class="panel-reserva">
 
-<h3>Reservar mesa</h3>
-
-<select id="tipoReserva">
-<option value="normal">Reserva fin de semana</option>
-<option value="anticipada">Reserva anticipada (9-11am)</option>
-<option value="semana">Reserva lunes a viernes</option>
-</select>
-
-<input type="date" id="fechaReserva">
-
-<input type="time" id="horaReserva">
-
-<input type="number" id="personasReserva" placeholder="Personas">
-
-<input type="text" id="nombreReserva" placeholder="Nombre">
-
-<input type="tel" id="telefonoReserva" placeholder="Teléfono">
-
-<button onclick="enviarReserva()">Confirmar reserva</button>
-
-</div>
 <script>
 
 function mostrarCategoria(categoria, boton){
