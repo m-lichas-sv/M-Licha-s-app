@@ -1075,31 +1075,6 @@ transform:scale(0.95);
   🛒 <span id="totalCantidad">0</span> | $<span id="totalPrecio">0.00</span>
 </div>
 
-   
-  <label>
-    <input type="radio" name="pago" value="Efectivo">
-    Efectivo
-  </label>
-
-  <label>
-    <input type="radio" name="pago" value="Transferencia">
-    Transferencia
-  </label>
-
-  <label>
-    <input type="radio" name="pago" value="Tarjeta">
-    Tarjeta (+5.5%)
-  </label>
-</div>
-
-<p class="nota-responsable">
-  Te pedimos reservar y realizar tus pedidos de manera responsable. 
-  Los pedidos no retirados sin previo aviso podrán limitar futuras solicitudes.
-</p>
-   <button class="btn-whatsapp" onclick="abrirModal()">Enviar por WhatsApp</button>
-    <button onclick="cerrarPanel()">Cerrar</button>
-  </div>
-</div>
 <div id="panelCarrito" class="panel-carrito">
   <div class="panel-contenido">
     <h2>Tu pedido</h2>
@@ -1113,6 +1088,31 @@ transform:scale(0.95);
 <h3>Método de pago</h3>
 
 <div id="metodosPago">
+
+<label>
+<input type="radio" name="pago" value="Efectivo">
+Efectivo
+</label>
+
+<label>
+<input type="radio" name="pago" value="Transferencia">
+Transferencia
+</label>
+
+<label>
+<input type="radio" name="pago" value="Tarjeta">
+Tarjeta (+5.5%)
+</label>
+
+</div>
+
+<p class="nota-responsable">
+Te pedimos realizar tus pedidos de manera responsable.
+Los pedidos no retirados sin previo aviso podrán limitar futuras solicitudes.
+</p>
+
+<button class="btn-whatsapp" onclick="abrirModal()">Enviar por WhatsApp</button>
+<button onclick="cerrarPanel()">Cerrar</button>
 <script>
 
 function mostrarCategoria(categoria, boton){
