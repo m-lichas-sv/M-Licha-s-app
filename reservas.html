@@ -247,6 +247,427 @@ Consumo mínimo $30
 <span>SELECCIONA TU COMIDA</span>
 </div>
 
+<div class="menu-categorias">
+
+<button onclick="mostrarCategoria('almuerzos', this)">🍲 Almuerzos</button>
+<button onclick="mostrarCategoria('bebidas', this)">🥤 Bebidas</button>
+<button onclick="mostrarCategoria('cocteles', this)">🍤 Cócteles</button>
+<button onclick="mostrarCategoria('baldes', this)">🍺 Baldes</button>
+<button onclick="mostrarCategoria('bocas', this)">🍟 Bocas</button>
+<button onclick="mostrarCategoria('hamburguesas', this)">🍔 Hamburguesas</button>
+
+</div>
+<!-- ALMUERZOS -->
+<div class="producto almuerzos">
+  <h3>Carne asada</h3>
+  <p class="precio">$5.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto almuerzos">
+  <h3>Camarones al ajillo</h3>
+  <p class="precio">$5.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto almuerzos destacado">
+  <h3>Sopa de gallina</h3>
+  <p class="precio">$5.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto almuerzos">
+  <h3>Pescado frito</h3>
+  <p class="precio">$4.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto almuerzos">
+  <h3>Pescado y camarón</h3>
+  <p class="precio">$8.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto almuerzos">
+  <h3>Carnita y papa</h3>
+  <p class="precio">$6.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<!-- BEBIDAS -->
+<div class="producto bebidas">
+  <h3>Natural zumo de naranja</h3>
+  <p class="precio">$1.50</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto bebidas">
+  <h3>Fresco natural del día</h3>
+  <p class="precio">$1.50</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto baldes destacado-balde">
+  <h3>Balde pilsener/golden 6un</h3>
+  <p class="precio">$8.50</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto baldes">
+  <h3>Balde regia/suprema 6un</h3>
+  <p class="precio">$10.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto baldes">
+  <h3>Balde mixto pilsener y regia 6un</h3>
+  <p class="precio">$9.50</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+<div class="producto baldes">
+  <h3>Balde pilsener/golden 8un</h3>
+  <p class="precio">$11.00</p>
+
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this,-1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+  </div>
+</div>
+<div class="producto baldes">
+  <h3>Balde regia/suprema 8un</h3>
+ <p class="precio">$13.00</p>
+
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this,-1)">-</button>
+   <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+  </div>
+</div>
+
+<div class="producto baldes destacado-balde">
+  <h3>Balde mixto pilsener y regia 8un</h3>
+  <p class="precio">$12.50</p>
+
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this,-1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+  </div>
+</div>
+
+<h2 class="titulo-categoria baldes">🍺 Cervezas por unidad</h2>
+
+<div class="grid-cervezas">
+
+<div class="producto baldes">
+<h3>Pilsener pequeña</h3>
+<p class="precio">$1.30</p>
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+
+<div class="producto baldes">
+<h3>Golden pequeña</h3>
+<p class="precio">$1.30</p>
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+
+<div class="producto baldes">
+<h3>Golden extra pequeña</h3>
+<p class="precio">$1.30</p>
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+
+<div class="producto baldes">
+<h3>Coronita</h3>
+<p class="precio">$1.30</p>
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+
+<div class="producto baldes">
+<h3>Regia pequeña</h3>
+<p class="precio">$1.50</p>
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+
+<div class="producto baldes">
+<h3>Suprema</h3>
+<p class="precio">$1.50</p>
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+
+</div>
+  
+<!-- COCTELES -->
+<div class="producto cocteles destacado-coctel">
+  <h3>Cóctel de camarón</h3>
+  <p class="precio">$7.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto cocteles">
+  <h3>Cóctel de concha</h3>
+  <p class="precio">$7.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto cocteles">
+  <h3>Cóctel de camarón en salsa rosa</h3>
+  <p class="precio">$7.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+
+<div class="producto cocteles">
+  <h3>Tostadas de camarón</h3>
+  <p class="precio">$5.00</p>
+  <div class="cantidad-control">
+    <button onclick="cambiarCantidad(this, -1)">-</button>
+    <span class="cantidad">0</span>
+    <button onclick="cambiarCantidad(this, 1)">+</button>
+  </div>
+</div>
+<!-- BOCAS -->
+
+<div class="producto bocas">
+<h3>Fajitas de tortilla</h3>
+<p class="precio">$2.00</p>
+
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+
+
+<div class="producto bocas destacado">
+<h3>Caldito de gallina</h3>
+<p class="precio">$2.50</p>
+
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+
+
+<div class="producto bocas">
+<h3>De Laguna (chimbolo)</h3>
+<p class="precio">$3.00</p>
+
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+
+
+<div class="producto bocas">
+<h3>Aros de cebolla</h3>
+<p class="precio">$3.75</p>
+
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+
+
+<div class="producto bocas">
+<h3>Carnita picada</h3>
+<p class="precio">$4.00</p>
+
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+
+
+<div class="producto bocas">
+<h3>Camaroncito</h3>
+<p class="precio">$5.00</p>
+
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+
+
+<div class="producto bocas destacado-vendido">
+<h3>Plato Licha’s</h3>
+<p class="precio">$5.50</p>
+
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+<!-- HAMBURGUESAS -->
+
+<div class="producto hamburguesas">
+<h3>🍔Hamburguesa de pollo</h3>
+<p class="precio">$2.00</p>
+
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+
+
+<div class="producto hamburguesas">
+<h3>🍔Hamburguesa de carne</h3>
+<p class="precio">$2.50</p>
+
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+
+
+<div class="producto hamburguesas">
+<h3>🍔Burguer doble</h3>
+<p class="precio">$3.00</p>
+
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+<div class="separador-menu hamburguesas">
+🍟 Combos de hamburguesa
+</div>
+
+<div class="producto hamburguesas">
+<h3>🍔🍟🥤Combo pollo</h3>
+<p class="descripcion">Hamburguesa, papas y soda</p>
+<p class="precio">$4.00</p>
+
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+
+<div class="producto hamburguesas destacado">
+<h3>🍔🍟🥤Combo Licha’s</h3>
+<p class="descripcion">Hamburguesa, papas y soda</p>
+<p class="precio">$4.50</p>
+
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+
+<div class="producto hamburguesas">
+<h3>🍔🍟🥤Combo doble</h3>
+<p class="descripcion">Hamburguesa, papas y soda</p>
+<p class="precio">$5.00</p>
+
+<div class="cantidad-control">
+<button onclick="cambiarCantidad(this,-1)">-</button>
+<span class="cantidad">0</span>
+<button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+</section>
+
 <div id="menuReservacion">
 
 <!-- AQUÍ PEGAS TODO EL MENÚ -->
@@ -335,22 +756,6 @@ horaInput.max = "16:00";
 }
 
 }
-let pedido = {
-sopa:0,
-carne:0,
-coctel:0
-};
-
-function cambiarCantidad(producto,cambio){
-
-pedido[producto]+=cambio;
-
-if(pedido[producto] < 0){
-pedido[producto] = 0;
-}
-
-document.getElementById(producto).innerText = pedido[producto];
-
 actualizarCarrito();
 
 }
@@ -379,12 +784,6 @@ document.getElementById("listaPedido").innerHTML = texto;
 
 }
 
-pedido[producto]+=cambio;
-
-if(pedido[producto] < 0){
-pedido[producto] = 0;
-}
-
 document.getElementById(producto).innerText = pedido[producto];
 
 }
@@ -398,19 +797,26 @@ let hora = document.getElementById("hora").value;
 let personas = document.getElementById("personas").value;
 let nombre = document.getElementById("nombre").value;
 let telefono = document.getElementById("telefono").value;
+
+let productos = document.querySelectorAll(".producto");
+
 let pedidoTexto = "";
 
-if(pedido.sopa > 0){
-pedidoTexto += pedido.sopa + "x sopa\n";
+productos.forEach(p => {
+
+let nombreProducto = p.querySelector("h3").textContent;
+let cantidad = parseInt(p.querySelector(".cantidad").textContent);
+
+if(cantidad > 0){
+pedidoTexto += cantidad + "x " + nombreProducto + "\n";
 }
 
-if(pedido.carne > 0){
-pedidoTexto += pedido.carne + "x carne\n";
+});
+
+if(pedidoTexto === ""){
+pedidoTexto = "Sin comida seleccionada";
 }
 
-if(pedido.coctel > 0){
-pedidoTexto += pedido.coctel + "x cóctel de camarón\n";
-}
 let mensaje =
 `Hola, quiero reservar en M Licha's.
 
@@ -432,6 +838,8 @@ window.open(url);
 }
 
 </script>
-
+<div id="carritoFlotante" onclick="abrirCarrito()">
+🛒 <span id="totalCantidad">0</span> | $<span id="totalPrecio">0.00</span>
+</div>
 </body>
 </html>
