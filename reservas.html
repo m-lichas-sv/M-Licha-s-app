@@ -208,6 +208,11 @@ let personas = document.getElementById("personas").value;
 let nombre = document.getElementById("nombre").value;
 let telefono = document.getElementById("telefono").value;
 
+if(!fecha || !hora || !personas || !nombre || !telefono){
+alert("Por favor completa todos los datos de la reservación.");
+return;
+}
+
 let reserva = {
 tipo,
 fecha,
@@ -223,7 +228,6 @@ window.location.href = "index.html";
 
 }
 
-<script>
 
 // bloquear fechas pasadas
 let hoy = new Date().toISOString().split("T")[0];
@@ -320,7 +324,6 @@ window.open(url);
 
 }
 
-</script>
 </script>
 
 </body>
