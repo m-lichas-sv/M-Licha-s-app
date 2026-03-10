@@ -1345,32 +1345,23 @@ cerrarPanel();
 /* OCULTAR TODO AL INICIO */
 window.onload = function(){
 
-  let elementos = document.querySelectorAll(
-  ".producto, .titulo-categoria, .separador-menu, .grid-cervezas"
+let elementos = document.querySelectorAll(
+".producto, .titulo-categoria, .separador-menu, .grid-cervezas"
 );
 
-  elementos.forEach(e => e.style.display = "none");
+elementos.forEach(e => e.style.display = "none");
 
-  let botones = document.querySelectorAll(".menu-categorias button");
-  botones.forEach(b => b.classList.remove("activo"));
+let botones = document.querySelectorAll(".menu-categorias button");
+botones.forEach(b => b.classList.remove("activo"));
 
-  // 🔥 DETECTAR SI VIENE DE RESERVACIÓN
-  let reservaGuardada = localStorage.getItem("reservaMLichas");
+// detectar si viene de reservación
+let reservaGuardada = localStorage.getItem("reservaMLichas");
 
-  if(reservaGuardada){
-    document.getElementById("btnReservar").style.display = "block";
-  }
+if(reservaGuardada){
+document.getElementById("btnReservar").style.display = "block";
+}
 
-};
-  let elementos = document.querySelectorAll(
-  ".producto, .titulo-categoria, .separador-menu, .grid-cervezas"
-);
-
-  elementos.forEach(e => e.style.display = "none");
-
-  let botones = document.querySelectorAll(".menu-categorias button");
-  botones.forEach(b => b.classList.remove("activo"));
-};
+}
   
 function abrirModal(){
 
@@ -1453,6 +1444,11 @@ function enviarReservaFinal(){
 let reserva = JSON.parse(localStorage.getItem("reservaMLichas"));
 
 let lista = document.getElementById("listaPedido").innerText;
+
+if(lista.trim() === ""){
+alert("Selecciona al menos un platillo para tu reservación.");
+return;
+}
 
 let mensaje =
 `Hola, quiero reservar en M Licha's.
