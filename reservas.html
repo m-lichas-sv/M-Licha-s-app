@@ -231,6 +231,76 @@ margin-left:4px;
 font-size:16px;
 }
 
+#carritoFlotante{
+position:fixed;
+bottom:25px;
+right:20px;
+
+background:#d98928;
+color:white;
+
+width:60px;
+height:60px;
+
+border-radius:50%;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:20px;
+font-weight:bold;
+
+box-shadow:0 8px 20px rgba(0,0,0,0.3);
+
+cursor:pointer;
+
+z-index:1000;
+
+display:none;
+}
+
+#panelCarrito{
+
+position:fixed;
+bottom:-400px;
+left:0;
+right:0;
+
+background:white;
+
+border-top-left-radius:20px;
+border-top-right-radius:20px;
+
+padding:20px;
+
+box-shadow:0 -5px 20px rgba(0,0,0,0.25);
+
+transition:0.35s;
+
+z-index:1100;
+
+max-height:70vh;
+overflow:auto;
+
+}
+
+#panelCarrito.abierto{
+bottom:0;
+}
+
+#listaCarrito{
+margin-top:10px;
+font-size:14px;
+line-height:1.6;
+}
+
+#totalCarrito{
+margin-top:10px;
+font-weight:bold;
+font-size:16px;
+}
+
 /* BOTONES CATEGORIAS MENU */
 
 .menu-categorias{
@@ -777,6 +847,63 @@ Consumo mínimo $30
 </div>
 
 <script>
+function actualizarCarrito(){
+
+let productos = document.querySelectorAll(".producto");
+
+let totalCantidad = 0;
+let totalPrecio = 0;
+let lista = "";
+
+productos.forEach(p => {
+
+let nombre = p.querySelector("h3").innerText;
+let precioTexto = p.querySelector(".precio").innerText.replace("$","");
+let precio = parseFloat(precioTexto);
+
+let cantidad = parseInt(p.querySelector(".cantidad").innerText);
+
+if(cantidad > 0){
+
+totalCantidad += cantidad;
+totalPrecio += cantidad * precio;
+
+lista += cantidad + "x " + nombre + " - $" + (cantidad*precio).toFixed(2) + "<br>";
+
+}
+
+});
+
+if(lista === ""){
+lista = "Aún no has seleccionado comida";
+}
+
+document.getElementById("contadorCarrito").innerText = totalCantidad;
+
+document.getElementById("listaCarrito").innerHTML = lista;
+
+document.getElementById("totalCarrito").innerText = "Total: $" + totalPrecio.toFixed(2);
+
+if(totalCantidad > 0){
+document.getElementById("carritoFlotante").style.display = "flex";
+}else{
+document.getElementById("carritoFlotante").style.display = "none";
+}
+
+}
+
+function abrirCarrito(){
+
+document.getElementById("panelCarrito").classList.add("abierto");
+
+}
+
+function cerrarCarrito(){
+
+document.getElementById("panelCarrito").classList.remove("abierto");
+
+}
+
 function verPedido(){
 
 let productos = document.querySelectorAll(".producto");
@@ -910,9 +1037,9 @@ horaInput.max = "16:00";
 function cambiarCantidad(boton, cambio){
 
 let contenedor = boton.parentElement;
-let producto = contenedor.parentElement;
 
 let cantidadSpan = contenedor.querySelector(".cantidad");
+
 let cantidad = parseInt(cantidadSpan.innerText);
 
 cantidad += cambio;
@@ -1005,8 +1132,24 @@ mostrarCategoria("almuerzos", document.querySelector(".menu-categorias button"))
 🛒 <span id="totalCantidad">0</span> | $<span id="totalPrecio">0.00</span>
 </div>
 
-<div id="carritoFlotante" onclick="verPedido()">
+<div id="carritoFlotante" onclick="abrirCarrito()">
 🛒 <span id="contadorCarrito">0</span>
+</div>
+
+<div id="panelCarrito">
+
+<h3>🛒 Tu pedido</h3>
+
+<div id="listaCarrito">
+Aún no has seleccionado comida
+</div>
+
+<div id="totalCarrito">
+Total: $0.00
+</div>
+
+<button onclick="cerrarCarrito()">Cerrar</button>
+
 </div>
 
 </body>
