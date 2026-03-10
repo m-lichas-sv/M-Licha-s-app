@@ -47,6 +47,10 @@ max-width:400px;
 margin:auto;
 }
 
+.form-reserva{
+padding-bottom:120px;
+}
+
 /* INFORMACIÓN RESERVAS */
 
 .info-reservas{
@@ -143,6 +147,36 @@ margin-top:8px;
 font-size:14px;
 }
 
+#carrito{
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+width:90%;
+max-width:420px;
+
+background:#fff3e0;
+border:2px solid #d98928;
+border-radius:12px;
+padding:12px;
+
+box-shadow:0 8px 20px rgba(0,0,0,0.2);
+
+z-index:999;
+}
+
+#listaPedido{
+font-size:13px;
+margin-top:5px;
+max-height:80px;
+overflow:auto;
+}
+
+#carrito h4{
+margin:0;
+font-size:14px;
+}
+
 </style>
 </head>
 
@@ -209,6 +243,11 @@ Consumo mínimo $30
 <input type="tel" id="telefono" placeholder="Teléfono">
 
 <h3>🍽 Selecciona tu comida</h3>
+
+<div id="carrito">
+<h4>🛒 Pedido para tu reservación</h4>
+<div id="listaPedido">Aún no has seleccionado comida</div>
+</div>
 
 <button onclick="enviarReserva()">Enviar reservación</button>
 
@@ -295,6 +334,42 @@ coctel:0
 };
 
 function cambiarCantidad(producto,cambio){
+
+pedido[producto]+=cambio;
+
+if(pedido[producto] < 0){
+pedido[producto] = 0;
+}
+
+document.getElementById(producto).innerText = pedido[producto];
+
+actualizarCarrito();
+
+}
+
+function actualizarCarrito(){
+
+let texto = "";
+
+if(pedido.sopa > 0){
+texto += pedido.sopa + "x Sopa de gallina<br>";
+}
+
+if(pedido.carne > 0){
+texto += pedido.carne + "x Carne asada<br>";
+}
+
+if(pedido.coctel > 0){
+texto += pedido.coctel + "x Cóctel de camarón<br>";
+}
+
+if(texto === ""){
+texto = "Aún no has seleccionado comida";
+}
+
+document.getElementById("listaPedido").innerHTML = texto;
+
+}
 
 pedido[producto]+=cambio;
 
