@@ -165,7 +165,7 @@ Consumo mínimo $30
 
 <input type="tel" id="telefono" placeholder="Teléfono">
 
-<button onclick="enviarReserva()">Enviar reserva</button>
+<button onclick="continuarReserva()">Continuar</button>
 
 <a class="volver" href="index.html">⬅ Volver al menú</a>
 
@@ -196,6 +196,30 @@ Personas: ${personas}`;
 let url = "https://wa.me/50379554663?text=" + encodeURIComponent(mensaje);
 
 window.open(url);
+
+}
+
+function continuarReserva(){
+
+let tipo = document.getElementById("tipoReserva").value;
+let fecha = document.getElementById("fecha").value;
+let hora = document.getElementById("hora").value;
+let personas = document.getElementById("personas").value;
+let nombre = document.getElementById("nombre").value;
+let telefono = document.getElementById("telefono").value;
+
+let reserva = {
+tipo,
+fecha,
+hora,
+personas,
+nombre,
+telefono
+};
+
+localStorage.setItem("reservaMLichas", JSON.stringify(reserva));
+
+window.location.href = "index.html";
 
 }
 
