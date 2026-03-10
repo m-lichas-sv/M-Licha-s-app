@@ -1059,6 +1059,29 @@ function enviarReserva(){
 let tipo = document.getElementById("tipoReserva").value;
 let fecha = document.getElementById("fecha").value;
 let hora = document.getElementById("hora").value;
+// FORMATO DE FECHA
+let fechaObj = new Date(fecha);
+
+let dias = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+let meses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+
+let diaSemana = dias[fechaObj.getDay()];
+let mes = meses[fechaObj.getMonth()];
+let año = fechaObj.getFullYear();
+
+let fechaFormateada = diaSemana + " - " + mes + " - " + año;
+
+
+// FORMATO DE HORA 12H
+let [h,m] = hora.split(":");
+h = parseInt(h);
+
+let periodo = h >= 12 ? "PM" : "AM";
+
+h = h % 12;
+if(h === 0) h = 12;
+
+let horaFormateada = h + ":" + m + " " + periodo;
 let personas = document.getElementById("personas").value;
 let nombre = document.getElementById("nombre").value;
 let telefono = document.getElementById("telefono").value;
@@ -1088,8 +1111,8 @@ let mensaje =
 Nombre: ${nombre}
 Teléfono: ${telefono}
 
-Fecha: ${fecha}
-Hora: ${hora}
+Fecha: ${fechaFormateada}
+Hora: ${horaFormateada}
 Personas: ${personas}
 Tipo de reservación: ${tipo}
 
