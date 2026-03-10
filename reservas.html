@@ -298,6 +298,7 @@ Consumo mínimo $30
 <button onclick="mostrarCategoria('hamburguesas', this)">🍔 Hamburguesas</button>
 
 </div>
+<secction>
 <!-- ALMUERZOS -->
 <div class="producto almuerzos">
   <h3>Carne asada</h3>
@@ -830,6 +831,7 @@ horaInput.min = "10:00";
 horaInput.max = "16:00";
 }
 
+}
 // ENVIAR RESERVA
 function cambiarCantidad(boton, cambio){
 
@@ -896,7 +898,7 @@ window.open(url);
 }
 mostrarCategoria("almuerzos", document.querySelector(".menu-categorias button"));
 </script>
-<div id="carritoFlotante" onclick="abrirCarrito()">
+<div id="carritoFlotante">
 🛒 <span id="totalCantidad">0</span> | $<span id="totalPrecio">0.00</span>
 </div>
 </body>
