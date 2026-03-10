@@ -830,38 +830,6 @@ horaInput.min = "10:00";
 horaInput.max = "16:00";
 }
 
-}
-actualizarCarrito();
-
-}
-
-function actualizarCarrito(){
-
-let texto = "";
-
-if(pedido.sopa > 0){
-texto += pedido.sopa + "x Sopa de gallina<br>";
-}
-
-if(pedido.carne > 0){
-texto += pedido.carne + "x Carne asada<br>";
-}
-
-if(pedido.coctel > 0){
-texto += pedido.coctel + "x Cóctel de camarón<br>";
-}
-
-if(texto === ""){
-texto = "Aún no has seleccionado comida";
-}
-
-document.getElementById("listaPedido").innerHTML = texto;
-
-}
-
-document.getElementById(producto).innerText = pedido[producto];
-
-}
 // ENVIAR RESERVA
 function cambiarCantidad(boton, cambio){
 
