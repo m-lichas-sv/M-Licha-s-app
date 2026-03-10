@@ -50,7 +50,9 @@ margin:auto;
 /* INFORMACIÓN RESERVAS */
 
 .info-reservas{
-text-align:left;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
 font-size:14px;
 color:#555;
 margin-bottom:15px;
@@ -96,6 +98,19 @@ button:hover{
 background:#c6781f;
 }
 
+.boton-menu{
+background:#c62828;
+color:white;
+border:none;
+padding:8px 12px;
+border-radius:8px;
+font-weight:bold;
+}
+
+.boton-menu:hover{
+background:#a81f1f;
+}
+
 /* VOLVER */
 
 .volver{
@@ -120,6 +135,14 @@ height:35px;
 padding:0;
 font-size:18px;
 }
+label{
+display:block;
+text-align:left;
+font-weight:bold;
+margin-top:8px;
+font-size:14px;
+}
+
 </style>
 </head>
 
@@ -170,38 +193,22 @@ Consumo mínimo $30
 <option value="Reservación en semana">Reservación en semana</option>
 </select>
 
-<input type="date" id="fecha" onchange="validarFecha()">
+<label>Día</label>
+<input type="date" id="fecha">
 
+<label>Hora</label>
 <input type="time" id="hora">
 
+<label>Personas</label>
 <input type="number" id="personas" placeholder="Número de personas">
 
+<label>Nombre</label>
 <input type="text" id="nombre" placeholder="Tu nombre">
 
+<label>Teléfono</label>
 <input type="tel" id="telefono" placeholder="Teléfono">
 
 <h3>🍽 Selecciona tu comida</h3>
-
-<div class="producto">
-<p>Sopa de gallina</p>
-<button onclick="cambiarCantidad('sopa',-1)">-</button>
-<span id="sopa">0</span>
-<button onclick="cambiarCantidad('sopa',1)">+</button>
-</div>
-
-<div class="producto">
-<p>Carne asada</p>
-<button onclick="cambiarCantidad('carne',-1)">-</button>
-<span id="carne">0</span>
-<button onclick="cambiarCantidad('carne',1)">+</button>
-</div>
-
-<div class="producto">
-<p>Cóctel de camarón</p>
-<button onclick="cambiarCantidad('coctel',-1)">-</button>
-<span id="coctel">0</span>
-<button onclick="cambiarCantidad('coctel',1)">+</button>
-</div>
 
 <button onclick="enviarReserva()">Enviar reservación</button>
 
@@ -257,40 +264,6 @@ if(!fechaInput.value) return;
 
 let dia = fecha.getDay(); 
 // 0 domingo, 6 sábado
-
-// FIN DE SEMANA
-if(
-tipo === "Reservación gratis" ||
-tipo === "Reservación anticipada" ||
-tipo === "Reservación noche"
-){
-
-if(dia !== 6 && dia !== 0){
-if(confirm("Este tipo de reservación está disponible solo sábados y domingos.\n\n¿Deseas reservar este fin de semana?")){
-fechaInput.value = "";
-}else{
-fechaInput.value = "";
-}
-fechaInput.value = "";
-return;
-}
-
-}
-
-// ENTRE SEMANA
-if(tipo === "Reservación en semana"){
-
-if(dia === 6 || dia === 0){
-if(confirm("Las reservaciones entre semana solo están disponibles de lunes a viernes.\n\n¿Deseas reservar un día de semana?")){
-fechaInput.value = "";
-}else{
-fechaInput.value = "";
-}
-fechaInput.value = "";
-return;
-}
-
-}
 
 // AJUSTAR HORARIOS SEGÚN TIPO
 
