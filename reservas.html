@@ -48,7 +48,7 @@ margin:auto;
 }
 
 .form-reserva{
-padding-bottom:120px;
+padding-bottom:200px;
 }
 
 /* INFORMACIÓN RESERVAS */
@@ -836,8 +836,9 @@ horaInput.max = "16:00";
 function cambiarCantidad(boton, cambio){
 
 let contenedor = boton.parentElement;
-let cantidadSpan = contenedor.querySelector(".cantidad");
+let producto = contenedor.parentElement;
 
+let cantidadSpan = contenedor.querySelector(".cantidad");
 let cantidad = parseInt(cantidadSpan.innerText);
 
 cantidad += cambio;
@@ -848,7 +849,34 @@ cantidad = 0;
 
 cantidadSpan.innerText = cantidad;
 
+actualizarCarrito();
+
 }
+
+function actualizarCarrito(){
+
+let productos = document.querySelectorAll(".producto");
+let lista = "";
+
+productos.forEach(p => {
+
+let nombre = p.querySelector("h3").innerText;
+let cantidad = parseInt(p.querySelector(".cantidad").innerText);
+
+if(cantidad > 0){
+lista += cantidad + "x " + nombre + "<br>";
+}
+
+});
+
+if(lista === ""){
+lista = "Aún no has seleccionado comida";
+}
+
+document.getElementById("listaPedido").innerHTML = lista;
+
+}
+
 function enviarReserva(){
 
 let tipo = document.getElementById("tipoReserva").value;
