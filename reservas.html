@@ -177,6 +177,36 @@ margin:0;
 font-size:14px;
 }
 
+/* BOTONES CATEGORIAS MENU */
+
+.menu-categorias{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin-bottom:15px;
+}
+
+.menu-categorias button{
+background:#c62828;
+color:white;
+border:none;
+padding:8px 10px;
+border-radius:8px;
+font-size:13px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.menu-categorias button.activo{
+background:#8e0000;
+}
+
+/* OCULTAR PRODUCTOS POR CATEGORIA */
+
+.producto{
+display:none;
+}
+
 </style>
 </head>
 
@@ -685,6 +715,29 @@ Consumo mínimo $30
 </div>
 
 <script>
+function mostrarCategoria(categoria, boton){
+
+let productos = document.querySelectorAll(".producto");
+
+productos.forEach(p=>{
+p.style.display="none";
+});
+
+let categoriaProductos = document.querySelectorAll("." + categoria);
+
+categoriaProductos.forEach(p=>{
+p.style.display="flex";
+});
+
+let botones = document.querySelectorAll(".menu-categorias button");
+
+botones.forEach(b=>{
+b.classList.remove("activo");
+});
+
+boton.classList.add("activo");
+
+}
 
 function continuarReserva(){
 
@@ -836,7 +889,7 @@ let url = "https://wa.me/50379554663?text=" + encodeURIComponent(mensaje);
 window.open(url);
 
 }
-
+mostrarCategoria("almuerzos", document.querySelector(".menu-categorias button"));
 </script>
 <div id="carritoFlotante" onclick="abrirCarrito()">
 🛒 <span id="totalCantidad">0</span> | $<span id="totalPrecio">0.00</span>
