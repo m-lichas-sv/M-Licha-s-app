@@ -111,7 +111,7 @@ text-decoration:none;
 <body>
 
 <div class="header">
-<h1>📅 Reservar mesa</h1>
+<h1>📅 Reservación</h1>
 <p>Puedes reservar con nosotros y celebrar momentos especiales con familia y amigos.</p>
 </div>
 
@@ -148,14 +148,14 @@ Consumo mínimo $30
 
 </div>
 
-<select id="tipoReserva">
+<select id="tipoReserva" onchange="validarFecha()">
 <option value="Reservación gratis">Reservación gratis</option>
 <option value="Reservación anticipada">Reservación anticipada</option>
 <option value="Reservación noche">Reservación noche</option>
 <option value="Reservación en semana">Reservación en semana</option>
 </select>
 
-<input type="date" id="fecha">
+<input type="date" id="fecha" onchange="validarFecha()">
 
 <input type="time" id="hora">
 
@@ -199,6 +199,50 @@ window.open(url);
 
 }
 
+<script>
+
+// bloquear fechas pasadas
+let hoy = new Date().toISOString().split("T")[0];
+document.getElementById("fecha").setAttribute("min", hoy);
+
+function validarFecha(){
+
+let tipo = document.getElementById("tipoReserva").value;
+let fechaInput = document.getElementById("fecha");
+let fecha = new Date(fechaInput.value);
+
+if(!fechaInput.value) return;
+
+let dia = fecha.getDay(); 
+// 0 domingo, 6 sábado
+
+// reservas solo fin de semana
+if(
+tipo === "Reservación gratis" ||
+tipo === "Reservación anticipada" ||
+tipo === "Reservación noche"
+){
+
+if(dia !== 6 && dia !== 0){
+alert("Este tipo de reservación solo está disponible sábado y domingo.");
+fechaInput.value = "";
+}
+
+}
+
+// reservas solo entre semana
+if(tipo === "Reservación en semana"){
+
+if(dia === 6 || dia === 0){
+alert("Las reservaciones entre semana solo están disponibles de lunes a viernes.");
+fechaInput.value = "";
+}
+
+}
+
+}
+
+</script>
 </script>
 
 </body>
