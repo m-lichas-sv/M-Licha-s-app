@@ -209,6 +209,8 @@ function validarFecha(){
 
 let tipo = document.getElementById("tipoReserva").value;
 let fechaInput = document.getElementById("fecha");
+let horaInput = document.getElementById("hora");
+
 let fecha = new Date(fechaInput.value);
 
 if(!fechaInput.value) return;
@@ -216,7 +218,7 @@ if(!fechaInput.value) return;
 let dia = fecha.getDay(); 
 // 0 domingo, 6 sábado
 
-// reservas solo fin de semana
+// FIN DE SEMANA
 if(
 tipo === "Reservación gratis" ||
 tipo === "Reservación anticipada" ||
@@ -226,19 +228,71 @@ tipo === "Reservación noche"
 if(dia !== 6 && dia !== 0){
 alert("Este tipo de reservación solo está disponible sábado y domingo.");
 fechaInput.value = "";
+return;
 }
 
 }
 
-// reservas solo entre semana
+// ENTRE SEMANA
 if(tipo === "Reservación en semana"){
 
 if(dia === 6 || dia === 0){
 alert("Las reservaciones entre semana solo están disponibles de lunes a viernes.");
 fechaInput.value = "";
+return;
 }
 
 }
+
+// AJUSTAR HORARIOS SEGÚN TIPO
+
+if(tipo === "Reservación gratis"){
+horaInput.min = "11:00";
+horaInput.max = "18:30";
+}
+
+if(tipo === "Reservación anticipada"){
+horaInput.min = "09:00";
+horaInput.max = "11:00";
+}
+
+if(tipo === "Reservación noche"){
+horaInput.min = "19:00";
+horaInput.max = "22:00";
+}
+
+if(tipo === "Reservación en semana"){
+horaInput.min = "10:00";
+horaInput.max = "16:00";
+}
+
+}
+
+// ENVIAR RESERVA
+
+function enviarReserva(){
+
+let tipo = document.getElementById("tipoReserva").value;
+let fecha = document.getElementById("fecha").value;
+let hora = document.getElementById("hora").value;
+let personas = document.getElementById("personas").value;
+let nombre = document.getElementById("nombre").value;
+let telefono = document.getElementById("telefono").value;
+
+let mensaje =
+`Reserva M Licha's
+
+Nombre: ${nombre}
+Teléfono: ${telefono}
+
+Tipo de reserva: ${tipo}
+Fecha: ${fecha}
+Hora: ${hora}
+Personas: ${personas}`;
+
+let url = "https://wa.me/50379554663?text=" + encodeURIComponent(mensaje);
+
+window.open(url);
 
 }
 
