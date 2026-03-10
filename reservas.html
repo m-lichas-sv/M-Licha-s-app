@@ -131,7 +131,7 @@ background:#f7f7f7;
 padding:8px;
 border-radius:10px;
 margin-top:6px;
-front-size:14px;
+font-size:14px;
 }
 
 .cantidad-control{
@@ -422,7 +422,7 @@ Consumo mínimo $30
 <button onclick="mostrarCategoria('hamburguesas', this)">🍔 Hamburguesas</button>
 
 </div>
-<secction>
+<section>
 <!-- ALMUERZOS -->
 <div class="producto almuerzos">
   <h3>Carne asada</h3>
@@ -1054,31 +1054,6 @@ actualizarCarrito();
 
 }
 
-function actualizarCarrito(){
-
-let productos = document.querySelectorAll(".producto");
-let total = 0;
-
-productos.forEach(p => {
-
-let cantidad = parseInt(p.querySelector(".cantidad").innerText);
-
-if(cantidad > 0){
-total += cantidad;
-}
-
-});
-
-document.getElementById("contadorCarrito").innerText = total;
-
-if(total > 0){
-document.getElementById("carritoFlotante").style.display = "flex";
-}else{
-document.getElementById("carritoFlotante").style.display = "none";
-}
-
-}
-
 function enviarReserva(){
 
 let tipo = document.getElementById("tipoReserva").value;
@@ -1128,9 +1103,6 @@ window.open(url);
 }
 mostrarCategoria("almuerzos", document.querySelector(".menu-categorias button"));
 </script>
-<div id="carritoFlotante">
-🛒 <span id="totalCantidad">0</span> | $<span id="totalPrecio">0.00</span>
-</div>
 
 <div id="carritoFlotante" onclick="abrirCarrito()">
 🛒 <span id="contadorCarrito">0</span>
