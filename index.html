@@ -1111,6 +1111,10 @@ Te pedimos realizar tus pedidos de manera responsable.
 Los pedidos no retirados sin previo aviso podrán limitar futuras solicitudes.
 </p>
 
+<button id="btnReservar" style="display:none;" onclick="enviarReservaFinal()" class="btn-whatsapp">
+Enviar reservación
+</button>
+
 <button class="btn-whatsapp" onclick="abrirModal()">Enviar por WhatsApp</button>
 <button onclick="cerrarPanel()">Cerrar</button>
 <script>
@@ -1349,6 +1353,23 @@ window.onload = function(){
 
   let botones = document.querySelectorAll(".menu-categorias button");
   botones.forEach(b => b.classList.remove("activo"));
+
+  // 🔥 DETECTAR SI VIENE DE RESERVACIÓN
+  let reservaGuardada = localStorage.getItem("reservaMLichas");
+
+  if(reservaGuardada){
+    document.getElementById("btnReservar").style.display = "block";
+  }
+
+};
+  let elementos = document.querySelectorAll(
+  ".producto, .titulo-categoria, .separador-menu, .grid-cervezas"
+);
+
+  elementos.forEach(e => e.style.display = "none");
+
+  let botones = document.querySelectorAll(".menu-categorias button");
+  botones.forEach(b => b.classList.remove("activo"));
 };
   
 function abrirModal(){
@@ -1426,6 +1447,34 @@ window.addEventListener("scroll", function(){
   }
 
 });
+
+function enviarReservaFinal(){
+
+let reserva = JSON.parse(localStorage.getItem("reservaMLichas"));
+
+let lista = document.getElementById("listaPedido").innerText;
+
+let mensaje =
+`Hola, quiero reservar en M Licha's.
+
+Nombre: ${reserva.nombre}
+Teléfono: ${reserva.telefono}
+
+Fecha: ${reserva.fecha}
+Hora: ${reserva.hora}
+Personas: ${reserva.personas}
+Tipo de reservación: ${reserva.tipo}
+
+Pedido:
+${lista}`;
+
+let url = "https://wa.me/50379554663?text=" + encodeURIComponent(mensaje);
+
+window.open(url);
+
+localStorage.removeItem("reservaMLichas");
+
+}
 </script>
 <!-- MODAL CONFIRMAR PEDIDO -->
 <div id="modalConfirmacion" class="modal-overlay">
