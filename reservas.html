@@ -104,7 +104,22 @@ display:block;
 color:#555;
 text-decoration:none;
 }
+.producto{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#f7f7f7;
+padding:10px;
+border-radius:10px;
+margin-top:8px;
+}
 
+.producto button{
+width:35px;
+height:35px;
+padding:0;
+font-size:18px;
+}
 </style>
 </head>
 
@@ -165,39 +180,36 @@ Consumo mínimo $30
 
 <input type="tel" id="telefono" placeholder="Teléfono">
 
-<button onclick="continuarReserva()">Continuar</button>
+<h3>🍽 Selecciona tu comida</h3>
+
+<div class="producto">
+<p>Sopa de gallina</p>
+<button onclick="cambiarCantidad('sopa',-1)">-</button>
+<span id="sopa">0</span>
+<button onclick="cambiarCantidad('sopa',1)">+</button>
+</div>
+
+<div class="producto">
+<p>Carne asada</p>
+<button onclick="cambiarCantidad('carne',-1)">-</button>
+<span id="carne">0</span>
+<button onclick="cambiarCantidad('carne',1)">+</button>
+</div>
+
+<div class="producto">
+<p>Cóctel de camarón</p>
+<button onclick="cambiarCantidad('coctel',-1)">-</button>
+<span id="coctel">0</span>
+<button onclick="cambiarCantidad('coctel',1)">+</button>
+</div>
+
+<button onclick="enviarReserva()">Enviar reservación</button>
 
 <a class="volver" href="index.html">⬅ Volver al menú</a>
 
 </div>
 
 <script>
-
-function enviarReserva(){
-
-let tipo = document.getElementById("tipoReserva").value;
-let fecha = document.getElementById("fecha").value;
-let hora = document.getElementById("hora").value;
-let personas = document.getElementById("personas").value;
-let nombre = document.getElementById("nombre").value;
-let telefono = document.getElementById("telefono").value;
-
-let mensaje =
-`Reserva M Licha's
-
-Nombre: ${nombre}
-Teléfono: ${telefono}
-
-Tipo de reserva: ${tipo}
-Fecha: ${fecha}
-Hora: ${hora}
-Personas: ${personas}`;
-
-let url = "https://wa.me/50379554663?text=" + encodeURIComponent(mensaje);
-
-window.open(url);
-
-}
 
 function continuarReserva(){
 
@@ -254,7 +266,11 @@ tipo === "Reservación noche"
 ){
 
 if(dia !== 6 && dia !== 0){
-alert("Este tipo de reservación solo está disponible sábado y domingo.");
+if(confirm("Este tipo de reservación está disponible solo sábados y domingos.\n\n¿Deseas reservar este fin de semana?")){
+fechaInput.value = "";
+}else{
+fechaInput.value = "";
+}
 fechaInput.value = "";
 return;
 }
@@ -265,7 +281,11 @@ return;
 if(tipo === "Reservación en semana"){
 
 if(dia === 6 || dia === 0){
-alert("Las reservaciones entre semana solo están disponibles de lunes a viernes.");
+if(confirm("Las reservaciones entre semana solo están disponibles de lunes a viernes.\n\n¿Deseas reservar un día de semana?")){
+fechaInput.value = "";
+}else{
+fechaInput.value = "";
+}
 fechaInput.value = "";
 return;
 }
@@ -295,7 +315,23 @@ horaInput.max = "16:00";
 }
 
 }
+let pedido = {
+sopa:0,
+carne:0,
+coctel:0
+};
 
+function cambiarCantidad(producto,cambio){
+
+pedido[producto]+=cambio;
+
+if(pedido[producto] < 0){
+pedido[producto] = 0;
+}
+
+document.getElementById(producto).innerText = pedido[producto];
+
+}
 // ENVIAR RESERVA
 
 function enviarReserva(){
@@ -306,17 +342,32 @@ let hora = document.getElementById("hora").value;
 let personas = document.getElementById("personas").value;
 let nombre = document.getElementById("nombre").value;
 let telefono = document.getElementById("telefono").value;
+let pedidoTexto = "";
 
+if(pedido.sopa > 0){
+pedidoTexto += pedido.sopa + "x sopa\n";
+}
+
+if(pedido.carne > 0){
+pedidoTexto += pedido.carne + "x carne\n";
+}
+
+if(pedido.coctel > 0){
+pedidoTexto += pedido.coctel + "x cóctel de camarón\n";
+}
 let mensaje =
-`Reserva M Licha's
+`Hola, quiero reservar en M Licha's.
 
 Nombre: ${nombre}
 Teléfono: ${telefono}
 
-Tipo de reserva: ${tipo}
 Fecha: ${fecha}
 Hora: ${hora}
-Personas: ${personas}`;
+Personas: ${personas}
+Tipo de reservación: ${tipo}
+
+Pedido:
+${pedidoTexto}`;
 
 let url = "https://wa.me/50379554663?text=" + encodeURIComponent(mensaje);
 
