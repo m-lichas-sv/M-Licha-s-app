@@ -207,6 +207,17 @@ background:#8e0000;
 display:none;
 }
 
+.titulo-categoria{
+display:none;
+margin-top:20px;
+}
+
+.separador-menu{
+display:none;
+margin-top:15px;
+font-weight:bold;
+}
+
 </style>
 </head>
 
@@ -718,15 +729,26 @@ Consumo mínimo $30
 function mostrarCategoria(categoria, boton){
 
 let productos = document.querySelectorAll(".producto");
+let titulos = document.querySelectorAll(".titulo-categoria, .separador-menu");
 
 productos.forEach(p=>{
 p.style.display="none";
+});
+
+titulos.forEach(t=>{
+t.style.display="none";
 });
 
 let categoriaProductos = document.querySelectorAll("." + categoria);
 
 categoriaProductos.forEach(p=>{
 p.style.display="flex";
+});
+
+let categoriaTitulos = document.querySelectorAll(".titulo-categoria." + categoria + ", .separador-menu." + categoria);
+
+categoriaTitulos.forEach(t=>{
+t.style.display="block";
 });
 
 let botones = document.querySelectorAll(".menu-categorias button");
@@ -841,7 +863,22 @@ document.getElementById(producto).innerText = pedido[producto];
 
 }
 // ENVIAR RESERVA
+function cambiarCantidad(boton, cambio){
 
+let contenedor = boton.parentElement;
+let cantidadSpan = contenedor.querySelector(".cantidad");
+
+let cantidad = parseInt(cantidadSpan.innerText);
+
+cantidad += cambio;
+
+if(cantidad < 0){
+cantidad = 0;
+}
+
+cantidadSpan.innerText = cantidad;
+
+}
 function enviarReserva(){
 
 let tipo = document.getElementById("tipoReserva").value;
