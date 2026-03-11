@@ -1444,22 +1444,19 @@ document.getElementById("btnReservar").style.display = "block";
   
 function abrirModal(){
 
-  let total = document.getElementById("panelTotal").textContent;
+let total = document.getElementById("panelTotal").textContent;
 
-  // Colocar total dinámico en el modal
-  document.getElementById("modalTotal").textContent = total;
-
-  // Cerrar panel carrito
-  document.getElementById("panelCarrito").classList.remove("activo");
-
-  // Esperar animación y luego abrir modal
- if(parseFloat(document.getElementById("panelTotal").textContent) === 0){
-  alert("Tu carrito está vacío.");
-  return;
+if(parseFloat(total) === 0){
+alert("Tu carrito está vacío.");
+return;
 }
-   setTimeout(() => {
-    document.getElementById("modalConfirmacion").classList.add("active");
-  }, 300);
+
+// colocar total en modal
+document.getElementById("modalTotal").textContent = total;
+
+// abrir confirmación directamente
+document.getElementById("modalConfirmacion").classList.add("active");
+
 }
 
 function cerrarModal(){
