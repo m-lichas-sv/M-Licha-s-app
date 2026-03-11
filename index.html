@@ -724,6 +724,59 @@ transform:translateY(-2px);
 background:#fff3e0;
 }
 
+/* REDES SOCIALES PRO */
+
+.redes-flotantes{
+position:fixed;
+bottom:25px;
+left:20px;
+display:flex;
+flex-direction:column;
+gap:12px;
+z-index:998;
+}
+
+.redes-flotantes a{
+width:50px;
+height:50px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+border-radius:50%;
+color:white;
+text-decoration:none;
+box-shadow:0 6px 15px rgba(0,0,0,0.2);
+transition:all .25s ease;
+animation:flotar 3s infinite ease-in-out;
+}
+
+.redes-flotantes a:hover{
+transform:scale(1.15);
+}
+
+/* COLORES */
+
+.facebook{
+background:#1877f2;
+}
+
+.instagram{
+background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);
+}
+
+.tiktok{
+background:#000;
+}
+
+/* ANIMACION */
+
+@keyframes flotar{
+0%{transform:translateY(0);}
+50%{transform:translateY(-5px);}
+100%{transform:translateY(0);}
+}
+
 </style>
 </head>
 <body>
@@ -1646,5 +1699,22 @@ localStorage.removeItem("reservaMLichas");
 
   </div>
 </div>
+
+<div class="redes-flotantes">
+
+<a href="https://facebook.com" target="_blank" class="facebook">
+📘
+</a>
+
+<a href="https://instagram.com" target="_blank" class="instagram">
+📸
+</a>
+
+<a href="https://tiktok.com" target="_blank" class="tiktok">
+🎵
+</a>
+
+</div>
+
 </body>
 </html>
