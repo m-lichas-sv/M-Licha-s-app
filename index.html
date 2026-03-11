@@ -527,7 +527,7 @@ margin-top:-5px;
 .header-app{
 width:100%;
 text-align:center;
-background:#DB8627;
+background:white;
 padding-bottom:10px;
 transition:all 0.3s ease;
 position:sticky;
@@ -557,32 +557,39 @@ object-fit:cover;
 display:block;
 transition:all 0.35s ease;
 }
-.header-botones{
-display:flex;
-justify-content:center;
-gap:10px;
-padding:6px;
-background:#DB8627;
-}
+/* CONTENEDOR DE BOTONES */
 
-.header-botones button,
 .header-botones{
 display:flex;
 justify-content:center;
 gap:12px;
-margin-top:8px;
+padding:16px 10px;
+background:white;
+border-top:1px solid #eee;
+border-bottom:1px solid #eee;
 }
 
+/* BOTONES */
+
 .header-botones a{
+flex:1;
+max-width:150px;
+text-align:center;
 text-decoration:none;
-background:white;
+background:#f8f8f8;
 color:#d98928;
-padding:10px 14px;
-border-radius:25px;
+padding:12px 10px;
+border-radius:12px;
 font-size:14px;
 font-weight:bold;
-box-shadow:0 4px 10px rgba(0,0,0,0.15);
-transition:all .2s ease;
+box-shadow:0 4px 10px rgba(0,0,0,0.08);
+transition:all 0.2s ease;
+}
+
+/* efecto al tocar */
+
+.header-botones a:active{
+transform:scale(0.95);
 }
 
 .header-botones a:hover{
