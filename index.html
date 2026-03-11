@@ -4,6 +4,9 @@
   <link rel="manifest" href="manifest.json">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <title>M Licha’s</title>
 
 <style>
@@ -724,35 +727,46 @@ transform:translateY(-2px);
 background:#fff3e0;
 }
 
-/* REDES SOCIALES PRO */
+/* REDES SOCIALES FOOTER */
 
-.redes-flotantes{
-position:fixed;
-bottom:25px;
-left:20px;
-display:flex;
-flex-direction:column;
-gap:12px;
-z-index:998;
+.redes-footer{
+margin-top:50px;
+padding:30px 20px;
+background:white;
+border-radius:18px;
+box-shadow:0 6px 20px rgba(0,0,0,0.08);
+text-align:center;
 }
 
-.redes-flotantes a{
-width:50px;
-height:50px;
+.redes-footer h3{
+color:#d98928;
+margin-bottom:20px;
+}
+
+.redes-contenedor{
 display:flex;
-align-items:center;
 justify-content:center;
-font-size:22px;
-border-radius:50%;
-color:white;
-text-decoration:none;
-box-shadow:0 6px 15px rgba(0,0,0,0.2);
-transition:all .25s ease;
-animation:flotar 3s infinite ease-in-out;
+gap:15px;
+flex-wrap:wrap;
 }
 
-.redes-flotantes a:hover{
-transform:scale(1.15);
+.red{
+text-decoration:none;
+padding:12px 18px;
+border-radius:12px;
+color:white;
+font-weight:bold;
+box-shadow:0 5px 12px rgba(0,0,0,0.15);
+transition:all .25s ease;
+}
+
+.red:hover{
+transform:translateY(-3px);
+}
+
+.red i{
+margin-right:8px;
+font-size:18px;
 }
 
 /* COLORES */
@@ -1702,19 +1716,30 @@ localStorage.removeItem("reservaMLichas");
   </div>
 </div>
 
-<div class="redes-flotantes">
+<div class="redes-footer">
 
-<a href="https://facebook.com" target="_blank" class="facebook">
-📘
+<h3>Síguenos en nuestras redes</h3>
+
+<div class="redes-contenedor">
+
+<a href="https://www.facebook.com/share/1Bte7LitdC/?mibextid=wwXIfr" target="_blank" class="red facebook">
+<i class="fa-brands fa-facebook-f"></i>
+Facebook
 </a>
 
-<a href="https://instagram.com" target="_blank" class="instagram">
-📸
+<a href="https://www.instagram.com/mlichas?igsh=eWE3aTJkOGQ3a3Ex&utm_source=qr" target="_blank" class="red instagram">
+<i class="fa-brands fa-instagram"></i>
+Instagram
 </a>
 
-<a href="https://tiktok.com" target="_blank" class="tiktok">
-🎵
+<a href="https://www.tiktok.com/@m_lichas?_r=1&_t=ZS-94btvaCKU9C" target="_blank" class="red tiktok">
+<i class="fa-brands fa-tiktok"></i>
+TikTok
 </a>
+
+</div>
+
+</div>
 
 </div>
 
