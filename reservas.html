@@ -231,35 +231,6 @@ margin-left:4px;
 font-size:16px;
 }
 
-#carritoFlotante{
-position:fixed;
-bottom:25px;
-right:20px;
-
-background:#d98928;
-color:white;
-
-width:60px;
-height:60px;
-
-border-radius:50%;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-font-size:20px;
-font-weight:bold;
-
-box-shadow:0 8px 20px rgba(0,0,0,0.3);
-
-cursor:pointer;
-
-z-index:1000;
-
-display:none;
-}
-
 #panelCarrito{
 
 position:fixed;
@@ -1066,9 +1037,11 @@ let dias = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"
 let meses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
 
 let diaSemana = dias[fechaObj.getDay()];
+let numeroDia = fechaObj.getDate();
 let mes = meses[fechaObj.getMonth()];
 let año = fechaObj.getFullYear();
 
+let fechaFormateada = diaSemana + " " + numeroDia + " - " + mes + " - " + año;
 let fechaFormateada = diaSemana + " - " + mes + " - " + año;
 
 
