@@ -14,6 +14,8 @@ padding:20px;
 text-align:center;
 }
 
+/* HEADER */
+
 .header{
 background:#d98928;
 color:white;
@@ -22,13 +24,86 @@ border-radius:15px;
 margin-bottom:20px;
 }
 
+/* SECCIONES */
+
+.seccion{
+margin-top:35px;
+}
+
+/* LINEA DE CORTE */
+
+.corte{
+border-top:3px dashed #ccc;
+margin:35px 0;
+}
+
+/* TITULOS */
+
+.seccion h2{
+color:#d98928;
+margin-bottom:15px;
+}
+
+/* CUPON ESTILO TICKET */
+
 .cupon{
 background:white;
-padding:15px;
+padding:18px;
 border-radius:12px;
-margin-bottom:15px;
+margin-bottom:18px;
 box-shadow:0 6px 15px rgba(0,0,0,0.1);
+position:relative;
+overflow:hidden;
+transition:transform .25s ease, box-shadow .25s ease;
+animation:aparecer .6s ease;
 }
+
+/* agujeros estilo ticket */
+
+.cupon::before,
+.cupon::after{
+content:"";
+position:absolute;
+width:20px;
+height:20px;
+background:#fafafa;
+border-radius:50%;
+top:50%;
+transform:translateY(-50%);
+}
+
+.cupon::before{
+left:-10px;
+}
+
+.cupon::after{
+right:-10px;
+}
+
+/* animación hover */
+
+.cupon:hover{
+transform:translateY(-4px);
+box-shadow:0 10px 22px rgba(0,0,0,0.15);
+}
+
+/* ahorro */
+
+.ahorro{
+color:#2e7d32;
+font-weight:bold;
+margin-top:5px;
+}
+
+/* codigo */
+
+.codigo{
+font-size:12px;
+color:#777;
+margin-top:6px;
+}
+
+/* boton */
 
 button{
 background:#d98928;
@@ -37,13 +112,34 @@ border:none;
 padding:10px 15px;
 border-radius:8px;
 cursor:pointer;
+font-weight:bold;
+margin-top:10px;
 }
+
+button:hover{
+background:#c6781f;
+}
+
+/* volver */
 
 .volver{
 display:block;
-margin-top:20px;
+margin-top:30px;
 text-decoration:none;
 color:#555;
+}
+
+/* animación aparición */
+
+@keyframes aparecer{
+from{
+opacity:0;
+transform:translateY(10px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 </style>
@@ -53,21 +149,43 @@ color:#555;
 
 <div class="header">
 <h1>🎟 Cupones M Licha’s</h1>
-<p>Usa estos cupones en tu reservación o pedido.</p>
+<p>Regala un cupón a esa persona especial y comparte sabor 😉</p>
 </div>
 
+<!-- FESTIVOS -->
+
+<div class="seccion">
+
+<h2>🥳 Cupones festivos</h2>
+
 <div class="cupon">
-<h3>🎉 Cupón para mamá</h3>
+<h3>🌸 Cupón para mamá</h3>
 <p>Paga $22 y consume $25</p>
-<button onclick="usarCupon('Cupón Mamá $25 por $22')">
+<p class="ahorro">Ahorras $3</p>
+<p><small>Válido todo el mes de mayo</small></p>
+<p class="codigo">Cod: MOM001</p>
+
+<button onclick="usarCupon('Cupón para mamá','MOM001')">
 Usar cupón
 </button>
 </div>
 
+</div>
+
+<div class="corte"></div>
+
+<!-- REGALO -->
+
+<div class="seccion">
+
+<h2>🎁 Cupones de regalo</h2>
+
 <div class="cupon">
-<h3>🍽 Cupón $20</h3>
-<p>Consumo de $20</p>
-<button onclick="usarCupon('Cupón $20')">
+<h3>🍽 Cupón $15</h3>
+<p>Consumo de $15</p>
+<p class="codigo">Cod: REG015</p>
+
+<button onclick="usarCupon('Cupón regalo $15','REG015')">
 Usar cupón
 </button>
 </div>
@@ -75,20 +193,112 @@ Usar cupón
 <div class="cupon">
 <h3>🍽 Cupón $25</h3>
 <p>Consumo de $25</p>
-<button onclick="usarCupon('Cupón $25')">
+<p class="codigo">Cod: REG025</p>
+
+<button onclick="usarCupon('Cupón regalo $25','REG025')">
 Usar cupón
 </button>
+</div>
+
+</div>
+
+<div class="corte"></div>
+
+<!-- COMIDA -->
+
+<div class="seccion">
+
+<h2>😋 Cupones de comida</h2>
+
+<div class="cupon">
+<h3>🍲 Cupón de sopa</h3>
+<p>Combo sopa</p>
+<p>$7.50</p>
+<p class="codigo">Cod: SOP750</p>
+
+<button onclick="usarCupon('Cupón combo sopa','SOP750')">
+Usar cupón
+</button>
+</div>
+
+<div class="cupon">
+<h3>🍔 Cupón Burguer</h3>
+<p>Combo Burguer doble</p>
+<p>$5</p>
+<p class="codigo">Cod: BUR500</p>
+
+<button onclick="usarCupon('Cupón combo burguer doble','BUR500')">
+Usar cupón
+</button>
+</div>
+
+<div class="cupon">
+<h3>🌊 Cupón de Mar</h3>
+<p>Camarones + pescado + fresco + refill gratis</p>
+<p>$9.50</p>
+<p class="codigo">Cod: MAR950</p>
+
+<button onclick="usarCupon('Cupón combo mar','MAR950')">
+Usar cupón
+</button>
+</div>
+
+</div>
+
+<div class="corte"></div>
+
+<!-- CUMPLE -->
+
+<div class="seccion">
+
+<h2>🎉 Cupones cumpleañeros</h2>
+<p><small>Aplica todo el mes de tu cumpleaños</small></p>
+
+<div class="cupon">
+<h3>🎂 Cupón HBD</h3>
+<p>+1 bebida gratis</p>
+<p>Consumo mínimo $15</p>
+<p class="codigo">Cod: HBD015</p>
+
+<button onclick="usarCupon('Cupón HBD bebida gratis','HBD015')">
+Usar cupón
+</button>
+</div>
+
+<div class="cupon">
+<h3>🎊 Cupón feliz cumple</h3>
+<p>Consumo mínimo $20</p>
+<p class="codigo">Cod: HBD020</p>
+
+<button onclick="usarCupon('Cupón feliz cumple','HBD020')">
+Usar cupón
+</button>
+</div>
+
+<div class="cupon">
+<h3>🙂‍↔️ Cupón muchos años</h3>
+<p>+1 boca gratis</p>
+<p>Consumo mínimo $25</p>
+<p class="codigo">Cod: HBD025</p>
+
+<button onclick="usarCupon('Cupón muchos años','HBD025')">
+Usar cupón
+</button>
+</div>
+
 </div>
 
 <a class="volver" href="index.html">⬅ Volver al menú</a>
 
 <script>
 
-function usarCupon(cupon){
+function usarCupon(nombre,codigo){
 
-localStorage.setItem("cuponMLichas", cupon);
+let cuponCompleto = nombre + " | Código: " + codigo;
 
-alert("Cupón aplicado: " + cupon);
+localStorage.setItem("cuponMLichas", cuponCompleto);
+
+alert("Cupón aplicado\n\n" + cuponCompleto);
 
 window.location.href="index.html";
 
