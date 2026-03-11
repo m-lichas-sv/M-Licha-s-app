@@ -1465,13 +1465,12 @@ function abrirModal(){
 function cerrarModal(){
   document.getElementById("modalConfirmacion").classList.remove("active");
 
-  // Volver a abrir carrito si canceló
-  setTimeout(() => {
-    document.getElementById("panelCarrito").classList.add("activo");
-  }, 200);
+  // mantener el carrito abierto
+  document.getElementById("panelCarrito").classList.add("activo");
 }
 function confirmarEnvio(){
   document.getElementById("modalConfirmacion").classList.remove("active");
+  cerrarPanel();
   enviarPedido();
 }
 document.querySelectorAll('input[name="pago"]').forEach(radio => {
