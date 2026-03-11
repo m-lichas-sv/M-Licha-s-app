@@ -140,6 +140,40 @@ button{
   background:#1ebe5d;
 }
 
+.botones-inicio{
+display:flex;
+justify-content:space-around;
+gap:12px;
+margin:20px 0;
+}
+
+.btn-inicio{
+flex:1;
+background:white;
+border-radius:14px;
+padding:15px 10px;
+text-align:center;
+text-decoration:none;
+color:#c8892d;
+font-weight:bold;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+
+box-shadow:0 6px 14px rgba(0,0,0,0.1);
+transition:all .25s ease;
+}
+
+.btn-inicio span{
+margin-top:5px;
+}
+
+.btn-inicio:active{
+transform:scale(0.95);
+}
+
 /* CATEGORÍAS */
 .menu-categorias{
   display:flex;
@@ -576,18 +610,26 @@ flex:1;
 max-width:150px;
 text-align:center;
 text-decoration:none;
-background:#f8f8f8;
+background:#ffffff;
 color:#d98928;
-padding:12px 10px;
-border-radius:12px;
+padding:14px 10px;
+border-radius:14px;
 font-size:14px;
 font-weight:bold;
-box-shadow:0 4px 10px rgba(0,0,0,0.08);
-transition:all 0.2s ease;
+box-shadow:0 6px 14px rgba(0,0,0,0.12);
+transition:all 0.25s ease;
 
 display:flex;
 flex-direction:column;
 align-items:center;
+justify-content:center;
+gap:6px;
+}
+
+.header-botones a::first-letter{
+font-size:20px;
+display:block;
+margin-bottom:3px;
 }
 
 /* efecto al tocar */
@@ -651,10 +693,23 @@ transform:scale(0.95);
 
 <img src="header.jpg" class="header-img">
 
-<div class="header-botones">
-<a href="ubicacion.html">📍 Ubicación</a>
-<a href="cupones.html">🎟 Cupones</a>
-<a href="reservas.html">📅 Reservación</a>
+<div class="botones-inicio">
+
+<a href="ubicacion.html" class="btn-inicio">
+📍
+<span>Ubicación</span>
+</a>
+
+<a href="cupones.html" class="btn-inicio">
+🎟
+<span>Cupones</span>
+</a>
+
+<a href="reservacion.html" class="btn-inicio">
+📅
+<span>Reservación</span>
+</a>
+
 </div>
 
 </div>
