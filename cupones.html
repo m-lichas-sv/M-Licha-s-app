@@ -321,19 +321,9 @@ document.getElementById("modalCupon").style.display="none";
 
 function generarCodigo(prefijo){
 
-let contador = localStorage.getItem(prefijo);
+let random = Math.random().toString(36).substring(2,6).toUpperCase();
 
-if(!contador){
-contador = 1;
-}else{
-contador = parseInt(contador)+1;
-}
-
-localStorage.setItem(prefijo,contador);
-
-let numero = contador.toString().padStart(3,'0');
-
-return prefijo+numero;
+return prefijo + "-" + random;
 
 }
 
