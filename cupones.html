@@ -35,7 +35,7 @@ border-top:3px dashed #ccc;
 margin:35px 0;
 }
 
-/* CUPONES */
+/* CUPON */
 
 .cupon{
 background:white;
@@ -61,11 +61,6 @@ transform:translateY(-50%);
 
 .cupon::before{ left:-10px; }
 .cupon::after{ right:-10px; }
-
-.cupon:hover{
-transform:translateY(-4px);
-box-shadow:0 10px 22px rgba(0,0,0,0.15);
-}
 
 button{
 background:#d98928;
@@ -106,16 +101,6 @@ width:90%;
 text-align:left;
 }
 
-.modal h3{
-margin-top:0;
-color:#d98928;
-}
-
-.modal ul{
-padding-left:18px;
-font-size:14px;
-}
-
 .modal input{
 width:100%;
 padding:10px;
@@ -124,15 +109,9 @@ border-radius:8px;
 border:1px solid #ccc;
 }
 
-.modal label{
-font-size:14px;
-display:block;
-margin-top:15px;
-}
-
 .modal button{
 width:100%;
-margin-top:15px;
+margin-top:12px;
 }
 
 .volver{
@@ -152,10 +131,9 @@ color:#555;
 <p>Regala un cupón a esa persona especial y comparte sabor 😉</p>
 </div>
 
-<!-- CUPON EJEMPLO -->
+<!-- FESTIVOS -->
 
 <div class="seccion">
-
 <h2>🥳 Cupones festivos</h2>
 
 <div class="cupon">
@@ -163,6 +141,116 @@ color:#555;
 <p>Paga $22 y consume $25</p>
 
 <button onclick="abrirModal('Cupón para mamá',22,'MOM')">
+Usar cupón
+</button>
+
+</div>
+</div>
+
+<div class="corte"></div>
+
+<!-- REGALO -->
+
+<div class="seccion">
+<h2>🎁 Cupones de regalo</h2>
+
+<div class="cupon">
+<h3>🍽 Cupón $15</h3>
+
+<button onclick="abrirModal('Cupón regalo $15',15,'REG15')">
+Usar cupón
+</button>
+
+</div>
+
+<div class="cupon">
+<h3>🍽 Cupón $25</h3>
+
+<button onclick="abrirModal('Cupón regalo $25',25,'REG25')">
+Usar cupón
+</button>
+
+</div>
+
+</div>
+
+<div class="corte"></div>
+
+<!-- COMIDA -->
+
+<div class="seccion">
+<h2>😋 Cupones de comida</h2>
+
+<div class="cupon">
+<h3>🍲 Cupón de sopa</h3>
+<p>Combo sopa</p>
+<p>$7.50</p>
+
+<button onclick="abrirModal('Cupón combo sopa',7.50,'SOP')">
+Usar cupón
+</button>
+
+</div>
+
+<div class="cupon">
+<h3>🍔 Cupón Burguer</h3>
+<p>Combo burguer doble</p>
+<p>$5</p>
+
+<button onclick="abrirModal('Cupón combo burguer',5,'BUR')">
+Usar cupón
+</button>
+
+</div>
+
+<div class="cupon">
+<h3>🌊 Cupón de Mar</h3>
+<p>Camarones + pescado + fresco + refill</p>
+<p>$9.50</p>
+
+<button onclick="abrirModal('Cupón combo mar',9.50,'MAR')">
+Usar cupón
+</button>
+
+</div>
+
+</div>
+
+<div class="corte"></div>
+
+<!-- CUMPLEAÑOS -->
+
+<div class="seccion">
+<h2>🎉 Cupones cumpleañeros</h2>
+<p><small>Aplica todo el mes de tu cumpleaños</small></p>
+
+<div class="cupon">
+<h3>🎂 Cupón HBD</h3>
+<p>+1 bebida gratis</p>
+<p>Consumo $15</p>
+
+<button onclick="abrirModal('Cupón HBD bebida gratis',15,'HBD')">
+Usar cupón
+</button>
+
+</div>
+
+<div class="cupon">
+<h3>🎊 Cupón feliz cumple</h3>
+<p>Consumo $20</p>
+
+<button onclick="abrirModal('Cupón feliz cumple',20,'HBD2')">
+Usar cupón
+</button>
+
+</div>
+
+<div class="cupon">
+<h3>🙂‍↔️ Cupón muchos años</h3>
+<p>+1 boca gratis</p>
+<p>Consumo $25</p>
+
+<button onclick="abrirModal('Cupón muchos años',25,'HBD3')">
 Usar cupón
 </button>
 
@@ -183,10 +271,9 @@ Usar cupón
 <ul>
 <li>Los cupones no son canjeables por dinero en efectivo.</li>
 <li>Los cupones son de uso único.</li>
-<li>Tiempo límite de uso: 30 días desde su emisión.</li>
+<li>Tiempo límite de uso: 30 días.</li>
 <li>Los cupones no son transferibles.</li>
-<li>El cupón debe usarse en una sola compra.</li>
-<li>El cliente debe presentar el código del cupón al pagar.</li>
+<li>Debe presentarse el código al pagar.</li>
 </ul>
 
 <label>
@@ -194,7 +281,7 @@ Usar cupón
 He leído y acepto los términos
 </label>
 
-<input type="text" id="personaCupon" placeholder="¿Para quién es el cupón?">
+<input type="text" id="personaCupon" placeholder="Cupón para:">
 
 <button onclick="solicitarCupon()">
 Solicitar cupón
@@ -225,9 +312,7 @@ document.getElementById("modalCupon").style.display="flex";
 }
 
 function cerrarModal(){
-
 document.getElementById("modalCupon").style.display="none";
-
 }
 
 function generarCodigo(prefijo){
@@ -254,17 +339,13 @@ let aceptado = document.getElementById("aceptar").checked;
 let persona = document.getElementById("personaCupon").value;
 
 if(!aceptado){
-
 alert("Debes aceptar los términos.");
 return;
-
 }
 
 if(persona==""){
-
 alert("Indica para quién es el cupón.");
 return;
-
 }
 
 let codigo = generarCodigo(cuponPrefijo);
