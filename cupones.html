@@ -35,7 +35,7 @@ border-top:3px dashed #ccc;
 margin:35px 0;
 }
 
-/* CUPON */
+/* CUPONES */
 
 .cupon{
 background:white;
@@ -115,6 +115,7 @@ background:white;
 padding:25px;
 border-radius:12px;
 max-width:400px;
+width:90%;
 text-align:left;
 }
 
@@ -148,7 +149,7 @@ to{opacity:1;transform:translateY(0);}
 <p>Regala un cupón a esa persona especial y comparte sabor 😉</p>
 </div>
 
-<!-- FESTIVOS -->
+<!-- CUPONES FESTIVOS -->
 
 <div class="seccion">
 
@@ -169,7 +170,7 @@ Usar cupón
 
 <div class="corte"></div>
 
-<!-- REGALO -->
+<!-- CUPONES DE REGALO -->
 
 <div class="seccion">
 
@@ -216,9 +217,17 @@ Usar cupón
 <li>El cliente debe presentar el código del cupón al momento de pagar.</li>
 </ul>
 
-<button onclick="aceptarTerminos()">Leí la información y acepto los términos</button>
+<button onclick="aceptarTerminos()">
+Leí la información y acepto los términos
+</button>
 
-<button onclick="solicitarCupon()">Solicitar cupón</button>
+<button onclick="solicitarCupon()">
+Solicitar cupón
+</button>
+
+<button onclick="cerrarModal()">
+Cancelar
+</button>
 
 </div>
 
@@ -241,6 +250,12 @@ cuponPrefijo=prefijo;
 aceptado=false;
 
 document.getElementById("modalCupon").style.display="flex";
+
+}
+
+function cerrarModal(){
+
+document.getElementById("modalCupon").style.display="none";
 
 }
 
@@ -292,6 +307,8 @@ Cod: ${codigo}
 Quedo pendiente para realizar el pago del cupón 😁`;
 
 let url="https://wa.me/50379554663?text="+encodeURIComponent(mensaje);
+
+cerrarModal();
 
 window.open(url);
 
