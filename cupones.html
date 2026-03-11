@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cupones - M Licha’s</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#fafafa;
+padding:20px;
+text-align:center;
+}
+
+.header{
+background:#d98928;
+color:white;
+padding:25px;
+border-radius:15px;
+margin-bottom:20px;
+}
+
+.cupon{
+background:white;
+padding:15px;
+border-radius:12px;
+margin-bottom:15px;
+box-shadow:0 6px 15px rgba(0,0,0,0.1);
+}
+
+button{
+background:#d98928;
+color:white;
+border:none;
+padding:10px 15px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.volver{
+display:block;
+margin-top:20px;
+text-decoration:none;
+color:#555;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h1>🎟 Cupones M Licha’s</h1>
+<p>Usa estos cupones en tu reservación o pedido.</p>
+</div>
+
+<div class="cupon">
+<h3>🎉 Cupón para mamá</h3>
+<p>Paga $22 y consume $25</p>
+<button onclick="usarCupon('Cupón Mamá $25 por $22')">
+Usar cupón
+</button>
+</div>
+
+<div class="cupon">
+<h3>🍽 Cupón $20</h3>
+<p>Consumo de $20</p>
+<button onclick="usarCupon('Cupón $20')">
+Usar cupón
+</button>
+</div>
+
+<div class="cupon">
+<h3>🍽 Cupón $25</h3>
+<p>Consumo de $25</p>
+<button onclick="usarCupon('Cupón $25')">
+Usar cupón
+</button>
+</div>
+
+<a class="volver" href="index.html">⬅ Volver al menú</a>
+
+<script>
+
+function usarCupon(cupon){
+
+localStorage.setItem("cuponMLichas", cupon);
+
+alert("Cupón aplicado: " + cupon);
+
+window.location.href="index.html";
+
+}
+
+</script>
+
+</body>
+</html>
