@@ -226,6 +226,26 @@ z-index:1000;
 display:none;
 }
 
+@keyframes reboteCarrito{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.25);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
+
+.animar-carrito{
+animation:reboteCarrito 0.35s ease;
+}
+
 #contadorCarrito{
 margin-left:4px;
 font-size:16px;
@@ -851,6 +871,12 @@ lista = "Aún no has seleccionado comida";
 
 document.getElementById("contadorCarrito").innerText = totalCantidad;
 
+let carrito = document.getElementById("carritoFlotante");
+
+carrito.classList.remove("animar-carrito");
+void carrito.offsetWidth;
+carrito.classList.add("animar-carrito");
+
 document.getElementById("listaCarrito").innerHTML = lista;
 
 document.getElementById("totalCarrito").innerText = "Total: $" + totalPrecio.toFixed(2);
@@ -1061,17 +1087,25 @@ let productos = document.querySelectorAll(".producto");
 
 let pedidoTexto = "";
 
+let totalPedido = 0;
+
 productos.forEach(p => {
 
 let nombreProducto = p.querySelector("h3").textContent;
+let precio = parseFloat(p.querySelector(".precio").textContent.replace("$",""));
 let cantidad = parseInt(p.querySelector(".cantidad").textContent);
 
 if(cantidad > 0){
-pedidoTexto += cantidad + "x " + nombreProducto + "\n";
+
+let subtotal = precio * cantidad;
+
+totalPedido += subtotal;
+
+pedidoTexto += cantidad + "x " + nombreProducto + " - $" + subtotal.toFixed(2) + "\n";
+
 }
 
 });
-
 if(pedidoTexto === ""){
 pedidoTexto = "Sin comida seleccionada";
 }
@@ -1088,7 +1122,9 @@ Personas: ${personas}
 Tipo de reservación: ${tipo}
 
 Pedido:
-${pedidoTexto}`;
+${pedidoTexto}
+
+Total estimado: $${totalPedido.toFixed(2)}`;
 
 let url = "https://wa.me/50379554663?text=" + encodeURIComponent(mensaje);
 
