@@ -684,6 +684,46 @@ transform:scale(0.95);
 
   100%{transform:translateX(0);}
 }
+
+/* REDES SOCIALES */
+
+.redes-sociales{
+margin-top:40px;
+padding:25px 15px;
+text-align:center;
+background:white;
+border-radius:18px;
+box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+
+.redes-sociales h3{
+color:#d98928;
+margin-bottom:15px;
+}
+
+.iconos-redes{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.iconos-redes a{
+text-decoration:none;
+background:#f5f5f5;
+padding:12px 18px;
+border-radius:12px;
+font-weight:bold;
+color:#333;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+transition:all .2s ease;
+}
+
+.iconos-redes a:hover{
+transform:translateY(-2px);
+background:#fff3e0;
+}
+
 </style>
 </head>
 <body>
@@ -1148,6 +1188,29 @@ transform:scale(0.95);
 </div>
 </div>
 </div>
+
+<div class="redes-sociales">
+
+<h3>Síguenos</h3>
+
+<div class="iconos-redes">
+
+<a href="https://facebook.com" target="_blank">
+📘 Facebook
+</a>
+
+<a href="https://instagram.com" target="_blank">
+📸 Instagram
+</a>
+
+<a href="https://tiktok.com" target="_blank">
+🎵 TikTok
+</a>
+
+</div>
+
+</div>
+
 </section>
 
 <div id="carritoFlotante" onclick="abrirCarrito()">
@@ -1432,6 +1495,10 @@ elementos.forEach(e => e.style.display = "none");
 
 let botones = document.querySelectorAll(".menu-categorias button");
 botones.forEach(b => b.classList.remove("activo"));
+
+// abrir almuerzos automáticamente
+let botonAlmuerzos = document.querySelector(".menu-categorias button");
+mostrarCategoria("almuerzos", botonAlmuerzos);
 
 // detectar si viene de reservación
 let reservaGuardada = localStorage.getItem("reservaMLichas");
