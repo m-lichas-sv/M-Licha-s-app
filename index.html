@@ -774,6 +774,30 @@ background:#000;
 100%{transform:translateY(0);}
 }
 
+/* NOTIFICACIÓN PEDIDO ENVIADO */
+
+#notificacionPedido{
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+background:#2e7d32;
+color:white;
+padding:14px 22px;
+border-radius:12px;
+font-weight:bold;
+box-shadow:0 6px 18px rgba(0,0,0,0.25);
+opacity:0;
+pointer-events:none;
+transition:all .35s ease;
+z-index:5000;
+}
+
+#notificacionPedido.mostrar{
+opacity:1;
+top:40px;
+}
+
 </style>
 </head>
 <body>
@@ -1597,10 +1621,19 @@ function cerrarModal(){
   // mantener el carrito abierto
   document.getElementById("panelCarrito").classList.add("activo");
 }
+
 function confirmarEnvio(){
-  document.getElementById("modalConfirmacion").classList.remove("active");
-  cerrarPanel();
-  enviarPedido();
+
+document.getElementById("modalConfirmacion").classList.remove("active");
+
+mostrarConfirmacion(); // 👈 nueva línea
+
+cerrarPanel();
+
+setTimeout(()=>{
+enviarPedido();
+},800);
+
 }
 document.querySelectorAll('input[name="pago"]').forEach(radio => {
   radio.addEventListener("change", generarResumen);
@@ -1678,6 +1711,19 @@ window.open(url);
 localStorage.removeItem("reservaMLichas");
 
 }
+
+function mostrarConfirmacion(){
+
+let aviso = document.getElementById("notificacionPedido");
+
+aviso.classList.add("mostrar");
+
+setTimeout(()=>{
+aviso.classList.remove("mostrar");
+},3000);
+
+}
+
 </script>
 <!-- MODAL CONFIRMAR PEDIDO -->
 <div id="modalConfirmacion" class="modal-overlay">
@@ -1710,6 +1756,10 @@ localStorage.removeItem("reservaMLichas");
     </div>
 
   </div>
+</div>
+
+<div id="notificacionPedido">
+✅ Pedido enviado a M Licha’s
 </div>
 
 </body>
