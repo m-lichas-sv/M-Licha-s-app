@@ -124,7 +124,6 @@ color:#555;
 text-decoration:none;
 }
 .producto{
-display:flex;
 justify-content:space-between;
 align-items:center;
 background:#f7f7f7;
@@ -1140,7 +1139,9 @@ let url = "https://wa.me/50379554663?text=" + encodeURIComponent(mensaje);
 window.open(url);
 
 }
+window.onload = function(){
 mostrarCategoria("almuerzos", document.querySelector(".menu-categorias button"));
+}
 </script>
 
 <div id="carritoFlotante" onclick="abrirCarrito()">
