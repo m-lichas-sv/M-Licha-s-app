@@ -671,6 +671,10 @@ transform:scale(0.95);
   object-fit:cover;
 }
 
+.carrusel:hover .slides{
+animation-play-state: paused;
+}
+
 @keyframes slideAuto{
 
   0%{transform:translateX(0);}
@@ -691,11 +695,11 @@ transform:scale(0.95);
 /* REDES SOCIALES */
 
 .redes-footer{
-margin-top:40px;
+margin-top:50px;
 padding:30px 20px;
 background:white;
 border-radius:18px;
-box-shadow:0 6px 18px rgba(0,0,0,0.08);
+box-shadow:0 6px 20px rgba(0,0,0,0.08);
 text-align:center;
 }
 
@@ -728,7 +732,7 @@ transition:all .25s ease;
 }
 
 .red i{
-font-size:26px;
+font-size:28px;
 margin-bottom:5px;
 }
 
@@ -739,89 +743,6 @@ font-size:12px;
 .red:active{
 transform:scale(0.92);
 }
-
-/* COLORES */
-
-.facebook{
-background:#1877f2;
-}
-
-.instagram{
-background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);
-}
-
-.tiktok{
-background:#000;
-}
-
-/* REDES SOCIALES FOOTER */
-
-.redes-footer{
-margin-top:50px;
-padding:30px 20px;
-background:white;
-border-radius:18px;
-box-shadow:0 6px 20px rgba(0,0,0,0.08);
-text-align:center;
-}
-
-.redes-footer h3{
-color:#d98928;
-margin-bottom:20px;
-}
-
-.redes-contenedor{
-display:flex;
-justify-content:center;
-gap:15px;
-flex-wrap:wrap;
-}
-
-.red{
-text-decoration:none;
-padding:12px 18px;
-border-radius:12px;
-color:white;
-font-weight:bold;
-box-shadow:0 5px 12px rgba(0,0,0,0.15);
-transition:all .25s ease;
-}
-
-.red:hover{
-transform:translateY(-3px);
-}
-
-.red i{
-margin-right:8px;
-font-size:18px;
-}
-
-.redes-footer{
-margin-top:40px;
-padding:25px;
-background:white;
-border-radius:15px;
-box-shadow:0 6px 15px rgba(0,0,0,0.1);
-}
-
-.redes-contenedor{
-display:flex;
-justify-content:center;
-gap:25px;
-margin-top:15px;
-}
-
-.redes-contenedor img{
-width:55px;
-height:55px;
-transition:transform .25s ease;
-}
-
-.redes-contenedor img:active{
-transform:scale(0.9);
-}
-
-/* COLORES */
 
 .facebook{
 background:#1877f2;
@@ -1438,7 +1359,10 @@ function actualizarCarrito(){
 if(!cantidadElemento) return;
 
 let cantidad = parseInt(cantidadElemento.textContent);
-    let precioTexto = p.querySelector(".precio").textContent.replace("$","");
+    let precioElemento = p.querySelector(".precio");
+if(!precioElemento) return;
+
+let precioTexto = precioElemento.textContent.replace("$","");
     let precio = parseFloat(precioTexto);
 
     totalCantidad += cantidad;
@@ -1524,10 +1448,6 @@ hora = horas + ":" + minutos + " " + periodo;
   let lista = document.getElementById("listaPedido").innerText;
   let total = document.getElementById("panelTotal").textContent;
 
-  if(nombre === "" || hora === ""){
-    alert("Por favor completa tu nombre y hora de llegada.");
-    return;
-  }
   let metodoSeleccionado = document.querySelector('input[name="pago"]:checked');
 
 if(!metodoSeleccionado){
