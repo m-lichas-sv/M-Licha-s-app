@@ -1389,6 +1389,23 @@ location.reload();
 
 }
 
+function guardarPrecio(clave){
+
+let valor = document.getElementById(clave).value;
+
+if(valor==""){
+alert("Ingresa un precio");
+return;
+}
+
+localStorage.setItem(clave, valor);
+
+alert("Precio actualizado");
+
+location.reload();
+
+}
+
 function mostrarCategoria(categoria, boton){
 
   // Si el botón ya está activo → cerrar todo
@@ -1761,6 +1778,27 @@ aviso.classList.remove("mostrar");
 },3000);
 
 }
+
+window.addEventListener("DOMContentLoaded", function(){
+
+document.querySelectorAll(".precio").forEach(function(p){
+
+let clave = p.dataset.precio;
+
+if(clave){
+
+let precioGuardado = localStorage.getItem(clave);
+
+if(precioGuardado){
+p.innerText = "$" + precioGuardado;
+}
+
+}
+
+});
+
+});
+
 
 </script>
 <!-- MODAL CONFIRMAR PEDIDO -->
