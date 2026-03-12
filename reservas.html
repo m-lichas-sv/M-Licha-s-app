@@ -1136,9 +1136,15 @@ let url = "https://wa.me/50379554663?text=" + encodeURIComponent(mensaje);
 window.open(url);
 
 }
-window.onload = function(){
-mostrarCategoria("almuerzos", document.querySelector(".menu-categorias button"));
+window.addEventListener("load", function(){
+
+let primerBoton = document.querySelector(".menu-categorias button");
+
+if(primerBoton){
+mostrarCategoria("almuerzos", primerBoton);
 }
+
+});
 </script>
 
 <div id="carritoFlotante" onclick="abrirCarrito()">
