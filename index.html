@@ -690,41 +690,68 @@ transform:scale(0.95);
 
 /* REDES SOCIALES */
 
-.redes-sociales{
+.redes-footer{
 margin-top:40px;
-padding:25px 15px;
-text-align:center;
+padding:30px 20px;
 background:white;
 border-radius:18px;
 box-shadow:0 6px 18px rgba(0,0,0,0.08);
+text-align:center;
 }
 
-.redes-sociales h3{
+.redes-footer h3{
 color:#d98928;
-margin-bottom:15px;
+margin-bottom:20px;
 }
 
-.iconos-redes{
+.redes-contenedor{
 display:flex;
 justify-content:center;
-gap:15px;
+gap:20px;
 flex-wrap:wrap;
 }
 
-.iconos-redes a{
+.red{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+width:90px;
+height:90px;
+border-radius:50%;
+color:white;
 text-decoration:none;
-background:#f5f5f5;
-padding:12px 18px;
-border-radius:12px;
 font-weight:bold;
-color:#333;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
-transition:all .2s ease;
+font-size:14px;
+box-shadow:0 8px 18px rgba(0,0,0,0.2);
+transition:all .25s ease;
 }
 
-.iconos-redes a:hover{
-transform:translateY(-2px);
-background:#fff3e0;
+.red i{
+font-size:26px;
+margin-bottom:5px;
+}
+
+.red span{
+font-size:12px;
+}
+
+.red:active{
+transform:scale(0.92);
+}
+
+/* COLORES */
+
+.facebook{
+background:#1877f2;
+}
+
+.instagram{
+background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);
+}
+
+.tiktok{
+background:#000;
 }
 
 /* REDES SOCIALES FOOTER */
@@ -1725,16 +1752,31 @@ localStorage.removeItem("reservaMLichas");
 
 <div class="redes-contenedor">
 
-<a href="https://www.facebook.com/share/1Bte7LitdC/?mibextid=wwXIfr" target="_blank">
-<img src="Facebook.png" alt="Facebook">
+<a class="red facebook"
+href="https://www.facebook.com/share/1Bte7LitdC/?mibextid=wwXIfr"
+target="_blank">
+
+<i class="fa-brands fa-facebook-f"></i>
+<span>Facebook</span>
+
 </a>
 
-<a href="https://www.instagram.com/mlichas?igsh=eWE3aTJkOGQ3a3Ex&utm_source=qr" target="_blank">
-<img src="instagram.png" alt="Instagram">
+<a class="red instagram"
+href="https://www.instagram.com/mlichas?igsh=eWE3aTJkOGQ3a3Ex&utm_source=qr"
+target="_blank">
+
+<i class="fa-brands fa-instagram"></i>
+<span>Instagram</span>
+
 </a>
 
-<a href="https://www.tiktok.com/@m_lichas?_r=1&_t=ZS-94btvaCKU9C" target="_blank">
-<img src="tiktok.png" alt="TikTok">
+<a class="red tiktok"
+href="https://www.tiktok.com/@m_lichas?_r=1&_t=ZS-94btvaCKU9C"
+target="_blank">
+
+<i class="fa-brands fa-tiktok"></i>
+<span>TikTok</span>
+
 </a>
 
 </div>
