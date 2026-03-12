@@ -1055,6 +1055,16 @@ function enviarReserva(){
 let tipo = document.getElementById("tipoReserva").value;
 let fecha = document.getElementById("fecha").value;
 let hora = document.getElementById("hora").value;
+
+let personas = document.getElementById("personas").value;
+let nombre = document.getElementById("nombre").value;
+let telefono = document.getElementById("telefono").value;
+
+if(!fecha || !hora || !personas || !nombre || !telefono){
+alert("Por favor completa todos los campos para reservar.");
+return;
+}
+
 // FORMATO DE FECHA
 let fechaObj = new Date(fecha);
 
