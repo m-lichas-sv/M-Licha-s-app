@@ -134,6 +134,16 @@ margin-top:6px;
 font-size:14px;
 }
 
+.producto{
+display:none;
+background:#f7f7f7;
+padding:10px;
+border-radius:10px;
+margin-top:8px;
+font-size:14px;
+box-shadow:0 3px 8px rgba(0,0,0,0.08);
+}
+
 .cantidad-control{
 display:flex;
 align-items:center;
@@ -936,7 +946,7 @@ t.style.display="none";
 let categoriaProductos = document.querySelectorAll("." + categoria);
 
 categoriaProductos.forEach(p=>{
-p.style.display="flex";
+p.style.display="block";
 });
 
 let categoriaTitulos = document.querySelectorAll(".titulo-categoria." + categoria + ", .separador-menu." + categoria);
