@@ -125,23 +125,21 @@ text-decoration:none;
 }
 .producto{
 display:none;
-justify-content:space-between;
-align-items:center;
-background:#f7f7f7;
-padding:8px;
-border-radius:10px;
-margin-top:6px;
-font-size:14px;
-}
-
-.producto{
-display:none;
 background:#f7f7f7;
 padding:10px;
 border-radius:10px;
 margin-top:8px;
 font-size:14px;
 box-shadow:0 3px 8px rgba(0,0,0,0.08);
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.producto:hover{
+transform:scale(1.02);
+transition:0.2s;
 }
 
 .cantidad-control{
@@ -830,12 +828,6 @@ Consumo mínimo $30
 </div>
 </section>
 
-<div id="menuReservacion">
-
-<!-- AQUÍ PEGAS TODO EL MENÚ -->
-
-</div>
-
 <button onclick="enviarReserva()">Enviar reservación</button>
 
 <a class="volver" href="index.html">⬅ Volver al menú</a>
@@ -1094,9 +1086,6 @@ h = h % 12;
 if(h === 0) h = 12;
 
 let horaFormateada = h + ":" + m + " " + periodo;
-let personas = document.getElementById("personas").value;
-let nombre = document.getElementById("nombre").value;
-let telefono = document.getElementById("telefono").value;
 
 let productos = document.querySelectorAll(".producto");
 
