@@ -887,7 +887,7 @@ top:40px;
 
 <div class="producto almuerzos">
   <h3>Pescado frito</h3>
-  <p class="precio">$4.00</p>
+ <p class="precio" data-precio="precioPescado">$7.00</p>
   <div class="cantidad-control">
     <button onclick="cambiarCantidad(this, -1)">-</button>
     <span class="cantidad">0</span>
@@ -1350,7 +1350,44 @@ Enviar reservación
 
 <button class="btn-whatsapp" onclick="abrirModal()">Enviar por WhatsApp</button>
 <button onclick="cerrarPanel()">Cerrar</button>
+
 <script>
+
+function abrirAdmin(){
+
+document.getElementById("panelAdmin").style.display="block";
+
+document.getElementById("precioSopa").value =
+localStorage.getItem("precioSopa") || 5;
+
+document.getElementById("precioBurger").value =
+localStorage.getItem("precioBurger") || 4;
+
+document.getElementById("precioBebida").value =
+localStorage.getItem("precioBebida") || 1.5;
+
+}
+
+function cerrarAdmin(){
+document.getElementById("panelAdmin").style.display="none";
+}
+
+function guardarPrecios(){
+
+localStorage.setItem("precioSopa",
+document.getElementById("precioSopa").value);
+
+localStorage.setItem("precioBurger",
+document.getElementById("precioBurger").value);
+
+localStorage.setItem("precioBebida",
+document.getElementById("precioBebida").value);
+
+alert("Precios guardados");
+
+location.reload();
+
+}
 
 function mostrarCategoria(categoria, boton){
 
@@ -1761,6 +1798,58 @@ aviso.classList.remove("mostrar");
 
 <div id="notificacionPedido">
 ✅ Pedido enviado a M Licha’s
+</div>
+
+<!-- BOTÓN ADMIN OCULTO -->
+<button id="abrirAdmin" onclick="abrirAdmin()" 
+style="
+position:fixed;
+bottom:10px;
+right:10px;
+opacity:0.2;
+font-size:10px;
+padding:5px;
+border:none;
+background:#000;
+color:white;
+border-radius:5px;">
+admin
+</button>
+
+<!-- PANEL ADMIN -->
+<div id="panelAdmin" style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:white;
+z-index:9999;
+padding:20px;
+overflow:auto;
+">
+
+<h2>Panel administrador</h2>
+
+<label>Sopa de gallina</label>
+<input id="precioSopa" type="number">
+
+<label>Hamburguesa</label>
+<input id="precioBurger" type="number">
+
+<label>Bebida</label>
+<input id="precioBebida" type="number">
+
+<label>Pescado</label>
+<input type="number" id="precioPescado" placeholder="Precio pescado">
+<button onclick="guardarPrecio('precioPescado')">Guardar</button>
+
+<br><br>
+
+<button onclick="guardarPrecios()">Guardar precios</button>
+<button onclick="cerrarAdmin()">Cerrar</button>
+
 </div>
 
 </body>
